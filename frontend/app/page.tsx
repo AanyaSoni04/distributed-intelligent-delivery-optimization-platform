@@ -1,65 +1,99 @@
-import Image from "next/image";
+import React from "react";
+import Link from "next/link";
+import { Shield, Users, Truck, Sparkles, Navigation } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="flex min-h-screen w-full flex-col items-center justify-center bg-background p-4 md:p-8">
+      {/* Upper Accent Grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+
+      <div className="relative z-10 max-w-4xl w-full text-center space-y-8 animate-fade-in">
+        {/* Brand Banner */}
+        <div className="inline-flex items-center gap-2 rounded-full border border-gold bg-gold/10 px-4 py-1.5 text-xs font-semibold text-gold-foreground shadow-sm">
+          <Sparkles className="size-3.5" />
+          <span>Enterprise Logistics Platform</span>
+        </div>
+
+        {/* Headings */}
+        <div className="space-y-3">
+          <h1 className="text-4xl md:text-6xl font-heading font-black tracking-tight text-foreground">
+            DIDOP
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-lg md:text-xl font-heading font-medium text-muted-foreground max-w-2xl mx-auto">
+            Distributed Intelligent Delivery Optimization Platform
+          </p>
+          <p className="text-sm text-muted-foreground/85 max-w-lg mx-auto font-sans">
+            Streamlined logistics orchestration, real-time routing intelligence, and autonomous courier coordination.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+        {/* Portal Cards Selector */}
+        <div className="grid gap-6 sm:grid-cols-3 max-w-3xl mx-auto pt-6">
+          {/* Admin Portal */}
+          <Link
+            href="/admin/command-center"
+            className="group rounded-xl border border-border bg-card p-6 shadow-sm hover:shadow-md hover:border-primary/50 hover:bg-primary/5 transition-all text-left flex flex-col justify-between min-h-48"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <div>
+              <div className="size-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4 transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                <Shield className="size-5" />
+              </div>
+              <h3 className="font-heading font-bold text-lg text-foreground mb-1 group-hover:text-primary transition-colors">
+                Admin Portal
+              </h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Central command, operations routing optimization, fleet supervision, and system monitoring.
+              </p>
+            </div>
+            <span className="text-[10px] font-bold text-primary tracking-wider uppercase inline-flex items-center gap-1 mt-4">
+              Enter Dashboard <Navigation className="size-2.5 rotate-90" />
+            </span>
+          </Link>
+
+          {/* Customer Portal */}
+          <Link
+            href="/customer/tracking"
+            className="group rounded-xl border border-border bg-card p-6 shadow-sm hover:shadow-md hover:border-primary/50 hover:bg-primary/5 transition-all text-left flex flex-col justify-between min-h-48"
           >
-            Documentation
-          </a>
+            <div>
+              <div className="size-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4 transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                <Users className="size-5" />
+              </div>
+              <h3 className="font-heading font-bold text-lg text-foreground mb-1 group-hover:text-primary transition-colors">
+                Customer Portal
+              </h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Create and schedule shipments, view delivery tracking maps, and manage courier history.
+              </p>
+            </div>
+            <span className="text-[10px] font-bold text-primary tracking-wider uppercase inline-flex items-center gap-1 mt-4">
+              Enter Portal <Navigation className="size-2.5 rotate-90" />
+            </span>
+          </Link>
+
+          {/* Driver Portal */}
+          <Link
+            href="/driver/dashboard"
+            className="group rounded-xl border border-border bg-card p-6 shadow-sm hover:shadow-md hover:border-primary/50 hover:bg-primary/5 transition-all text-left flex flex-col justify-between min-h-48"
+          >
+            <div>
+              <div className="size-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4 transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                <Truck className="size-5" />
+              </div>
+              <h3 className="font-heading font-bold text-lg text-foreground mb-1 group-hover:text-primary transition-colors">
+                Driver Portal
+              </h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Driver shift assignment calendar, turn-by-turn route directions, and delivery logs.
+              </p>
+            </div>
+            <span className="text-[10px] font-bold text-primary tracking-wider uppercase inline-flex items-center gap-1 mt-4">
+              Enter Console <Navigation className="size-2.5 rotate-90" />
+            </span>
+          </Link>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

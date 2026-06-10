@@ -1,0 +1,164 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { 
+  Activity, 
+  Brain, 
+  Boxes, 
+  LayoutDashboard, 
+  Truck, 
+  Settings,
+  HelpCircle,
+  Menu,
+  X,
+  Sparkles
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import React from "react";
+
+interface SidebarProps {
+  isOpen?: boolean;
+  onClose?: () => void;
+}
+
+export function AdminSidebar({ isOpen = true, onClose }: SidebarProps) {
+  const pathname = usePathname();
+
+  const navigation = [
+    {
+      name: "Command Center",
+      href: "/admin/command-center",
+      icon: LayoutDashboard,
+      description: "Real-time dispatch control"
+    },
+    {
+      name: "Delivery Operations",
+      href: "/admin/operations",
+      icon: Truck,
+      description: "Active fleet and routes"
+    },
+    {
+      name: "Delivery Intelligence",
+      href: "/admin/intelligence",
+      icon: Brain,
+      description: "AI optimization & metrics",
+      badge: "Premium" // Reserving muted gold for premium status indicators!
+    },
+    {
+      name: "System Monitoring",
+      href: "/admin/monitoring",
+      icon: Activity,
+      description: "System health and logs"
+    },
+    {
+      name: "Warehouse Management",
+      href: "/admin/warehouse",
+      icon: Boxes,
+      description: "Inventory and sorting hubs"
+    }
+  ];
+
+  return (
+    <aside
+      className={cn(
+        "fixed inset-y-0 left-0 z-50 flex w-72 flex-col border-r border-border bg-sidebar transition-transform duration-300 ease-in-out lg:static lg:translate-x-0",
+        isOpen ? "translate-x-0" : "-translate-x-full"
+      )}
+    >
+      {/* Brand Logo Header */}
+      <div className="flex h-16 items-center justify-between border-b border-border px-6">
+        <Link href="/admin/command-center" className="flex items-center gap-2.5">
+          <div className="flex size-9 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-sm">
+            <span className="font-heading font-black text-lg tracking-wider">D</span>
+          </div>
+          <div className="flex flex-col">
+            <span className="font-heading text-sm font-bold tracking-tight text-foreground">
+              DIDOP Portal
+            </span>
+            <span className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">
+              Administration
+            </span>
+          </div>
+        </Link>
+        {onClose && (
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={onClose}
+            className="lg:hidden"
+            aria-label="Close sidebar"
+          >
+            <X className="size-5" />
+          </Button>
+        )}
+      </div>
+
+      {/* Main Nav Navigation */}
+      <nav className="flex-1 space-y-1.5 px-4 py-6 overflow-y-auto">
+        <div className="px-2 pb-2 text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">
+          Operations Platform
+        </div>
+        {navigation.map((item) => {
+          const isActive = pathname.startsWith(item.href);
+          return (
+            <Link
+              key={item.name}
+              href={item.href}
+              className={cn(
+                "group flex items-start gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all",
+                isActive
+                  ? "bg-primary/5 text-primary border-l-2 border-primary pl-[10px]"
+                  : "text-muted-foreground hover:bg-accent hover:text-foreground border-l-2 border-transparent"
+              )}
+            >
+              <item.icon
+                className={cn(
+                  "size-5 mt-0.5 shrink-0 transition-colors",
+                  isActive ? "text-primary" : "text-muted-foreground group-hover:text-foreground"
+                )}
+              />
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between">
+                  <span className="truncate">{item.name}</span>
+                  {item.badge && (
+                    <span className="inline-flex items-center gap-0.5 rounded-full bg-gold/10 px-1.5 py-0.5 text-[9px] font-semibold text-gold-foreground font-sans">
+                      <Sparkles className="size-2" />
+                      {item.badge}
+                    </span>
+                  )}
+                </div>
+                <span
+                  className={cn(
+                    "block truncate text-[11px] font-normal mt-0.5",
+                    isActive ? "text-primary/70" : "text-muted-foreground/60"
+                  )}
+                >
+                  {item.description}
+                </span>
+              </div>
+            </Link>
+          );
+        })}
+      </nav>
+
+      {/* Footer / User Area */}
+      <div className="border-t border-border p-4 bg-sidebar-accent/10">
+        <div className="flex items-center gap-3">
+          <div className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary font-heading font-bold text-sm">
+            AS
+          </div>
+          <div className="min-w-0 flex-1">
+            <span className="block truncate text-xs font-bold text-foreground">
+              Aanya Soni
+            </span>
+            <span className="block truncate text-[10px] text-muted-foreground">
+              Platform Admin
+            </span>
+          </div>
+        </div>
+      </div>
+    </aside>
+  );
+}
