@@ -135,48 +135,48 @@ export default function DriverDashboardPage() {
         {/* 1. Driver KPI Cards */}
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Card 1: Assigned Today */}
-          <div className="bg-card p-5 rounded-xl border-l-4 border-primary shadow-sm">
-            <p className="text-muted-foreground text-[10px] uppercase font-bold tracking-wider mb-1">
+          <div className="bg-card p-5 rounded-xl border-l-4 border-primary shadow-sm max-w-md lg:max-w-none">
+            <p className="text-sm uppercase tracking-wide font-medium text-muted-foreground font-sans mb-1">
               Assigned Today
             </p>
             <div className="flex items-baseline gap-2 mt-1">
-              <span className="font-heading text-2xl font-black text-foreground">12</span>
-              <span className="text-primary text-[10px] font-bold uppercase tracking-wider">Units</span>
+              <span className="text-3xl md:text-4xl lg:text-5xl font-bold font-sans tabular-nums text-foreground">12</span>
+              <span className="text-primary text-sm font-semibold uppercase tracking-wider">Units</span>
             </div>
           </div>
 
           {/* Card 2: Completed Today */}
-          <div className="bg-card p-5 rounded-xl border-l-4 border-gold shadow-sm transition-all duration-300">
-            <p className="text-muted-foreground text-[10px] uppercase font-bold tracking-wider mb-1">
+          <div className="bg-card p-5 rounded-xl border-l-4 border-gold shadow-sm transition-all duration-300 max-w-md lg:max-w-none">
+            <p className="text-sm uppercase tracking-wide font-medium text-muted-foreground font-sans mb-1">
               Completed Today
             </p>
             <div className="flex items-baseline gap-2 mt-1">
-              <span className="font-heading text-2xl font-black text-foreground">{completedCount}</span>
-              <span className="text-gold text-[10px] font-bold uppercase tracking-wider">Done</span>
+              <span className="text-3xl md:text-4xl lg:text-5xl font-bold font-sans tabular-nums text-foreground">{completedCount}</span>
+              <span className="text-gold text-sm font-semibold uppercase tracking-wider">Done</span>
             </div>
           </div>
 
           {/* Card 3: Earnings */}
-          <div className="bg-card p-5 rounded-xl border-l-4 border-emerald-500 shadow-sm transition-all duration-300">
-            <p className="text-muted-foreground text-[10px] uppercase font-bold tracking-wider mb-1">
+          <div className="bg-card p-5 rounded-xl border-l-4 border-emerald-500 shadow-sm transition-all duration-300 max-w-md lg:max-w-none">
+            <p className="text-sm uppercase tracking-wide font-medium text-muted-foreground font-sans mb-1">
               Total Earnings
             </p>
             <div className="flex items-baseline gap-2 mt-1">
-              <span className="font-heading text-2xl font-black text-foreground">₹ {earningsAmount.toLocaleString("en-IN")}</span>
-              <span className="text-green-600 text-[10px] font-bold">↑ 12%</span>
+              <span className="text-3xl md:text-4xl lg:text-5xl font-bold font-sans tabular-nums text-foreground">₹{earningsAmount.toLocaleString("en-IN")}</span>
+              <span className="text-green-600 text-base font-semibold tabular-nums">↑ 12%</span>
             </div>
           </div>
 
           {/* Card 4: Rating */}
-          <div className="bg-card p-5 rounded-xl border-l-4 border-slate-350 shadow-sm">
-            <p className="text-muted-foreground text-[10px] uppercase font-bold tracking-wider mb-1">
+          <div className="bg-card p-5 rounded-xl border-l-4 border-slate-350 shadow-sm max-w-md lg:max-w-none">
+            <p className="text-sm uppercase tracking-wide font-medium text-muted-foreground font-sans mb-1">
               Driver Rating
             </p>
             <div className="flex items-center gap-2 mt-1">
-              <span className="font-heading text-2xl font-black text-foreground">4.9</span>
+              <span className="text-3xl md:text-4xl lg:text-5xl font-bold font-sans tabular-nums text-foreground">4.9</span>
               <div className="flex text-gold">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="size-3.5 fill-current" />
+                  <Star key={i} className="size-4.5 fill-current" />
                 ))}
               </div>
             </div>
@@ -260,9 +260,9 @@ export default function DriverDashboardPage() {
               </div>
 
               <div className="overflow-x-auto">
-                <table className="w-full text-left border-collapse font-sans text-xs">
+                <table className="w-full text-left border-collapse font-sans text-base">
                   <thead>
-                    <tr className="bg-slate-50 text-slate-500 font-bold text-[10px] uppercase tracking-wider border-b border-border">
+                    <tr className="bg-slate-50 text-slate-650 font-semibold text-sm uppercase tracking-wide border-b border-border">
                       <th className="px-6 py-3.5">Delivery ID</th>
                       <th className="px-6 py-3.5">Pickup</th>
                       <th className="px-6 py-3.5">Destination</th>
@@ -280,33 +280,32 @@ export default function DriverDashboardPage() {
                           item.id === "DID-2026-10231" && missionStatus === "DELIVERED" ? "text-slate-400" : ""
                         )}
                       >
-                        <td className="px-6 py-4 font-mono font-bold text-slate-700">{item.id}</td>
-                        <td className="px-6 py-4">{item.pickup}</td>
-                        <td className="px-6 py-4">{item.destination}</td>
-                        <td className="px-6 py-4">
+                        <td className="px-6 py-5 font-mono font-semibold text-base text-slate-750 tabular-nums">{item.id}</td>
+                        <td className="px-6 py-5 text-base">{item.pickup}</td>
+                        <td className="px-6 py-5 text-base">{item.destination}</td>
+                        <td className="px-6 py-5">
                           <span className={cn(
-                            "px-2 py-0.5 text-[9px] font-extrabold rounded tracking-wide",
+                            "px-2.5 py-1 text-sm font-semibold rounded uppercase tracking-wide",
                             item.priority === "EXPRESS" 
-                              ? "bg-rose-50 text-rose-700 border border-rose-100" 
-                              : "bg-slate-100 text-slate-600 border border-slate-150"
+                              ? "bg-rose-55 text-rose-800 border border-rose-200/80" 
+                              : "bg-slate-100 text-slate-800 border border-slate-200"
                           )}>
                             {item.priority}
                           </span>
                         </td>
-                        <td className="px-6 py-4">
-                          <div className="flex items-center gap-1.5">
-                            <span className={cn(
-                              "w-1.5 h-1.5 rounded-full",
-                              item.status === "Delivered" 
-                                ? "bg-green-500" 
-                                : item.status === "In Transit" 
-                                  ? "bg-primary animate-pulse" 
-                                  : "bg-slate-350"
-                            )} />
-                            <span>{item.status}</span>
-                          </div>
+                        <td className="px-6 py-5">
+                          <span className={cn(
+                            "px-2.5 py-1 rounded-full text-sm font-semibold uppercase tracking-wider",
+                            item.status === "Delivered" 
+                              ? "bg-green-50 text-green-800 border border-green-200/80" 
+                              : item.status === "In Transit" 
+                                ? "bg-primary/10 text-primary border border-primary/20 animate-pulse" 
+                                : "bg-slate-100 text-slate-800 border border-slate-200"
+                          )}>
+                            {item.status}
+                          </span>
                         </td>
-                        <td className="px-6 py-4 text-right font-bold">{item.eta}</td>
+                        <td className="px-6 py-5 text-right font-semibold text-base font-sans tabular-nums">{item.eta}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -322,10 +321,10 @@ export default function DriverDashboardPage() {
             <section className="bg-card border border-border rounded-2xl p-6 shadow-sm border-t-8 border-primary relative overflow-hidden">
               <div className="flex justify-between items-start mb-5">
                 <div>
-                  <p className="text-[10px] font-bold uppercase text-primary tracking-widest font-sans">
+                  <p className="text-sm uppercase tracking-wide font-medium text-muted-foreground font-sans">
                     Active Mission
                   </p>
-                  <h3 className="font-heading text-lg font-black text-foreground mt-1">
+                  <h3 className="text-xl font-bold font-sans text-foreground mt-1">
                     {missionStatus === "DELIVERED" ? "No Active Assignment" : "DID-2026-10231"}
                   </h3>
                 </div>
@@ -337,10 +336,10 @@ export default function DriverDashboardPage() {
               {missionStatus === "DELIVERED" ? (
                 <div className="space-y-4 my-8 text-center py-6">
                   <div className="w-12 h-12 bg-green-50 text-green-600 rounded-full flex items-center justify-center mx-auto mb-2 border border-green-100 shadow-inner">
-                    <UserCheck className="size-6" />
+                     <UserCheck className="size-6" />
                   </div>
-                  <h4 className="font-bold text-xs text-slate-800">All shifts caught up!</h4>
-                  <p className="text-[11px] text-muted-foreground max-w-[200px] mx-auto leading-relaxed">
+                  <h4 className="font-bold text-base text-slate-800">All shifts caught up!</h4>
+                  <p className="text-sm text-muted-foreground max-w-[200px] mx-auto leading-relaxed">
                     Waiting for dispatcher to broadcast next routing manifest.
                   </p>
                   <div className="pt-2">
@@ -348,7 +347,7 @@ export default function DriverDashboardPage() {
                       variant="outline" 
                       size="sm" 
                       onClick={handleResetMission}
-                      className="h-8 text-[10px] font-bold uppercase tracking-wider gap-1.5"
+                      className="h-10 text-xs font-bold uppercase tracking-wider gap-1.5"
                       id="btn-reset-simulation-mission"
                     >
                       <RotateCcw className="size-3" />
@@ -365,26 +364,26 @@ export default function DriverDashboardPage() {
                         <div className="w-0.5 flex-1 border-l-2 border-dotted border-slate-300"></div>
                         <div className="size-2 rounded-full bg-rose-500"></div>
                       </div>
-                      <div className="space-y-3 flex-1 text-xs">
+                      <div className="space-y-3 flex-1 text-sm">
                         <div>
-                          <p className="text-[9px] font-bold text-muted-foreground uppercase">Pickup</p>
-                          <p className="font-bold text-slate-850">BKC Logistics Hub, Zone A, Gate 4</p>
+                          <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Pickup</p>
+                          <p className="font-semibold text-slate-850 text-base">BKC Logistics Hub, Zone A, Gate 4</p>
                         </div>
                         <div>
-                          <p className="text-[9px] font-bold text-muted-foreground uppercase">Destination</p>
-                          <p className="font-bold text-slate-850">Flat 402, Worli Sky Tower, Mumbai</p>
+                          <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Destination</p>
+                          <p className="font-semibold text-slate-850 text-base">Flat 402, Worli Sky Tower, Mumbai</p>
                         </div>
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-4 pt-4 border-t border-slate-100 text-xs">
+                    <div className="grid grid-cols-2 gap-4 pt-4 border-t border-slate-100 text-sm">
                       <div>
-                        <p className="text-[9px] font-bold text-muted-foreground uppercase">Distance</p>
-                        <p className="font-bold text-sm text-slate-800">4.2 km</p>
+                        <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Distance</p>
+                        <p className="font-semibold text-base text-slate-800 tabular-nums">4.2 km</p>
                       </div>
                       <div>
-                        <p className="text-[9px] font-bold text-muted-foreground uppercase">ETA</p>
-                        <p className="font-bold text-sm text-slate-800">15 mins</p>
+                        <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">ETA</p>
+                        <p className="font-semibold text-base text-slate-800 tabular-nums">15 mins</p>
                       </div>
                     </div>
                   </div>
@@ -393,7 +392,7 @@ export default function DriverDashboardPage() {
                   <div className="space-y-2.5">
                     <Button
                       onClick={handleMarkDelivered}
-                      className="w-full bg-primary text-white font-bold py-3.5 rounded-xl shadow-md shadow-primary/20 text-xs uppercase tracking-wider"
+                      className="w-full bg-primary text-white font-semibold py-4 rounded-xl shadow-md shadow-primary/20 text-base uppercase tracking-wider"
                       id="btn-driver-mark-delivered"
                     >
                       Mark Delivered
@@ -402,14 +401,14 @@ export default function DriverDashboardPage() {
                       <Button
                         variant="outline"
                         disabled
-                        className="py-2.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 bg-slate-50 border-slate-200 cursor-not-allowed"
+                        className="py-3.5 text-xs font-semibold uppercase tracking-wider text-slate-400 bg-slate-50 border-slate-200 cursor-not-allowed"
                       >
                         Reject Job
                       </Button>
                       <Button
                         variant="outline"
                         disabled
-                        className="py-2.5 text-[10px] font-bold uppercase tracking-wider text-slate-400 bg-slate-50 border-slate-200 cursor-not-allowed"
+                        className="py-3.5 text-xs font-semibold uppercase tracking-wider text-slate-400 bg-slate-50 border-slate-200 cursor-not-allowed"
                       >
                         Picked Up
                       </Button>
@@ -482,8 +481,8 @@ export default function DriverDashboardPage() {
                     <Check className="size-3.5" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-slate-800">Accepted DID-2026-10231</p>
-                    <p className="text-[9px] text-muted-foreground mt-0.5">Today, 14:20 IST</p>
+                    <p className="text-sm font-semibold text-foreground">Accepted DID-2026-10231</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">Today, 14:20 IST</p>
                   </div>
                 </div>
 
@@ -493,8 +492,8 @@ export default function DriverDashboardPage() {
                     <ClipboardList className="size-3.5" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-slate-800">Assigned to Route #882</p>
-                    <p className="text-[9px] text-muted-foreground mt-0.5">Today, 14:15 IST</p>
+                    <p className="text-sm font-semibold text-foreground">Assigned to Route #882</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">Today, 14:15 IST</p>
                   </div>
                 </div>
 
@@ -504,8 +503,8 @@ export default function DriverDashboardPage() {
                     <LogIn className="size-3.5" />
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-slate-800">Shift Started (Online)</p>
-                    <p className="text-[9px] text-muted-foreground mt-0.5">Today, 08:00 IST</p>
+                    <p className="text-sm font-semibold text-foreground">Shift Started (Online)</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">Today, 08:00 IST</p>
                   </div>
                 </div>
               </div>

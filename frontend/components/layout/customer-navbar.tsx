@@ -63,10 +63,10 @@ export function CustomerNavbar() {
                     key={item.name}
                     href={item.href}
                     className={cn(
-                      "flex items-center gap-2 rounded-md px-3.5 py-2 text-sm font-medium transition-colors",
+                      "flex items-center gap-2 rounded-md px-3.5 py-2 text-base transition-colors",
                       isActive
-                        ? "bg-primary/5 text-primary"
-                        : "text-muted-foreground hover:bg-accent hover:text-foreground"
+                        ? "bg-primary/5 text-slate-900 font-semibold"
+                        : "text-slate-700 hover:bg-accent hover:text-slate-950 font-medium"
                     )}
                   >
                     <item.icon className="size-4 shrink-0" />

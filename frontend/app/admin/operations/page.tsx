@@ -279,16 +279,16 @@ export default function DeliveryOperationsPage() {
         </div>
       )}
 
-      <div className="space-y-6 font-sans">
+      <div className="space-y-10 font-sans">
         
         {/* 1. Operations KPI Cards */}
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {/* Card 1: Active Deliveries */}
-          <div className="bg-card p-5 rounded-xl border border-border shadow-sm hover:translate-y-[-2px] transition-all flex flex-col justify-between group">
-            <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-wider mb-1">Active Deliveries</p>
-            <div className="flex items-baseline gap-2 mt-2">
-              <span className="text-2xl font-heading font-black text-foreground">{(activeDeliveriesCount + 1238).toLocaleString("en-IN")}</span>
-              <span className="text-xs text-green-600 font-bold">+4.2%</span>
+          <div className="bg-card p-6 rounded-xl border border-border shadow-sm hover:translate-y-[-2px] transition-all flex flex-col justify-between group min-h-[140px] max-w-sm">
+            <p className="font-sans text-sm font-medium uppercase tracking-wide text-muted-foreground">Active Deliveries</p>
+            <div className="flex flex-col mt-3">
+              <span className="text-3xl md:text-4xl lg:text-5xl font-bold font-sans tabular-nums text-foreground">{(activeDeliveriesCount + 1238).toLocaleString("en-IN")}</span>
+              <span className="text-base font-semibold text-green-700 mt-1.5">+4.2% vs last hour</span>
             </div>
             <div className="w-full h-1 bg-primary/10 mt-4 rounded-full overflow-hidden">
               <div className="w-3/4 h-full bg-primary" />
@@ -296,11 +296,14 @@ export default function DeliveryOperationsPage() {
           </div>
 
           {/* Card 2: Delayed Deliveries */}
-          <div className="bg-card p-5 rounded-xl border border-border shadow-sm hover:translate-y-[-2px] transition-all flex flex-col justify-between group">
-            <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-wider mb-1">Delayed Deliveries</p>
-            <div className="flex items-baseline gap-2 mt-2">
-              <span className="text-2xl font-heading font-black text-gold">{delayedDeliveriesCount + 16}</span>
-              <AlertTriangle className="size-4 text-gold" />
+          <div className="bg-card p-6 rounded-xl border border-border shadow-sm hover:translate-y-[-2px] transition-all flex flex-col justify-between group min-h-[140px] max-w-sm">
+            <p className="font-sans text-sm font-medium uppercase tracking-wide text-muted-foreground">Delayed Deliveries</p>
+            <div className="flex flex-col mt-3">
+              <span className="text-3xl md:text-4xl lg:text-5xl font-bold font-sans tabular-nums text-gold">{delayedDeliveriesCount + 16}</span>
+              <span className="text-sm font-medium text-muted-foreground font-sans mt-1.5 flex items-center gap-1">
+                <AlertTriangle className="size-4 text-gold" />
+                SLA warning active
+              </span>
             </div>
             <div className="w-full h-1 bg-gold/15 mt-4 rounded-full overflow-hidden">
               <div className="w-1/3 h-full bg-gold" />
@@ -308,11 +311,13 @@ export default function DeliveryOperationsPage() {
           </div>
 
           {/* Card 3: Failed Deliveries */}
-          <div className="bg-card p-5 rounded-xl border border-border shadow-sm hover:translate-y-[-2px] transition-all flex flex-col justify-between group">
-            <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-wider mb-1 text-red-600">Failed Deliveries</p>
-            <div className="flex items-baseline gap-2 mt-2">
-              <span className="text-2xl font-heading font-black text-red-650">{unassignedCount + 2}</span>
-              <span className="text-[9px] font-bold text-red-700 bg-red-100 px-1.5 py-0.5 rounded font-sans uppercase">CRITICAL</span>
+          <div className="bg-card p-6 rounded-xl border border-border shadow-sm hover:translate-y-[-2px] transition-all flex flex-col justify-between group min-h-[140px] max-w-sm">
+            <p className="font-sans text-sm font-medium uppercase tracking-wide text-red-700">Failed Deliveries</p>
+            <div className="flex flex-col mt-3">
+              <span className="text-3xl md:text-4xl lg:text-5xl font-bold font-sans tabular-nums text-red-650">{unassignedCount + 2}</span>
+              <span className="text-sm font-semibold text-red-800 bg-red-100 px-2.5 py-0.5 rounded font-sans uppercase w-fit mt-1.5">
+                CRITICAL STATUS
+              </span>
             </div>
             <div className="w-full h-1 bg-red-100 mt-4 rounded-full overflow-hidden">
               <div className="w-1/5 h-full bg-red-500" />
@@ -320,10 +325,11 @@ export default function DeliveryOperationsPage() {
           </div>
 
           {/* Card 4: Priority Deliveries */}
-          <div className="bg-card p-5 rounded-xl border border-border shadow-sm hover:translate-y-[-2px] transition-all flex flex-col justify-between group">
-            <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-wider mb-1">Priority Deliveries</p>
-            <div className="flex items-baseline gap-2 mt-2">
-              <span className="text-2xl font-heading font-black text-foreground">{priorityCount + 79}</span>
+          <div className="bg-card p-6 rounded-xl border border-border shadow-sm hover:translate-y-[-2px] transition-all flex flex-col justify-between group min-h-[140px] max-w-sm">
+            <p className="font-sans text-sm font-medium uppercase tracking-wide text-muted-foreground">Priority Deliveries</p>
+            <div className="flex flex-col mt-3">
+              <span className="text-3xl md:text-4xl lg:text-5xl font-bold font-sans tabular-nums text-foreground">{priorityCount + 79}</span>
+              <span className="text-sm font-medium text-muted-foreground font-sans mt-1.5">High / Urgent Priority</span>
             </div>
             <div className="w-full h-1 bg-slate-100 mt-4 rounded-full overflow-hidden">
               <div className="w-2/3 h-full bg-slate-700" />
@@ -331,11 +337,11 @@ export default function DeliveryOperationsPage() {
           </div>
 
           {/* Card 5: Reassignments */}
-          <div className="bg-card p-5 rounded-xl border border-border shadow-sm hover:translate-y-[-2px] transition-all flex flex-col justify-between group">
-            <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-wider mb-1">Reassignments</p>
-            <div className="flex items-baseline gap-2 mt-2">
-              <span className="text-2xl font-heading font-black text-foreground">24</span>
-              <span className="text-xs text-muted-foreground font-semibold">Today</span>
+          <div className="bg-card p-6 rounded-xl border border-border shadow-sm hover:translate-y-[-2px] transition-all flex flex-col justify-between group min-h-[140px] max-w-sm">
+            <p className="font-sans text-sm font-medium uppercase tracking-wide text-muted-foreground">Reassignments</p>
+            <div className="flex flex-col mt-3">
+              <span className="text-3xl md:text-4xl lg:text-5xl font-bold font-sans tabular-nums text-foreground">24</span>
+              <span className="text-sm font-medium text-muted-foreground font-sans mt-1.5">Reassigned today</span>
             </div>
             <div className="w-full h-1 bg-slate-100 mt-4 rounded-full overflow-hidden">
               <div className="w-1/2 h-full bg-slate-400" />
@@ -345,13 +351,13 @@ export default function DeliveryOperationsPage() {
 
         {/* 2. Filters Section */}
         <section className="bg-slate-50 border border-slate-200 p-4 rounded-xl flex flex-wrap items-center gap-4 shadow-sm">
-          <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest pl-1">Filters</span>
-          <div className="flex flex-wrap items-center gap-2 flex-1 font-sans text-xs">
+          <span className="text-sm font-semibold text-slate-600 uppercase tracking-wide pl-1">Filters</span>
+          <div className="flex flex-wrap items-center gap-2 flex-1 font-sans text-base font-medium">
             {/* Region Filter */}
             <select 
               value={regionFilter}
               onChange={(e) => setRegionFilter(e.target.value)}
-              className="bg-white border border-slate-200 rounded-lg px-3 py-1.5 focus:ring-1 focus:ring-primary focus:border-primary text-xs"
+              className="bg-white border border-slate-200 rounded-lg px-3 py-2 focus:ring-1 focus:ring-primary focus:border-primary text-base font-medium"
             >
               <option value="All">Region: All</option>
               <option value="Maharashtra">Maharashtra</option>
@@ -363,7 +369,7 @@ export default function DeliveryOperationsPage() {
             <select 
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="bg-white border border-slate-200 rounded-lg px-3 py-1.5 focus:ring-1 focus:ring-primary focus:border-primary text-xs"
+              className="bg-white border border-slate-200 rounded-lg px-3 py-2 focus:ring-1 focus:ring-primary focus:border-primary text-base font-medium"
             >
               <option value="All">All Statuses</option>
               <option value="In Transit">In Transit</option>
@@ -375,7 +381,7 @@ export default function DeliveryOperationsPage() {
             <select 
               value={driverFilter}
               onChange={(e) => setDriverFilter(e.target.value)}
-              className="bg-white border border-slate-200 rounded-lg px-3 py-1.5 focus:ring-1 focus:ring-primary focus:border-primary text-xs"
+              className="bg-white border border-slate-200 rounded-lg px-3 py-2 focus:ring-1 focus:ring-primary focus:border-primary text-base font-medium"
             >
               <option value="All">Driver Status: Any</option>
               <option value="Assigned">Assigned Drivers</option>
@@ -386,7 +392,7 @@ export default function DeliveryOperationsPage() {
               <Button 
                 variant="ghost" 
                 onClick={clearFilters}
-                className="h-8 text-xs text-primary font-bold hover:underline"
+                className="h-9 text-base text-primary font-bold hover:underline"
               >
                 Clear All
               </Button>
@@ -401,7 +407,7 @@ export default function DeliveryOperationsPage() {
           <div className="lg:col-span-8 space-y-6">
             <div className="bg-card border border-border rounded-2xl overflow-hidden shadow-sm">
               <div className="px-6 py-4.5 border-b border-border flex justify-between items-center bg-slate-50/50">
-                <h3 className="font-heading text-base font-bold text-foreground">
+                <h3 className="font-sans text-2xl font-bold text-foreground">
                   Main Delivery Grid
                 </h3>
                 <div className="flex gap-2">
@@ -415,9 +421,9 @@ export default function DeliveryOperationsPage() {
               </div>
 
               <div className="overflow-x-auto">
-                <table className="w-full text-left border-collapse font-sans text-xs">
+                <table className="w-full text-left border-collapse font-sans text-base">
                   <thead>
-                    <tr className="bg-slate-50 text-slate-500 font-bold text-[10px] uppercase tracking-wider border-b border-border">
+                    <tr className="bg-slate-50 text-slate-500 font-semibold text-sm border-b border-border">
                       <th className="p-4 w-10 text-center">
                         <input 
                           type="checkbox" 
@@ -429,7 +435,7 @@ export default function DeliveryOperationsPage() {
                             });
                             setSelectedRowIds(newRowIds);
                           }}
-                          className="rounded text-primary focus:ring-primary size-3.5"
+                          className="rounded text-primary focus:ring-primary size-4"
                         />
                       </th>
                       <th className="px-4 py-3.5">Delivery ID</th>
@@ -461,34 +467,34 @@ export default function DeliveryOperationsPage() {
                               type="checkbox"
                               checked={isChecked}
                               onChange={() => handleToggleRow(delivery.id)}
-                              className="rounded text-primary focus:ring-primary size-3.5"
+                              className="rounded text-primary focus:ring-primary size-4"
                             />
                           </td>
-                          <td className="px-4 py-4 font-mono font-bold text-primary">{delivery.id}</td>
-                          <td className="px-4 py-4">
-                            <p className="font-semibold text-slate-800">{delivery.customer}</p>
-                            <p className="text-[10px] text-muted-foreground">{delivery.region}</p>
+                          <td className="px-4 py-5 font-mono text-base font-semibold tabular-nums text-primary">{delivery.id}</td>
+                          <td className="px-4 py-5">
+                            <p className="font-semibold text-base text-foreground">{delivery.customer}</p>
+                            <p className="text-sm text-slate-500 font-normal">{delivery.region}</p>
                           </td>
-                          <td className="px-4 py-4">
+                          <td className="px-4 py-5">
                             {delivery.driver === "Unassigned" ? (
-                              <span className="text-xs text-red-500 font-bold italic">Unassigned</span>
+                              <span className="text-base text-red-700 font-semibold italic">Unassigned</span>
                             ) : (
                               <div className="flex items-center gap-2">
-                                <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-[10px] font-bold text-primary">
+                                <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center text-xs font-bold text-primary">
                                   {delivery.driverInitials}
                                 </div>
-                                <span className="text-slate-800">{delivery.driver}</span>
+                                <span className="text-base text-slate-800 font-semibold">{delivery.driver}</span>
                               </div>
                             )}
                           </td>
-                          <td className="px-4 py-4 text-center">
+                          <td className="px-4 py-5 text-center">
                             <span className={cn(
-                              "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[9px] font-extrabold uppercase tracking-wide",
+                              "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium uppercase tracking-wide",
                               delivery.status === "In Transit"
-                                ? "bg-primary/10 text-primary border border-primary/10"
+                                ? "bg-blue-50 text-blue-800 border border-blue-200"
                                 : delivery.status === "Delayed"
-                                  ? "bg-gold/15 text-gold-foreground border border-gold/10"
-                                  : "bg-red-50 text-red-700 border border-red-150"
+                                  ? "bg-gold/10 text-gold-foreground border border-gold/20"
+                                  : "bg-red-50 text-red-800 border border-red-200"
                             )}>
                               {delivery.status === "In Transit" && (
                                 <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
@@ -496,15 +502,15 @@ export default function DeliveryOperationsPage() {
                               {delivery.status}
                             </span>
                           </td>
-                          <td className="px-4 py-4 font-mono font-bold text-slate-700">{delivery.eta}</td>
-                          <td className="px-4 py-4 text-center">
+                          <td className="px-4 py-5 font-mono text-base font-semibold tabular-nums text-slate-700">{delivery.eta}</td>
+                          <td className="px-4 py-5 text-center">
                             <span className={cn(
-                              "text-[9px] font-extrabold px-2 py-0.5 rounded uppercase",
+                              "text-sm font-medium px-2.5 py-1 rounded uppercase",
                               delivery.priority === "Urgent"
                                 ? "bg-red-100 text-red-800 border border-red-200"
                                 : delivery.priority === "High"
-                                  ? "bg-gold/15 text-gold-foreground border border-gold/20"
-                                  : "bg-slate-100 text-slate-650"
+                                  ? "bg-gold/10 text-gold-foreground border border-gold/20"
+                                  : "bg-slate-100 text-slate-700 border border-slate-200"
                             )}>
                               {delivery.priority}
                             </span>
@@ -552,23 +558,23 @@ export default function DeliveryOperationsPage() {
                     setSelectedDeliveryId("DID-8821");
                     showToast("Loaded exception event for DID-8821");
                   }}
-                  className="p-3 rounded-xl bg-red-50/10 border border-red-150 hover:bg-red-50/20 transition-all cursor-pointer text-xs"
+                  className="p-3 rounded-xl bg-red-50/10 border border-red-150 hover:bg-red-50/20 transition-all cursor-pointer text-base"
                 >
                   <div className="flex justify-between items-start mb-1">
-                    <span className="text-[10px] font-bold text-red-750 uppercase">SLA VIOLATION</span>
-                    <span className="text-[9px] text-muted-foreground font-mono">45m ago</span>
+                    <span className="text-xs font-semibold uppercase tracking-wider text-destructive">SLA VIOLATION</span>
+                    <span className="text-xs text-muted-foreground font-sans">45m ago</span>
                   </div>
-                  <p className="font-bold text-slate-800">DID-8821 — Delayed 45m</p>
-                  <p className="text-[10px] text-muted-foreground mt-1 font-medium">Impact: Critical Customer (Flipkart)</p>
+                  <p className="text-base font-semibold text-foreground">DID-8821 — Delayed 45m</p>
+                  <p className="text-sm font-normal mt-0.5 text-muted-foreground">Impact: Critical Customer (Flipkart)</p>
                 </div>
 
-                <div className="p-3 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-150 transition-all cursor-pointer text-xs">
+                <div className="p-3 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-150 transition-all cursor-pointer text-base">
                   <div className="flex justify-between items-start mb-1">
-                    <span className="text-[10px] font-bold text-gold uppercase">SYSTEM ALERT</span>
-                    <span className="text-[9px] text-muted-foreground font-mono">12m ago</span>
+                    <span className="text-xs font-semibold uppercase tracking-wider text-gold-foreground">SYSTEM ALERT</span>
+                    <span className="text-xs text-muted-foreground font-sans">12m ago</span>
                   </div>
-                  <p className="font-bold text-slate-800">Driver Offline: Unit 402</p>
-                  <p className="text-[10px] text-muted-foreground mt-1 font-medium">Signal lost near Pune Highway</p>
+                  <p className="text-base font-semibold text-foreground">Driver Offline: Unit 402</p>
+                  <p className="text-sm font-normal mt-0.5 text-muted-foreground">Signal lost near Pune Highway</p>
                 </div>
 
                 <div 
@@ -576,14 +582,14 @@ export default function DeliveryOperationsPage() {
                     setSelectedDeliveryId("DID-9012");
                     showToast("Loaded assignment failure for DID-9012");
                   }}
-                  className="p-3 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-150 transition-all cursor-pointer text-xs"
+                  className="p-3 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-150 transition-all cursor-pointer text-base"
                 >
                   <div className="flex justify-between items-start mb-1">
-                    <span className="text-[10px] font-bold text-red-650 uppercase">ASSIGNMENT FAILED</span>
-                    <span className="text-[9px] text-muted-foreground font-mono">Now</span>
+                    <span className="text-xs font-semibold uppercase tracking-wider text-destructive">ASSIGNMENT FAILED</span>
+                    <span className="text-xs text-muted-foreground font-sans">Now</span>
                   </div>
-                  <p className="font-bold text-slate-800">Failed Assignment: DID-9012</p>
-                  <p className="text-[10px] text-muted-foreground mt-1 font-medium">No active drivers in Hyderabad Sector 4</p>
+                  <p className="text-base font-semibold text-foreground">Failed Assignment: DID-9012</p>
+                  <p className="text-sm font-normal mt-0.5 text-muted-foreground">No active drivers in Hyderabad Sector 4</p>
                 </div>
               </div>
             </section>
@@ -635,22 +641,22 @@ export default function DeliveryOperationsPage() {
 
             {/* 5. Delivery Lifecycle Timeline */}
             <section className="bg-card border border-border rounded-2xl p-6 shadow-sm">
-              <h4 className="font-heading text-sm font-bold text-foreground mb-5">
+              <h4 className="font-sans text-lg font-bold text-foreground mb-5">
                 Fulfillment Lifecycle: {activeDelivery.id}
               </h4>
               
               <div className="relative pl-1">
                 <div className="absolute left-3 top-2.5 bottom-2.5 w-0.5 bg-slate-100 -z-10" />
 
-                <div className="space-y-4 font-sans text-xs">
+                <div className="space-y-4 font-sans text-sm">
                   {/* Step 1: Created */}
                   <div className="flex gap-3.5 items-start">
                     <div className="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center shadow-sm shrink-0">
                       <Check className="size-3" />
                     </div>
                     <div>
-                      <p className="font-bold text-slate-800">Created</p>
-                      <p className="text-[10px] text-muted-foreground mt-0.5">{activeDelivery.createdTime} • Ingested</p>
+                      <p className="text-sm font-semibold text-foreground">Created</p>
+                      <p className="text-xs text-muted-foreground mt-0.5 tabular-nums">{activeDelivery.createdTime} • Ingested</p>
                     </div>
                   </div>
 
@@ -670,12 +676,12 @@ export default function DeliveryOperationsPage() {
                     </div>
                     <div>
                       <p className={cn(
-                        "font-bold",
-                        activeDelivery.driver === "Unassigned" ? "text-red-500 font-extrabold animate-pulse" : "text-slate-800"
+                        "text-sm font-semibold",
+                        activeDelivery.driver === "Unassigned" ? "text-red-750 font-bold animate-pulse" : "text-foreground"
                       )}>
                         Assigned
                       </p>
-                      <p className="text-[10px] text-muted-foreground mt-0.5">
+                      <p className="text-xs text-muted-foreground mt-0.5 tabular-nums">
                         {activeDelivery.driver !== "Unassigned" 
                           ? `${activeDelivery.assignedTime} • ${activeDelivery.driver}` 
                           : "Pending driver assignment"}
@@ -696,8 +702,8 @@ export default function DeliveryOperationsPage() {
                       ) : null}
                     </div>
                     <div>
-                      <p className="font-bold text-slate-850">Picked Up</p>
-                      <p className="text-[10px] text-muted-foreground mt-0.5">
+                      <p className="text-sm font-semibold text-foreground">Picked Up</p>
+                      <p className="text-xs text-muted-foreground mt-0.5 tabular-nums">
                         {activeDelivery.driver !== "Unassigned" && activeDelivery.status !== "Unassigned"
                           ? `${activeDelivery.pickedTime} • ${activeDelivery.pickup}` 
                           : "Awaiting pickup at distribution center"}
@@ -719,12 +725,12 @@ export default function DeliveryOperationsPage() {
                     </div>
                     <div>
                       <p className={cn(
-                        "font-bold",
-                        activeDelivery.status === "In Transit" ? "text-primary font-black" : "text-slate-850"
+                        "text-sm font-semibold",
+                        activeDelivery.status === "In Transit" ? "text-primary font-bold" : "text-foreground"
                       )}>
                         In Transit
                       </p>
-                      <p className="text-[10px] text-muted-foreground mt-0.5">
+                      <p className="text-xs text-muted-foreground mt-0.5 tabular-nums">
                         {activeDelivery.status === "In Transit" 
                           ? `Currently at ${activeDelivery.transitCoords}` 
                           : activeDelivery.status === "Delayed"
@@ -740,8 +746,8 @@ export default function DeliveryOperationsPage() {
                       {/* empty dot */}
                     </div>
                     <div>
-                      <p className="font-bold text-slate-550">Delivered</p>
-                      <p className="text-[10px] text-muted-foreground mt-0.5">Expected ETA: {activeDelivery.eta}</p>
+                      <p className="text-sm font-semibold text-foreground">Delivered</p>
+                      <p className="text-xs text-muted-foreground mt-0.5 tabular-nums">Expected ETA: {activeDelivery.eta}</p>
                     </div>
                   </div>
                 </div>
@@ -755,20 +761,20 @@ export default function DeliveryOperationsPage() {
         {Object.keys(selectedRowIds).some(key => selectedRowIds[key]) && (
           <div className="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 bg-white/95 backdrop-blur-md px-6 py-3.5 rounded-2xl shadow-2xl border border-slate-200/80 z-50 animate-in slide-in-from-bottom-4 duration-300">
             <div className="px-4 border-r border-slate-200 shrink-0">
-              <p className="text-[8px] font-bold text-primary uppercase tracking-widest font-sans">
-                {Object.keys(selectedRowIds).filter(key => selectedRowIds[key]).length} Item(s) Selected
+              <p className="text-sm font-semibold text-primary uppercase tracking-wide font-sans">
+                {Object.keys(selectedRowIds).filter(key => selectedRowIds[key]).length} Selected
               </p>
-              <p className="text-xs font-black text-slate-850 truncate max-w-[100px]">
+              <p className="text-base font-bold text-slate-900 truncate max-w-[120px] tabular-nums font-sans">
                 {Object.keys(selectedRowIds).filter(key => selectedRowIds[key]).join(", ")}
               </p>
             </div>
             
-            <div className="flex items-center gap-2 flex-wrap">
+            <div className="flex items-center gap-2 flex-wrap font-sans">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={handleReassign}
-                className="bg-slate-50 border-slate-250 text-slate-700 hover:bg-slate-100 font-semibold h-9 text-xs"
+                className="bg-slate-50 border-slate-250 text-slate-700 hover:bg-slate-100 font-semibold h-10 text-base px-4"
                 id="btn-reassign-driver"
               >
                 Reassign Driver
@@ -777,14 +783,14 @@ export default function DeliveryOperationsPage() {
                 variant="outline"
                 size="sm"
                 onClick={handleEscalate}
-                className="bg-slate-50 border-slate-250 text-red-600 hover:bg-red-50 hover:border-red-200 font-semibold h-9 text-xs"
+                className="bg-slate-50 border-slate-250 text-red-650 hover:bg-red-50 hover:border-red-200 font-semibold h-10 text-base px-4"
                 id="btn-escalate-issue"
               >
                 Escalate Issue
               </Button>
               <Button
                 onClick={handleMarkHighPriority}
-                className="bg-primary text-white font-semibold h-9 text-xs px-4"
+                className="bg-primary text-white font-semibold h-10 text-base px-4"
                 id="btn-mark-priority"
               >
                 Mark High Priority

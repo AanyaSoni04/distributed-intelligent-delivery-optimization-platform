@@ -110,24 +110,24 @@ export function DriverSidebar({ isOpen = true, onClose }: DriverSidebarProps) {
               key={item.name}
               href={item.href}
               className={cn(
-                "group flex items-start gap-3 rounded-lg px-4 py-3 text-sm font-semibold transition-all",
+                "group flex items-start gap-3 rounded-lg px-4 py-3 transition-all text-base",
                 isActive
-                  ? "bg-primary/5 text-primary border-l-4 border-primary pl-[12px]"
-                  : "text-muted-foreground hover:bg-accent hover:text-foreground border-l-4 border-transparent"
+                  ? "bg-primary/5 text-slate-900 font-semibold border-l-4 border-primary pl-[12px]"
+                  : "text-slate-700 hover:bg-accent hover:text-slate-950 border-l-4 border-transparent font-medium"
               )}
             >
               <item.icon
                 className={cn(
                   "size-5.5 mt-0.5 shrink-0 transition-colors",
-                  isActive ? "text-primary" : "text-muted-foreground group-hover:text-foreground"
+                  isActive ? "text-primary" : "text-slate-600 group-hover:text-slate-900"
                 )}
               />
               <div className="flex-1 min-w-0">
                 <span className="block truncate">{item.name}</span>
                 <span
                   className={cn(
-                    "block truncate text-[11px] font-normal mt-0.5",
-                    isActive ? "text-primary/70" : "text-muted-foreground/60"
+                    "block truncate text-sm font-normal mt-0.5",
+                    isActive ? "text-primary/90" : "text-slate-500"
                   )}
                 >
                   {item.description}
@@ -163,14 +163,14 @@ export function DriverSidebar({ isOpen = true, onClose }: DriverSidebarProps) {
           </div>
         </div>
         <div className="flex items-center gap-3 mt-4 pt-4 border-t border-border">
-          <div className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary font-heading font-bold text-sm">
+          <div className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/20 text-primary font-semibold text-sm">
             DR
           </div>
           <div className="min-w-0 flex-1">
-            <span className="block truncate text-xs font-bold text-foreground">
+            <span className="block truncate text-base font-semibold text-slate-900">
               Driver 402
             </span>
-            <span className="block truncate text-[10px] text-muted-foreground">
+            <span className="block truncate text-sm font-medium text-slate-500">
               Express Delivery Fleet
             </span>
           </div>

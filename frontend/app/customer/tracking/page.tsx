@@ -215,17 +215,17 @@ export default function CustomerTrackingPage() {
       actions={
         <form onSubmit={handleSearch} className="relative flex items-center gap-2">
           <div className="relative">
-            <Search className="absolute top-2.5 left-3 size-4 text-muted-foreground" />
+            <Search className="absolute top-3 left-3 size-4 text-muted-foreground" />
             <input
               type="text"
               placeholder="Enter ID (DID-2026-10231)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="h-9 w-60 rounded-md border border-input bg-card pl-9 pr-3 text-xs placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary transition-all font-sans"
+              className="h-10 w-64 rounded-md border border-input bg-card pl-9 pr-3 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary focus-visible:border-primary transition-all font-sans"
               id="input-tracking-search"
             />
           </div>
-          <Button type="submit" size="sm" className="h-9 text-xs" id="btn-tracking-search-submit">
+          <Button type="submit" size="sm" className="h-10 text-sm font-semibold" id="btn-tracking-search-submit">
             Search
           </Button>
         </form>
@@ -342,24 +342,24 @@ export default function CustomerTrackingPage() {
           {/* 1. Delivery Header */}
           <section className="flex flex-col md:flex-row md:items-end justify-between gap-4 bg-white border border-border p-6 rounded-2xl shadow-sm">
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-gold mb-1 font-sans">
+              <p className="text-sm font-medium uppercase tracking-wide text-gold mb-1 font-sans">
                 Logistics Reference
               </p>
-              <h2 className="font-heading text-3xl font-black text-foreground">
+              <h2 className="font-sans text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tabular-nums">
                 {activeShipmentId}
               </h2>
               <div className="flex items-center gap-3 mt-2 flex-wrap">
                 <span className={cn(
-                  "px-3 py-1 text-[10px] font-extrabold tracking-wider rounded-full flex items-center gap-1.5 transition-colors duration-300",
+                  "px-3.5 py-1 text-sm font-semibold tracking-wider rounded-full flex items-center gap-1.5 transition-colors duration-300",
                   isDelivered 
-                    ? "bg-green-100 text-green-800"
-                    : "bg-primary/10 text-primary"
+                    ? "bg-green-50 text-green-800 border border-green-200/60"
+                    : "bg-primary/10 text-primary border border-primary/20"
                 )}>
                   {!isDelivered && <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />}
                   {isDelivered ? "DELIVERED" : "IN TRANSIT"}
                 </span>
-                <span className="text-muted-foreground text-xs font-medium">
-                  Last Updated: <span className="font-bold text-foreground">22:45 IST</span>
+                <span className="text-muted-foreground text-sm font-medium">
+                  Last Updated: <span className="font-semibold text-foreground tabular-nums">22:45 IST</span>
                 </span>
               </div>
             </div>
@@ -369,7 +369,7 @@ export default function CustomerTrackingPage() {
                 variant="outline"
                 size="sm"
                 onClick={() => setShareOpen(true)}
-                className="flex items-center gap-2 h-10 border-border bg-slate-50 text-slate-700 font-semibold"
+                className="flex items-center gap-2 h-10 border-border bg-slate-50 text-slate-700 text-sm font-semibold"
                 id="btn-share-link"
               >
                 <Share2 className="size-4" />
@@ -378,7 +378,7 @@ export default function CustomerTrackingPage() {
               <Button
                 size="sm"
                 onClick={() => setSupportOpen(true)}
-                className="flex items-center gap-2 h-10 shadow-sm"
+                className="flex items-center gap-2 h-10 text-sm font-semibold shadow-sm"
                 id="btn-get-help"
               >
                 <HelpCircle className="size-4" />
@@ -390,56 +390,53 @@ export default function CustomerTrackingPage() {
           {/* 2. Summary Cards */}
           <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* ETA Card */}
-            <div className="bg-card p-5 rounded-xl border-l-4 border-primary/20 shadow-sm">
-              <p className="text-muted-foreground text-[10px] uppercase font-bold tracking-wider mb-1">
+            <div className="bg-card p-5 rounded-xl border-l-4 border-primary/20 shadow-sm flex flex-col justify-between max-w-full">
+              <p className="text-sm uppercase tracking-wide font-medium text-muted-foreground font-sans">
                 Current ETA
               </p>
-              <p className="text-xl font-bold font-heading text-foreground">
+              <p className="text-3xl md:text-4xl lg:text-5xl font-bold font-sans text-foreground tabular-nums mt-1">
                 {currentETA}
               </p>
-              <div className={cn(
-                "mt-2 text-[10px] font-bold",
-                isDelivered ? "text-green-600" : "text-green-600"
-              )}>
+              <div className="mt-2 text-xs font-semibold text-green-700">
                 {isDelivered ? "Fulfillment Completed" : "On Schedule"}
               </div>
             </div>
 
             {/* Distance Remaining Card */}
-            <div className="bg-card p-5 rounded-xl border-l-4 border-gold/20 shadow-sm">
-              <p className="text-muted-foreground text-[10px] uppercase font-bold tracking-wider mb-1">
+            <div className="bg-card p-5 rounded-xl border-l-4 border-gold/20 shadow-sm flex flex-col justify-between max-w-full">
+              <p className="text-sm uppercase tracking-wide font-medium text-muted-foreground font-sans">
                 Distance Remaining
               </p>
-              <p className="text-xl font-bold font-heading text-foreground">
+              <p className="text-3xl md:text-4xl lg:text-5xl font-bold font-sans text-foreground tabular-nums mt-1">
                 {currentDistance} km
               </p>
-              <div className="mt-2 text-[10px] text-muted-foreground">
+              <div className="mt-2 text-xs text-muted-foreground font-medium">
                 {isDelivered ? "At Destination" : "Through Urban Route 4"}
               </div>
             </div>
 
             {/* Driver Card */}
-            <div className="bg-card p-5 rounded-xl border-l-4 border-slate-300 shadow-sm">
-              <p className="text-muted-foreground text-[10px] uppercase font-bold tracking-wider mb-1">
+            <div className="bg-card p-5 rounded-xl border-l-4 border-slate-300 shadow-sm flex flex-col justify-between max-w-full">
+              <p className="text-sm uppercase tracking-wide font-medium text-muted-foreground font-sans">
                 Driver
               </p>
-              <p className="text-xl font-bold font-heading text-foreground">
+              <p className="text-3xl md:text-4xl lg:text-5xl font-bold font-sans text-foreground mt-1">
                 Sarah K.
               </p>
-              <div className="mt-2 text-[10px] text-muted-foreground">
+              <div className="mt-2 text-xs text-muted-foreground font-medium font-sans">
                 Vehicle ID: V-04
               </div>
             </div>
 
             {/* Priority Card */}
-            <div className="bg-card p-5 rounded-xl border-l-4 border-primary/20 shadow-sm">
-              <p className="text-muted-foreground text-[10px] uppercase font-bold tracking-wider mb-1">
+            <div className="bg-card p-5 rounded-xl border-l-4 border-primary/20 shadow-sm flex flex-col justify-between max-w-full">
+              <p className="text-sm uppercase tracking-wide font-medium text-muted-foreground font-sans">
                 Priority
               </p>
-              <p className="text-xl font-bold font-heading text-foreground">
+              <p className="text-3xl md:text-4xl lg:text-5xl font-bold font-sans text-foreground mt-1">
                 Express
               </p>
-              <div className="mt-2 text-[10px] text-gold font-extrabold uppercase tracking-wide">
+              <div className="mt-2 text-xs text-gold font-bold uppercase tracking-wider font-sans">
                 Priority Plus Handling
               </div>
             </div>
@@ -457,24 +454,24 @@ export default function CustomerTrackingPage() {
               />
               
               {/* Floating Speed Meter Overlay */}
-              <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3.5 py-2.5 rounded-xl shadow-lg border border-slate-150">
+              <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-4 py-3 rounded-xl shadow-lg border border-slate-150">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
-                    <Truck className="size-4.5" />
+                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary shrink-0">
+                    <Truck className="size-5" />
                   </div>
                   <div>
-                    <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-wider">Current Speed</p>
-                    <p className="text-sm font-bold text-slate-800">{currentSpeed} km/h</p>
+                    <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Current Speed</p>
+                    <p className="text-lg font-bold text-slate-850 font-sans tabular-nums">{currentSpeed} km/h</p>
                   </div>
                 </div>
               </div>
 
               {/* Floating Progress Bar on Map */}
-              <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-3.5 rounded-xl shadow-lg border border-slate-150 flex items-center justify-between gap-4">
+              <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-4 rounded-xl shadow-lg border border-slate-150 flex items-center justify-between gap-4">
                 <div className="flex-1">
-                  <div className="flex justify-between text-[10px] font-bold text-slate-500 mb-1 uppercase tracking-wider">
+                  <div className="flex justify-between text-xs font-semibold text-slate-500 mb-1.5 uppercase tracking-wide">
                     <span>Route Transit Completion</span>
-                    <span>{Math.floor(simulationProgress)}%</span>
+                    <span className="tabular-nums">{Math.floor(simulationProgress)}%</span>
                   </div>
                   <div className="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
                     <div 
@@ -492,7 +489,7 @@ export default function CustomerTrackingPage() {
                   <div className="p-1.5 bg-green-500 rounded-full shadow-lg border-2 border-white pointer-events-auto cursor-help group relative">
                     <div className="size-2 bg-white rounded-full"></div>
                     {/* Tooltip */}
-                    <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[9px] font-bold px-2 py-0.5 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[10px] font-semibold px-2 py-0.5 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                       Central Hub A-12 (Origin)
                     </div>
                   </div>
@@ -503,7 +500,7 @@ export default function CustomerTrackingPage() {
                   <div className="p-1.5 bg-gold rounded-full shadow-lg border-2 border-white pointer-events-auto cursor-help group relative">
                     <MapPin className="size-4.5 text-white" />
                     {/* Tooltip */}
-                    <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[9px] font-bold px-2 py-0.5 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[10px] font-semibold px-2 py-0.5 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                       Delivery Location (Destination)
                     </div>
                   </div>
@@ -524,7 +521,7 @@ export default function CustomerTrackingPage() {
                       </>
                     )}
                     {/* Tooltip */}
-                    <div className="absolute bottom-full mb-2.5 left-1/2 -translate-x-1/2 bg-primary text-white text-[9px] font-bold px-2.5 py-1 rounded shadow-lg opacity-100 transition-opacity whitespace-nowrap flex items-center gap-1.5">
+                    <div className="absolute bottom-full mb-2.5 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-bold px-2.5 py-1 rounded shadow-lg opacity-100 transition-opacity whitespace-nowrap flex items-center gap-1.5">
                       <span className="w-1.5 h-1.5 bg-white rounded-full animate-ping" />
                       <span>Sarah K. (Courier)</span>
                     </div>
@@ -538,7 +535,7 @@ export default function CustomerTrackingPage() {
               
               {/* 4. Delivery Timeline */}
               <div className="bg-card p-6 rounded-2xl border border-border shadow-sm">
-                <h3 className="font-heading text-lg font-bold text-foreground mb-6">
+                <h3 className="font-sans text-xl font-bold text-foreground mb-6">
                   Delivery Timeline
                 </h3>
                 
@@ -556,8 +553,8 @@ export default function CustomerTrackingPage() {
                         </div>
                       </div>
                       <div>
-                        <p className="text-xs font-bold text-foreground">CREATED</p>
-                        <p className="text-[10px] text-muted-foreground mt-0.5">22:15 IST • Order processed</p>
+                        <p className="text-sm font-semibold text-foreground">CREATED</p>
+                        <p className="text-xs text-muted-foreground mt-0.5 tabular-nums">22:15 IST • Order processed</p>
                       </div>
                     </div>
 
@@ -569,8 +566,8 @@ export default function CustomerTrackingPage() {
                         </div>
                       </div>
                       <div>
-                        <p className="text-xs font-bold text-foreground">ASSIGNED</p>
-                        <p className="text-[10px] text-muted-foreground mt-0.5">22:31 IST • Driver assigned</p>
+                        <p className="text-sm font-semibold text-foreground">ASSIGNED</p>
+                        <p className="text-xs text-muted-foreground mt-0.5 tabular-nums">22:31 IST • Driver assigned</p>
                       </div>
                     </div>
 
@@ -582,8 +579,8 @@ export default function CustomerTrackingPage() {
                         </div>
                       </div>
                       <div>
-                        <p className="text-xs font-bold text-foreground">ACCEPTED</p>
-                        <p className="text-[10px] text-muted-foreground mt-0.5">22:34 IST • Driver accepted</p>
+                        <p className="text-sm font-semibold text-foreground">ACCEPTED</p>
+                        <p className="text-xs text-muted-foreground mt-0.5 tabular-nums">22:34 IST • Driver accepted</p>
                       </div>
                     </div>
 
@@ -595,8 +592,8 @@ export default function CustomerTrackingPage() {
                         </div>
                       </div>
                       <div>
-                        <p className="text-xs font-bold text-foreground">PICKED_UP</p>
-                        <p className="text-[10px] text-muted-foreground mt-0.5">22:39 IST • At Hub A-12</p>
+                        <p className="text-sm font-semibold text-foreground">PICKED_UP</p>
+                        <p className="text-xs text-muted-foreground mt-0.5 tabular-nums">22:39 IST • At Hub A-12</p>
                       </div>
                     </div>
 
@@ -618,12 +615,12 @@ export default function CustomerTrackingPage() {
                       </div>
                       <div>
                         <p className={cn(
-                          "text-xs font-bold",
-                          !isDelivered ? "text-primary font-extrabold" : "text-foreground"
+                          "text-sm font-semibold",
+                          !isDelivered ? "text-primary font-bold" : "text-foreground"
                         )}>
                           IN_TRANSIT
                         </p>
-                        <p className="text-[10px] text-muted-foreground mt-0.5">
+                        <p className="text-xs text-muted-foreground mt-0.5 tabular-nums">
                           {isDelivered ? "Completed at 23:14 IST" : "Active Now • En-route to delivery"}
                         </p>
                       </div>
@@ -643,12 +640,12 @@ export default function CustomerTrackingPage() {
                       </div>
                       <div>
                         <p className={cn(
-                          "text-xs font-bold transition-all",
-                          isDelivered ? "text-green-600 font-extrabold" : "text-slate-400 opacity-60"
+                          "text-sm font-semibold transition-all",
+                          isDelivered ? "text-green-700 font-bold" : "text-slate-400 opacity-60"
                         )}>
                           DELIVERED
                         </p>
-                        <p className="text-[10px] text-muted-foreground mt-0.5">
+                        <p className="text-xs text-muted-foreground mt-0.5">
                           {isDelivered ? "Delivered & verified by customer" : "Pending arrival"}
                         </p>
                       </div>
@@ -672,19 +669,19 @@ export default function CustomerTrackingPage() {
                     <span className="absolute -bottom-0.5 -right-0.5 bg-green-500 w-3.5 h-3.5 rounded-full border-2 border-white"></span>
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-heading text-base font-bold text-foreground">
+                    <h3 className="font-sans text-lg font-bold text-foreground">
                       Sarah K.
                     </h3>
                     <div className="flex items-center gap-2 mt-0.5 flex-wrap">
-                      <span className="flex items-center text-xs font-bold text-gold shrink-0">
+                      <span className="flex items-center text-sm font-semibold text-gold shrink-0 tabular-nums">
                         <Star className="size-3.5 mr-0.5 fill-current" />
                         4.9/5
                       </span>
-                      <span className="text-[9px] uppercase font-bold text-muted-foreground tracking-tighter">
+                      <span className="text-xs font-medium uppercase text-muted-foreground tracking-wide">
                         V-04 (Electric)
                       </span>
                     </div>
-                    <p className="text-[10px] font-bold text-primary mt-1 font-mono tracking-wide">
+                    <p className="text-sm font-semibold text-primary mt-1.5 font-mono tracking-wide tabular-nums">
                       KA-01-AB-1234
                     </p>
                   </div>
@@ -694,7 +691,7 @@ export default function CustomerTrackingPage() {
                   <Button
                     variant="outline"
                     onClick={() => setChatOpen(true)}
-                    className="h-9 font-semibold text-xs border-border bg-slate-50 text-primary hover:bg-slate-100"
+                    className="h-10 font-semibold text-sm border-border bg-slate-50 text-primary hover:bg-slate-100"
                     id="btn-driver-message"
                   >
                     <MessageSquare className="size-4" />
@@ -702,7 +699,7 @@ export default function CustomerTrackingPage() {
                   </Button>
                   <Button
                     onClick={() => setCallOpen(true)}
-                    className="h-9 font-semibold text-xs text-white"
+                    className="h-10 font-semibold text-sm text-white"
                     id="btn-driver-call"
                   >
                     <Phone className="size-4" />
@@ -713,22 +710,22 @@ export default function CustomerTrackingPage() {
 
               {/* 6. Route Optimization Insights */}
               <div className="bg-slate-100 p-6 rounded-2xl border border-slate-200">
-                <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-4 font-sans">
+                <h4 className="text-sm font-semibold uppercase tracking-wide text-slate-500 mb-4 font-sans">
                   Live Route Intelligence
                 </h4>
                 <div className="space-y-3.5">
-                  <div className="flex justify-between items-center text-xs">
+                  <div className="flex justify-between items-center text-sm">
                     <span className="text-slate-600 font-medium">Traffic Impact</span>
-                    <span className="font-bold text-green-600 bg-green-50 px-2.5 py-0.5 rounded-full border border-green-100">Low</span>
+                    <span className="font-semibold text-green-700 bg-green-50 px-2.5 py-0.5 rounded-full border border-green-200/80">Low</span>
                   </div>
-                  <div className="flex justify-between items-center text-xs">
+                  <div className="flex justify-between items-center text-sm">
                     <span className="text-slate-600 font-medium">ETA Confidence</span>
-                    <span className="font-bold text-slate-800">94%</span>
+                    <span className="font-semibold text-slate-800 tabular-nums">94%</span>
                   </div>
-                  <div className="flex justify-between items-center text-xs">
+                  <div className="flex justify-between items-center text-sm">
                     <span className="text-slate-600 font-medium">System Optimization</span>
                     <div className="flex items-center gap-1.5">
-                      <span className="text-xs font-bold uppercase text-primary">Enabled</span>
+                      <span className="text-sm font-bold uppercase text-primary">Enabled</span>
                       <Zap className="size-3.5 text-primary animate-pulse" />
                     </div>
                   </div>
@@ -743,13 +740,13 @@ export default function CustomerTrackingPage() {
             {/* 7. Activity Feed */}
             <div className="bg-card p-6 rounded-2xl border border-border shadow-sm">
               <div className="flex justify-between items-center mb-6">
-                <h3 className="font-heading text-lg font-bold text-foreground">
+                <h3 className="font-sans text-xl font-bold text-foreground">
                   Activity Log
                 </h3>
                 <Button 
                   variant="ghost" 
                   onClick={() => showToast("Mock PDF report download initialized.")}
-                  className="text-xs font-bold text-primary hover:underline h-8 px-2"
+                  className="text-sm font-semibold text-primary hover:underline h-9 px-2"
                   id="btn-download-report"
                 >
                   <Download className="size-3.5 mr-1" />
@@ -760,46 +757,46 @@ export default function CustomerTrackingPage() {
               <div className="space-y-5">
                 {isDelivered && (
                   <div className="flex gap-4 items-start">
-                    <span className="font-mono text-xs text-green-600 font-bold w-14 shrink-0 pt-0.5">23:14</span>
+                    <span className="font-mono text-xs text-green-700 font-semibold w-16 shrink-0 pt-0.5 tabular-nums">23:14</span>
                     <div className="flex-1">
-                      <p className="text-xs font-bold text-green-700">Package Delivered</p>
-                      <p className="text-[11px] text-muted-foreground mt-0.5">Completed at destination. Handed over directly and validated digitally.</p>
+                      <p className="text-sm font-semibold text-green-700">Package Delivered</p>
+                      <p className="text-xs font-normal text-muted-foreground mt-0.5">Completed at destination. Handed over directly and validated digitally.</p>
                     </div>
                   </div>
                 )}
                 <div className="flex gap-4 items-start">
-                  <span className="font-mono text-xs text-muted-foreground w-14 shrink-0 pt-0.5">22:39</span>
+                  <span className="font-mono text-xs text-muted-foreground w-16 shrink-0 pt-0.5 tabular-nums">22:39</span>
                   <div className="flex-1">
-                    <p className="text-xs font-bold text-slate-800">Package Picked Up</p>
-                    <p className="text-[11px] text-muted-foreground mt-0.5">Courier Sarah K. confirmed receipt at Central Hub A-12.</p>
+                    <p className="text-sm font-semibold text-slate-800">Package Picked Up</p>
+                    <p className="text-xs font-normal text-muted-foreground mt-0.5">Courier Sarah K. confirmed receipt at Central Hub A-12.</p>
                   </div>
                 </div>
                 <div className="flex gap-4 items-start">
-                  <span className="font-mono text-xs text-muted-foreground w-14 shrink-0 pt-0.5">22:34</span>
+                  <span className="font-mono text-xs text-muted-foreground w-16 shrink-0 pt-0.5 tabular-nums">22:34</span>
                   <div className="flex-1">
-                    <p className="text-xs font-bold text-slate-800">Driver Accepted Delivery</p>
-                    <p className="text-[11px] text-muted-foreground mt-0.5">Sarah K. accepted the delivery routing request.</p>
+                    <p className="text-sm font-semibold text-slate-800">Driver Accepted Delivery</p>
+                    <p className="text-xs font-normal text-muted-foreground mt-0.5">Sarah K. accepted the delivery routing request.</p>
                   </div>
                 </div>
                 <div className="flex gap-4 items-start">
-                  <span className="font-mono text-xs text-muted-foreground w-14 shrink-0 pt-0.5">22:31</span>
+                  <span className="font-mono text-xs text-muted-foreground w-16 shrink-0 pt-0.5 tabular-nums">22:31</span>
                   <div className="flex-1">
-                    <p className="text-xs font-bold text-slate-800">Driver Assigned</p>
-                    <p className="text-[11px] text-muted-foreground mt-0.5">System matched order with nearby courier Sarah K.</p>
+                    <p className="text-sm font-semibold text-slate-800">Driver Assigned</p>
+                    <p className="text-xs font-normal text-muted-foreground mt-0.5">System matched order with nearby courier Sarah K.</p>
                   </div>
                 </div>
                 <div className="flex gap-4 items-start">
-                  <span className="font-mono text-xs text-muted-foreground w-14 shrink-0 pt-0.5">22:15</span>
+                  <span className="font-mono text-xs text-muted-foreground w-16 shrink-0 pt-0.5 tabular-nums">22:15</span>
                   <div className="flex-1">
-                    <p className="text-xs font-bold text-slate-800">Payment Verified</p>
-                    <p className="text-[11px] text-muted-foreground mt-0.5">Digital transaction of ₹2,450.00 authorized successfully.</p>
+                    <p className="text-sm font-semibold text-slate-800">Payment Verified</p>
+                    <p className="text-xs font-normal text-muted-foreground mt-0.5 tabular-nums font-sans">Digital transaction of ₹2,450.00 authorized successfully.</p>
                   </div>
                 </div>
                 <div className="flex gap-4 items-start">
-                  <span className="font-mono text-xs text-muted-foreground w-14 shrink-0 pt-0.5">22:10</span>
+                  <span className="font-mono text-xs text-muted-foreground w-16 shrink-0 pt-0.5 tabular-nums">22:10</span>
                   <div className="flex-1">
-                    <p className="text-xs font-bold text-slate-800">Shipment Created</p>
-                    <p className="text-[11px] text-muted-foreground mt-0.5">Order assigned to Alexandria Express Fleet.</p>
+                    <p className="text-sm font-semibold text-slate-800">Shipment Created</p>
+                    <p className="text-xs font-normal text-muted-foreground mt-0.5">Order assigned to Alexandria Express Fleet.</p>
                   </div>
                 </div>
               </div>
@@ -818,26 +815,26 @@ export default function CustomerTrackingPage() {
               )}>
                 {isDelivered ? <CheckCircle2 className="size-6" /> : <Camera className="size-6" />}
               </div>
-              <h3 className="font-heading text-lg font-bold text-foreground mb-2">
+              <h3 className="font-sans text-xl font-bold text-foreground mb-2">
                 Proof of Delivery
               </h3>
               
               {isDelivered ? (
                 <div className="w-full space-y-4">
-                  <p className="text-xs text-slate-600 max-w-sm mx-auto leading-relaxed">
-                    Delivery successfully completed and verified at <span className="font-bold">23:14 IST</span>. Digital signature and photographic evidence are listed below.
+                  <p className="text-sm text-slate-655 max-w-sm mx-auto leading-relaxed">
+                    Delivery successfully completed and verified at <span className="font-semibold tabular-nums">23:14 IST</span>. Digital signature and photographic evidence are listed below.
                   </p>
                   
                   <div className="grid grid-cols-2 gap-4 w-full pt-4">
                     {/* Real signature mock */}
                     <div className="bg-white p-4 rounded-xl border border-green-200 shadow-sm flex flex-col items-center justify-center min-h-[140px] relative overflow-hidden">
-                      <div className="absolute top-2 left-2.5 text-[8px] font-bold text-green-700 uppercase tracking-widest">
+                      <div className="absolute top-2 left-2.5 text-xs font-semibold text-green-700 uppercase tracking-wider">
                         Digital Signature
                       </div>
-                      <div className="font-serif italic text-lg text-slate-800 tracking-wider my-auto select-none pt-4">
+                      <div className="font-serif italic text-lg text-slate-805 tracking-wider my-auto select-none pt-4">
                         Sarah K. & Client
                       </div>
-                      <div className="text-[9px] text-slate-400 font-mono mt-auto">
+                      <div className="text-[10px] text-slate-400 font-mono mt-auto">
                         SHA-256 Verified
                       </div>
                     </div>
@@ -849,7 +846,7 @@ export default function CustomerTrackingPage() {
                           alt="Delivered parcel photo at door" 
                           className="w-full h-full object-cover"
                         />
-                        <div className="absolute top-2 left-2.5 bg-black/60 text-white text-[8px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">
+                        <div className="absolute top-2 left-2.5 bg-black/60 text-white text-[10px] font-semibold px-2.5 py-0.5 rounded uppercase tracking-wider">
                           Photo Proof
                         </div>
                       </div>
@@ -858,15 +855,15 @@ export default function CustomerTrackingPage() {
                 </div>
               ) : (
                 <>
-                  <p className="text-muted-foreground text-xs max-w-xs mx-auto leading-relaxed">
+                  <p className="text-muted-foreground text-sm max-w-xs mx-auto leading-relaxed">
                     Waiting for delivery completion to generate digital signature and photographic evidence.
                   </p>
                   <div className="mt-8 grid grid-cols-2 gap-4 w-full opacity-35">
                     <div className="bg-slate-200/50 h-28 rounded-xl border border-slate-300 flex items-center justify-center">
-                      <span className="text-[9px] font-bold uppercase tracking-wider text-slate-500">Signature Area</span>
+                      <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">Signature Area</span>
                     </div>
                     <div className="bg-slate-200/50 h-28 rounded-xl border border-slate-300 flex items-center justify-center">
-                      <span className="text-[9px] font-bold uppercase tracking-wider text-slate-500">Photo Proof</span>
+                      <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">Photo Proof</span>
                     </div>
                   </div>
                 </>
@@ -890,13 +887,13 @@ export default function CustomerTrackingPage() {
             <div className="p-4 border-b border-slate-100 flex items-center justify-between bg-primary text-white">
               <div className="flex items-center gap-3">
                 <img
-                  className="w-9 h-9 rounded-full object-cover border border-white/20"
+                  className="w-10 h-10 rounded-full object-cover border border-white/20"
                   alt="Sarah K."
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZcTKjyFlQEWLzklf-zq9lf7IA4bKZ3ZwkqIf_075Djntm72aYzDcJGA3kZlvMfPC2wx2MHGzeY1e8DDMtgRrQiQpBdhGnc3jKjDgUA0TYYnLI0SZhls91rZJTSyLQsewP12w2tNbkid-IRbYN8S6Cso-sGHWAKMurQXgGt4rlW1pyN0huzC37wNWbBgIY_-XROi2rcNoMrU7gQ6jwPQ_eLkhbXLqDFK237Nd5SK9DAzweZLQRgr0_ngvtFfjbr4fQFnx663XKmk0"
                 />
                 <div>
-                  <h4 className="text-sm font-bold font-heading leading-tight">Sarah K.</h4>
-                  <p className="text-[10px] text-white/70 leading-none">Courier Driver • Active Now</p>
+                  <h4 className="text-base font-semibold font-sans leading-tight">Sarah K.</h4>
+                  <p className="text-xs text-white/70 leading-none">Courier Driver • Active Now</p>
                 </div>
               </div>
               <Button 
@@ -916,18 +913,18 @@ export default function CustomerTrackingPage() {
                 <div 
                   key={index}
                   className={cn(
-                    "flex flex-col max-w-[80%] rounded-2xl px-3.5 py-2 text-xs shadow-xs",
+                    "flex flex-col max-w-[80%] rounded-2xl px-4 py-2.5 text-sm shadow-xs",
                     msg.sender === "customer"
                       ? "bg-primary text-white ml-auto rounded-tr-none"
                       : msg.sender === "driver"
                         ? "bg-white text-slate-800 border border-slate-200 mr-auto rounded-tl-none"
-                        : "bg-slate-200 text-slate-500 mx-auto text-[10px] tracking-wide uppercase px-2 py-0.5 rounded"
+                        : "bg-slate-200 text-slate-500 mx-auto text-xs tracking-wide uppercase px-2.5 py-1 rounded"
                   )}
                 >
                   <p className="leading-relaxed">{msg.text}</p>
                   {msg.sender !== "system" && (
                     <span className={cn(
-                      "text-[8px] mt-1 text-right block font-mono",
+                      "text-[9px] mt-1 text-right block font-mono",
                       msg.sender === "customer" ? "text-white/60" : "text-slate-400"
                     )}>
                       {msg.time}
@@ -945,16 +942,16 @@ export default function CustomerTrackingPage() {
                 value={newMessage}
                 onChange={(e) => setNewMessage(e.target.value)}
                 placeholder="Type your message..."
-                className="flex-1 bg-slate-50 border border-slate-200 rounded-full px-4 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary font-sans h-9"
+                className="flex-1 bg-slate-50 border border-slate-200 rounded-full px-4 py-2 text-base focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary font-sans h-10"
                 id="input-chat-message"
               />
               <Button 
                 type="submit" 
                 size="icon" 
-                className="rounded-full shrink-0 w-9 h-9 flex items-center justify-center"
+                className="rounded-full shrink-0 w-10 h-10 flex items-center justify-center"
                 id="btn-chat-send"
               >
-                <Send className="size-4" />
+                <Send className="size-4.5" />
               </Button>
             </form>
           </div>
@@ -974,13 +971,13 @@ export default function CustomerTrackingPage() {
             </div>
             
             <div>
-              <h3 className="text-lg font-bold font-heading">Outgoing Call</h3>
-              <p className="text-xs text-slate-400 mt-1">Connecting to Courier Sarah K.</p>
+              <h3 className="text-xl font-bold font-sans">Outgoing Call</h3>
+              <p className="text-sm text-slate-400 mt-1">Connecting to Courier Sarah K.</p>
             </div>
 
             <div className="py-2">
-              <p className="text-xl font-bold font-mono tracking-widest text-slate-200">+91 98765 43210</p>
-              <p className="text-[10px] text-slate-400 uppercase tracking-widest mt-1">Vehicle Node V-04 Transceiver</p>
+              <p className="text-2xl font-bold font-mono tracking-widest text-slate-250 tabular-nums">+91 98765 43210</p>
+              <p className="text-xs text-slate-450 uppercase tracking-widest mt-1">Vehicle Node V-04 Transceiver</p>
             </div>
 
             <div className="flex gap-3 pt-4 justify-center">
@@ -990,7 +987,7 @@ export default function CustomerTrackingPage() {
                   setCallOpen(false);
                   showToast("Call ended.");
                 }}
-                className="w-32 rounded-full font-bold h-10"
+                className="w-36 rounded-full font-bold h-11 text-base"
                 id="btn-hang-up"
               >
                 End Call
@@ -1009,7 +1006,7 @@ export default function CustomerTrackingPage() {
           />
           <div className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl p-6 border border-slate-100 z-10 animate-in fade-in zoom-in-95 duration-200 space-y-5">
             <div className="flex justify-between items-center pb-2 border-b border-slate-100">
-              <h3 className="text-base font-bold font-heading text-slate-800">Share Shipment Link</h3>
+              <h3 className="text-lg font-bold font-sans text-slate-800">Share Shipment Link</h3>
               <Button 
                 variant="ghost" 
                 size="icon" 
@@ -1021,11 +1018,11 @@ export default function CustomerTrackingPage() {
               </Button>
             </div>
 
-            <p className="text-xs text-muted-foreground leading-relaxed">
+            <p className="text-sm text-muted-foreground leading-relaxed">
               Anyone with this link can view the live telemetry coordinates, courier milestones, and progress updates for this active shipment manifest.
             </p>
 
-            <div className="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg p-2 font-mono text-xs text-slate-700">
+            <div className="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg p-2.5 font-mono text-sm text-slate-700">
               <span className="truncate flex-1 select-all">
                 {typeof window !== "undefined" ? `${window.location.origin}/customer/tracking?id=${activeShipmentId}` : ""}
               </span>
@@ -1034,14 +1031,14 @@ export default function CustomerTrackingPage() {
             <div className="flex gap-2.5 pt-2">
               <Button
                 variant="outline"
-                className="flex-1 font-semibold text-xs h-10"
+                className="flex-1 font-semibold text-sm h-10"
                 onClick={() => setShareOpen(false)}
                 id="btn-cancel-share"
               >
                 Cancel
               </Button>
               <Button
-                className="flex-1 font-semibold text-xs text-white h-10"
+                className="flex-1 font-semibold text-sm text-white h-10"
                 onClick={copyShareLink}
                 id="btn-confirm-copy"
               >
@@ -1061,7 +1058,7 @@ export default function CustomerTrackingPage() {
           />
           <div className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl p-6 border border-slate-100 z-10 animate-in fade-in zoom-in-95 duration-200 space-y-5">
             <div className="flex justify-between items-center pb-2 border-b border-slate-100">
-              <h3 className="text-base font-bold font-heading text-slate-800">Support Operations</h3>
+              <h3 className="text-lg font-bold font-sans text-slate-800">Support Operations</h3>
               <Button 
                 variant="ghost" 
                 size="icon" 
@@ -1073,8 +1070,8 @@ export default function CustomerTrackingPage() {
               </Button>
             </div>
 
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              Need assistance with shipment <span className="font-bold text-slate-800 font-mono">{activeShipmentId}</span>? Select an issue category below to connect with our regional dispatch desk:
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Need assistance with shipment <span className="font-semibold text-slate-800 font-mono">{activeShipmentId}</span>? Select an issue category below to connect with our regional dispatch desk:
             </p>
 
             <div className="space-y-2.5 pt-2">
@@ -1090,7 +1087,7 @@ export default function CustomerTrackingPage() {
                     setSupportOpen(false);
                     showToast(`Support ticket created for: "${topic}"`);
                   }}
-                  className="w-full text-left px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl hover:bg-primary/5 hover:border-primary/20 text-xs text-slate-700 font-semibold transition-all flex items-center justify-between group"
+                  className="w-full text-left px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl hover:bg-primary/5 hover:border-primary/20 text-sm text-slate-700 font-semibold transition-all flex items-center justify-between group"
                 >
                   <span>{topic}</span>
                   <ChevronRight className="size-4 text-slate-400 group-hover:text-primary transition-colors" />
@@ -1102,6 +1099,7 @@ export default function CustomerTrackingPage() {
               <Button
                 variant="outline"
                 size="sm"
+                className="h-10 text-sm font-semibold"
                 onClick={() => setSupportOpen(false)}
                 id="btn-close-support-dialog"
               >

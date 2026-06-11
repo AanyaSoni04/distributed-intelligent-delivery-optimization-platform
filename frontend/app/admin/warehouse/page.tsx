@@ -232,12 +232,12 @@ export default function WarehouseManagementPage() {
         {/* 1. Warehouse KPI Cards */}
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {/* Card 1: Total Warehouses */}
-          <div className="bg-card p-5 rounded-xl border border-border shadow-sm hover:shadow-md transition-shadow group flex flex-col justify-between">
-            <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-wider mb-1">
+          <div className="bg-card p-5 rounded-xl border border-border shadow-sm hover:shadow-md transition-shadow group flex flex-col justify-between max-w-full">
+            <p className="text-sm uppercase tracking-wide font-medium text-muted-foreground font-sans">
               Total Warehouses
             </p>
             <div className="flex items-end justify-between mt-2">
-              <span className="text-3xl font-heading font-black text-foreground">42</span>
+              <span className="text-3xl md:text-4xl lg:text-5xl font-bold font-sans tabular-nums text-foreground">42</span>
               <div className="size-8 rounded bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                 <Warehouse className="size-4.5" />
               </div>
@@ -245,12 +245,12 @@ export default function WarehouseManagementPage() {
           </div>
 
           {/* Card 2: Active Hubs */}
-          <div className="bg-card p-5 rounded-xl border border-border shadow-sm hover:shadow-md transition-shadow group flex flex-col justify-between">
-            <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-wider mb-1">
+          <div className="bg-card p-5 rounded-xl border border-border shadow-sm hover:shadow-md transition-shadow group flex flex-col justify-between max-w-full">
+            <p className="text-sm uppercase tracking-wide font-medium text-muted-foreground font-sans">
               Active Hubs
             </p>
             <div className="flex items-end justify-between mt-2">
-              <span className="text-3xl font-heading font-black text-foreground">18</span>
+              <span className="text-3xl md:text-4xl lg:text-5xl font-bold font-sans tabular-nums text-foreground">18</span>
               <div className="size-8 rounded bg-gold/15 flex items-center justify-center text-gold-foreground group-hover:bg-gold group-hover:text-white transition-colors">
                 <Activity className="size-4.5" />
               </div>
@@ -258,28 +258,28 @@ export default function WarehouseManagementPage() {
           </div>
 
           {/* Card 3: Active Deliveries */}
-          <div className="bg-card p-5 rounded-xl border border-border shadow-sm hover:shadow-md transition-shadow group flex flex-col justify-between">
-            <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-wider mb-1">
+          <div className="bg-card p-5 rounded-xl border border-border shadow-sm hover:shadow-md transition-shadow group flex flex-col justify-between max-w-full">
+            <p className="text-sm uppercase tracking-wide font-medium text-muted-foreground font-sans">
               Active Deliveries
             </p>
             <div className="flex items-end justify-between mt-2">
-              <span className="text-3xl font-heading font-black text-foreground">1,240</span>
-              <div className="flex items-center gap-1 text-green-600 font-bold text-xs pb-1 shrink-0">
+              <span className="text-3xl md:text-4xl lg:text-5xl font-bold font-sans tabular-nums text-foreground">1,240</span>
+              <div className="flex items-center gap-1 text-green-600 font-bold text-sm pb-1 shrink-0">
                 <TrendingUp className="size-3.5" />
-                <span>+12%</span>
+                <span className="tabular-nums">+12%</span>
               </div>
             </div>
           </div>
 
           {/* Card 4: Capacity Utilization */}
-          <div className="bg-card p-5 rounded-xl border border-border shadow-sm hover:shadow-md transition-shadow group flex flex-col justify-between">
-            <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-wider mb-1">
+          <div className="bg-card p-5 rounded-xl border border-border shadow-sm hover:shadow-md transition-shadow group flex flex-col justify-between max-w-full">
+            <p className="text-sm uppercase tracking-wide font-medium text-muted-foreground font-sans">
               Capacity Utilization
             </p>
             <div className="flex flex-col gap-2 mt-2">
               <div className="flex items-baseline justify-between">
-                <span className="text-3xl font-heading font-black text-foreground">78%</span>
-                <span className="text-[10px] text-muted-foreground">Threshold: 85%</span>
+                <span className="text-3xl md:text-4xl lg:text-5xl font-bold font-sans tabular-nums text-foreground">78%</span>
+                <span className="text-xs text-muted-foreground">Threshold: 85%</span>
               </div>
               <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
                 <div className="h-full bg-primary" style={{ width: "78%" }} />
@@ -288,12 +288,12 @@ export default function WarehouseManagementPage() {
           </div>
 
           {/* Card 5: Drivers Assigned */}
-          <div className="bg-card p-5 rounded-xl border border-border shadow-sm hover:shadow-md transition-shadow group flex flex-col justify-between">
-            <p className="text-muted-foreground text-[10px] font-bold uppercase tracking-wider mb-1">
+          <div className="bg-card p-5 rounded-xl border border-border shadow-sm hover:shadow-md transition-shadow group flex flex-col justify-between max-w-full">
+            <p className="text-sm uppercase tracking-wide font-medium text-muted-foreground font-sans">
               Drivers Assigned
             </p>
             <div className="flex items-end justify-between mt-2">
-              <span className="text-3xl font-heading font-black text-foreground">4,800</span>
+              <span className="text-3xl md:text-4xl lg:text-5xl font-bold font-sans tabular-nums text-foreground">4,800</span>
               <div className="size-8 rounded bg-slate-100 flex items-center justify-center text-slate-500">
                 <Users className="size-4.5" />
               </div>
@@ -309,9 +309,9 @@ export default function WarehouseManagementPage() {
             
             {/* 2. National Hub Network Map */}
             <section className="bg-card border border-border rounded-2xl overflow-hidden relative min-h-[440px] shadow-sm">
-              <div className="absolute top-6 left-6 z-10 bg-white/90 backdrop-blur-md p-4 rounded-xl border border-white shadow-lg max-w-xs">
-                <h3 className="text-sm font-bold text-primary mb-0.5">National Network Density</h3>
-                <p className="text-[10px] text-muted-foreground leading-normal">Live visual grid. Click any pulsing node to select and inspect the warehouse.</p>
+              <div className="absolute top-6 left-6 z-10 bg-white/90 backdrop-blur-md p-5 rounded-xl border border-white shadow-lg max-w-xs">
+                <h3 className="text-base font-semibold text-primary mb-0.5 animate-pulse">National Network Density</h3>
+                <p className="text-sm text-muted-foreground leading-normal">Live visual grid. Click any pulsing node to select and inspect the warehouse.</p>
               </div>
 
               {/* Map Zoom Controls */}
@@ -364,7 +364,7 @@ export default function WarehouseManagementPage() {
                       {selectedHubId === hub.id && <span className="absolute inset-0 rounded-full bg-primary/40 animate-ping" />}
                     </div>
                     {/* Hover Card */}
-                    <div className="absolute top-5 left-1/2 -translate-x-1/2 bg-slate-900/90 text-white text-[9px] font-bold px-2 py-0.5 rounded shadow-xl whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity z-20">
+                    <div className="absolute top-5 left-1/2 -translate-x-1/2 bg-slate-900/90 text-white text-[10px] font-semibold px-2.5 py-1 rounded shadow-xl whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity z-20">
                       {hub.name} ({hub.code})
                     </div>
                   </button>
@@ -375,10 +375,10 @@ export default function WarehouseManagementPage() {
             {/* 5. Regional Hub Performance */}
             <section className="space-y-3">
               <div className="flex items-center justify-between">
-                <h3 className="text-base font-heading font-bold text-foreground">
+                <h3 className="text-lg font-semibold font-sans text-foreground">
                   Regional Hub Performance
                 </h3>
-                <span className="text-[10px] font-bold uppercase text-primary tracking-widest font-sans">
+                <span className="text-sm font-semibold uppercase tracking-wide text-primary">
                   SLA Target: 95.0%
                 </span>
               </div>
@@ -400,22 +400,22 @@ export default function WarehouseManagementPage() {
                           : "border-border hover:border-slate-300 hover:bg-slate-50/30"
                       )}
                     >
-                      <h4 className="text-xs font-bold text-slate-800 truncate">{hub.region}</h4>
-                      <p className="text-[10px] text-muted-foreground font-mono mt-0.5">{hub.code}</p>
+                      <h4 className="text-base font-semibold text-slate-800 truncate font-sans">{hub.region}</h4>
+                      <p className="text-xs text-muted-foreground font-mono mt-0.5">{hub.code}</p>
                       
-                      <div className="space-y-2 mt-4 text-[10px]">
+                      <div className="space-y-2 mt-4 text-xs font-medium">
                         <div className="flex justify-between items-center">
-                          <span className="text-muted-foreground">SLA</span>
+                          <span className="text-muted-foreground font-sans">SLA</span>
                           <span className={cn(
-                            "font-bold",
+                            "font-semibold font-sans tabular-nums",
                             isSlaWarning ? "text-amber-600" : "text-green-600"
                           )}>
                             {hub.sla}
                           </span>
                         </div>
                         <div className="flex justify-between items-center">
-                          <span className="text-muted-foreground">Avg ETA</span>
-                          <span className="font-bold text-slate-800">{hub.avgEta}</span>
+                          <span className="text-muted-foreground font-sans">Avg ETA</span>
+                          <span className="font-semibold text-slate-850 font-sans tabular-nums">{hub.avgEta}</span>
                         </div>
                       </div>
                     </div>
@@ -440,7 +440,7 @@ export default function WarehouseManagementPage() {
                     : "from-primary/50 to-primary"
               )} />
 
-              <h3 className="text-base font-heading font-bold text-foreground mb-5">
+              <h3 className="text-lg font-semibold font-sans text-foreground mb-5">
                 Hub Focused Details
               </h3>
 
@@ -450,27 +450,27 @@ export default function WarehouseManagementPage() {
                     <Warehouse className="size-5.5" />
                   </div>
                   <div className="min-w-0">
-                    <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-wide mb-0.5">Active Inspection</p>
-                    <h4 className="text-xs font-bold text-slate-850 truncate">{activeHub.name} [{activeHub.code}]</h4>
+                    <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-0.5">Active Inspection</p>
+                    <h4 className="text-base font-semibold text-slate-800 truncate font-sans">{activeHub.name} [{activeHub.code}]</h4>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-y-4 border-t border-slate-100 pt-4 text-xs font-medium font-sans">
                   <div>
-                    <p className="text-[9px] uppercase font-bold text-muted-foreground tracking-wide mb-0.5">Storage Capacity</p>
-                    <p className="font-bold text-slate-800">{activeHub.capacity}</p>
+                    <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground mb-0.5">Storage Capacity</p>
+                    <p className="text-base font-semibold text-slate-800 tabular-nums">{activeHub.capacity}</p>
                   </div>
                   <div>
-                    <p className="text-[9px] uppercase font-bold text-muted-foreground tracking-wide mb-0.5">Daily Deliveries</p>
-                    <p className="font-bold text-slate-800">{activeHub.activeDeliveries * 10} units</p>
+                    <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground mb-0.5">Daily Deliveries</p>
+                    <p className="text-base font-semibold text-slate-800 tabular-nums">{activeHub.activeDeliveries * 10} units</p>
                   </div>
                   <div>
-                    <p className="text-[9px] uppercase font-bold text-muted-foreground tracking-wide mb-0.5">Active Drivers</p>
-                    <p className="font-bold text-slate-800">{activeHub.driverCount} Active</p>
+                    <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground mb-0.5">Active Drivers</p>
+                    <p className="text-base font-semibold text-slate-800 tabular-nums">{activeHub.driverCount} Active</p>
                   </div>
                   <div>
-                    <p className="text-[9px] uppercase font-bold text-muted-foreground tracking-wide mb-0.5">Hub Location</p>
-                    <p className="font-bold text-primary underline truncate cursor-help" onClick={() => showToast(`Opening map location for: ${activeHub.locationLink}`)}>
+                    <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground mb-0.5">Hub Location</p>
+                    <p className="text-base font-semibold text-primary underline truncate cursor-help" onClick={() => showToast(`Opening map location for: ${activeHub.locationLink}`)}>
                       {activeHub.location}
                     </p>
                   </div>
@@ -480,18 +480,18 @@ export default function WarehouseManagementPage() {
 
             {/* 4. Efficiency Metrics */}
             <div className="bg-card border border-border rounded-2xl p-6 shadow-sm space-y-4">
-              <h4 className="text-[10px] font-bold uppercase text-muted-foreground tracking-widest font-sans">
+              <h4 className="text-sm font-semibold uppercase text-muted-foreground tracking-wide font-sans">
                 Efficiency Metrics
               </h4>
               
               <div className="space-y-3 font-sans">
                 {/* Turnover Rate */}
-                <div className="bg-slate-50/30 p-3.5 rounded-xl border border-slate-100 border-l-4 border-primary">
-                  <p className="text-[9px] font-bold text-muted-foreground mb-1 uppercase tracking-wide">Turnover Rate</p>
+                <div className="bg-slate-50/30 p-4 rounded-xl border border-slate-100 border-l-4 border-primary">
+                  <p className="text-xs font-medium text-muted-foreground mb-1 uppercase tracking-wide">Turnover Rate</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-bold text-slate-800">{activeHub.turnoverRate}</span>
+                    <span className="text-lg font-bold text-slate-800 font-sans tabular-nums">{activeHub.turnoverRate}</span>
                     <span className={cn(
-                      "text-[9px] font-extrabold px-2 py-0.5 rounded-full shrink-0",
+                      "text-xs font-bold px-2.5 py-0.5 rounded-full shrink-0 tabular-nums",
                       activeHub.turnoverDiff.startsWith("+") 
                         ? "bg-red-50 text-red-700" 
                         : "bg-green-50 text-green-700"
@@ -502,12 +502,12 @@ export default function WarehouseManagementPage() {
                 </div>
 
                 {/* Dock-to-Stock */}
-                <div className="bg-slate-50/30 p-3.5 rounded-xl border border-slate-100 border-l-4 border-gold">
-                  <p className="text-[9px] font-bold text-muted-foreground mb-1 uppercase tracking-wide">Dock-to-Stock Time</p>
+                <div className="bg-slate-50/30 p-4 rounded-xl border border-slate-100 border-l-4 border-gold">
+                  <p className="text-xs font-medium text-muted-foreground mb-1 uppercase tracking-wide">Dock-to-Stock Time</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-bold text-slate-800">{activeHub.dockToStock}</span>
+                    <span className="text-lg font-bold text-slate-800 font-sans tabular-nums">{activeHub.dockToStock}</span>
                     <span className={cn(
-                      "text-[9px] font-extrabold px-2 py-0.5 rounded-full shrink-0 uppercase tracking-wider",
+                      "text-xs font-bold px-2.5 py-0.5 rounded-full shrink-0 uppercase tracking-wider",
                       activeHub.dockToStockStatus === "Optimal" 
                         ? "bg-green-50 text-green-700" 
                         : activeHub.dockToStockStatus === "Stable"
@@ -526,7 +526,7 @@ export default function WarehouseManagementPage() {
         {/* Lower Assets Table */}
         <section className="bg-card border border-border rounded-2xl shadow-sm overflow-hidden pb-4">
           <div className="px-6 py-5 flex items-center justify-between border-b border-border bg-slate-50/50">
-            <h3 className="font-heading text-base font-bold text-foreground">
+            <h3 className="font-sans text-lg font-bold text-foreground">
               Active Inventory Assets
             </h3>
             <div className="flex gap-2">
@@ -534,7 +534,7 @@ export default function WarehouseManagementPage() {
                 variant="outline" 
                 size="sm" 
                 onClick={() => showToast("Exporting Inventory Assets as CSV...")}
-                className="h-8 text-xs font-semibold"
+                className="h-9 text-sm font-semibold"
                 id="btn-export-csv"
               >
                 Export CSV
@@ -543,7 +543,7 @@ export default function WarehouseManagementPage() {
                 variant="outline" 
                 size="sm" 
                 onClick={() => showToast("Opening Bulk Operations panel...")}
-                className="h-8 text-xs font-semibold"
+                className="h-9 text-sm font-semibold"
                 id="btn-bulk-edit"
               >
                 Bulk Edit
@@ -553,13 +553,13 @@ export default function WarehouseManagementPage() {
 
           <div className="overflow-x-auto">
             {filteredHubs.length === 0 ? (
-              <div className="p-8 text-center text-muted-foreground text-xs font-sans">
+              <div className="p-8 text-center text-muted-foreground text-sm font-sans">
                 No warehouses match your search query. Try searching for "Mumbai" or "WH".
               </div>
             ) : (
-              <table className="w-full text-left border-collapse font-sans text-xs">
+              <table className="w-full text-left border-collapse font-sans text-base">
                 <thead>
-                  <tr className="bg-slate-50 text-slate-500 font-bold text-[10px] uppercase tracking-wider border-b border-border">
+                  <tr className="bg-slate-50 text-slate-650 font-semibold text-sm uppercase tracking-wide border-b border-border">
                     <th className="px-6 py-3.5">Hub ID</th>
                     <th className="px-6 py-3.5">Name</th>
                     <th className="px-6 py-3.5">Location</th>
@@ -582,11 +582,11 @@ export default function WarehouseManagementPage() {
                           isSelected ? "bg-primary/5 font-semibold" : ""
                         )}
                       >
-                        <td className="px-6 py-4 font-mono font-bold text-slate-700">{hub.id}</td>
-                        <td className="px-6 py-4 font-semibold text-slate-800">{hub.name}</td>
-                        <td className="px-6 py-4 text-slate-500">{hub.location}</td>
-                        <td className="px-6 py-4 text-slate-500">{hub.capacity}</td>
-                        <td className="px-6 py-4">
+                        <td className="px-6 py-5 font-mono font-semibold text-base text-slate-750 tabular-nums">{hub.id}</td>
+                        <td className="px-6 py-5 font-semibold text-slate-805 text-base">{hub.name}</td>
+                        <td className="px-6 py-5 text-slate-600 text-base">{hub.location}</td>
+                        <td className="px-6 py-5 text-slate-600 text-base tabular-nums">{hub.capacity}</td>
+                        <td className="px-6 py-5">
                           <div className="flex items-center gap-2 max-w-[120px]">
                             <div className="flex-1 bg-slate-100 h-1.5 rounded-full overflow-hidden">
                               <div 
@@ -602,29 +602,29 @@ export default function WarehouseManagementPage() {
                               />
                             </div>
                             <span className={cn(
-                              "text-[10px] font-bold tracking-tighter shrink-0",
-                              hub.utilization >= 90 ? "text-red-600" : ""
+                              "text-sm font-semibold tabular-nums text-slate-700 shrink-0",
+                              hub.utilization >= 90 ? "text-red-750 font-bold" : ""
                             )}>
                               {hub.utilization}%
                             </span>
                           </div>
                         </td>
-                        <td className="px-6 py-4 text-slate-700 font-bold">{hub.activeDeliveries}</td>
-                        <td className="px-6 py-4">
+                        <td className="px-6 py-5 text-slate-800 font-semibold text-base tabular-nums">{hub.activeDeliveries}</td>
+                        <td className="px-6 py-5">
                           <span className={cn(
-                            "px-2.5 py-0.5 rounded-full text-[9px] font-extrabold uppercase tracking-wide",
+                            "px-3 py-1 rounded-full text-sm font-semibold uppercase tracking-wider",
                             hub.status === "Operational" 
-                              ? "bg-green-50 text-green-700 border border-green-100" 
+                              ? "bg-green-50 text-green-800 border border-green-200/80" 
                               : hub.status === "High Load" 
-                                ? "bg-red-50 text-red-700 border border-red-100" 
-                                : "bg-slate-150 text-slate-600 border border-slate-200"
+                                ? "bg-red-50 text-red-800 border border-red-200/80" 
+                                : "bg-slate-100 text-slate-800 border border-slate-200"
                           )}>
                             {hub.status}
                           </span>
                         </td>
-                        <td className="px-6 py-4 text-right">
+                        <td className="px-6 py-5 text-right">
                           <ChevronRight className={cn(
-                            "size-4 text-slate-350 transition-colors group-hover:text-primary",
+                            "size-5 text-slate-400 transition-colors group-hover:text-primary",
                             isSelected ? "text-primary translate-x-0.5" : ""
                           )} />
                         </td>

@@ -217,12 +217,12 @@ export default function ActiveRoutePage() {
             <div>
               <div className="flex items-center gap-2.5 mb-1.5 flex-wrap">
                 <span className={cn(
-                  "px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider",
+                  "px-2.5 py-0.5 rounded-full text-sm font-semibold uppercase tracking-wider",
                   deliveryState === "DELIVERED" 
-                    ? "bg-green-100 text-green-800"
+                    ? "bg-green-100 text-green-800 border border-green-200/80"
                     : deliveryState === "ARRIVED" || deliveryState === "POD_UPLOADED"
-                      ? "bg-emerald-100 text-emerald-800"
-                      : "bg-primary/10 text-primary"
+                      ? "bg-emerald-100 text-emerald-800 border border-emerald-250"
+                      : "bg-primary/10 text-primary border border-primary/20"
                 )}>
                   {deliveryState === "DELIVERED" 
                     ? "Delivered" 
@@ -230,27 +230,27 @@ export default function ActiveRoutePage() {
                       ? "Arrived"
                       : "In Transit"}
                 </span>
-                <h2 className="text-xl font-heading font-black tracking-tight text-foreground">
+                <h2 className="text-xl font-bold font-sans tracking-tight text-foreground">
                   DID-2026-10231
                 </h2>
               </div>
-              <p className="text-muted-foreground text-xs font-semibold">
-                ETA: <span className="text-foreground font-black">{currentETA}</span> (23:15 IST)
+              <p className="text-muted-foreground text-sm font-medium font-sans">
+                ETA: <span className="text-foreground font-bold tabular-nums">{currentETA}</span> (23:15 IST)
               </p>
             </div>
 
             <div className="flex gap-3 w-full md:w-auto">
               <div className="bg-slate-50 p-3 rounded-xl flex-1 md:min-w-[150px] border border-slate-100">
-                <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-wide mb-0.5">Pickup</p>
-                <p className="text-xs font-bold truncate text-slate-800">BKC Logistics Hub</p>
+                <p className="text-sm uppercase tracking-wide font-medium text-muted-foreground font-sans mb-0.5">Pickup</p>
+                <p className="text-base font-semibold truncate text-slate-800 font-sans">BKC Logistics Hub</p>
               </div>
               <div className="bg-slate-50 p-3 rounded-xl flex-1 md:min-w-[150px] border border-slate-100 border-l-4 border-primary">
-                <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-wide mb-0.5">Destination</p>
-                <p className="text-xs font-bold truncate text-slate-800">Worli Sky Tower</p>
+                <p className="text-sm uppercase tracking-wide font-medium text-muted-foreground font-sans mb-0.5">Destination</p>
+                <p className="text-base font-semibold truncate text-slate-800 font-sans">Worli Sky Tower</p>
               </div>
               <div className="bg-slate-50 p-3 rounded-xl hidden xl:block border border-slate-150 text-center min-w-[100px]">
-                <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-wide mb-0.5">Distance</p>
-                <p className="text-xs font-black text-primary">{currentDistance}</p>
+                <p className="text-sm uppercase tracking-wide font-medium text-muted-foreground font-sans mb-0.5">Distance</p>
+                <p className="text-base font-bold text-primary font-sans tabular-nums">{currentDistance}</p>
               </div>
             </div>
           </div>
@@ -361,7 +361,7 @@ export default function ActiveRoutePage() {
             
             {/* 3. Workflow Status Timeline */}
             <div className="bg-card p-6 rounded-2xl border border-border shadow-sm">
-              <h2 className="text-base font-heading font-bold text-foreground mb-5">
+              <h2 className="text-base font-bold text-slate-800 font-sans mb-5 uppercase tracking-wide">
                 Workflow Status
               </h2>
               
@@ -375,7 +375,7 @@ export default function ActiveRoutePage() {
                     <div className="w-6.5 h-6.5 rounded-full bg-primary flex items-center justify-center text-white shadow-sm shrink-0">
                       <Check className="size-3.5" />
                     </div>
-                    <span className="text-xs font-semibold text-slate-500">Created</span>
+                    <span className="text-base font-semibold text-slate-500 font-sans">Created</span>
                   </div>
 
                   {/* Assigned */}
@@ -383,7 +383,7 @@ export default function ActiveRoutePage() {
                     <div className="w-6.5 h-6.5 rounded-full bg-primary flex items-center justify-center text-white shadow-sm shrink-0">
                       <Check className="size-3.5" />
                     </div>
-                    <span className="text-xs font-semibold text-slate-500">Assigned</span>
+                    <span className="text-base font-semibold text-slate-500 font-sans">Assigned</span>
                   </div>
 
                   {/* Accepted */}
@@ -391,7 +391,7 @@ export default function ActiveRoutePage() {
                     <div className="w-6.5 h-6.5 rounded-full bg-primary flex items-center justify-center text-white shadow-sm shrink-0">
                       <Check className="size-3.5" />
                     </div>
-                    <span className="text-xs font-semibold text-slate-500">Accepted</span>
+                    <span className="text-base font-semibold text-slate-500 font-sans">Accepted</span>
                   </div>
 
                   {/* Picked Up */}
@@ -399,7 +399,7 @@ export default function ActiveRoutePage() {
                     <div className="w-6.5 h-6.5 rounded-full bg-primary flex items-center justify-center text-white shadow-sm shrink-0">
                       <Check className="size-3.5" />
                     </div>
-                    <span className="text-xs font-semibold text-slate-500">Picked Up</span>
+                    <span className="text-base font-semibold text-slate-500 font-sans">Picked Up</span>
                   </div>
 
                   {/* In Transit */}
@@ -417,7 +417,7 @@ export default function ActiveRoutePage() {
                       )}
                     </div>
                     <span className={cn(
-                      "text-xs font-semibold",
+                      "text-base font-semibold font-sans",
                       deliveryState !== "DELIVERED" ? "text-primary font-bold" : "text-slate-500"
                     )}>
                       In Transit
@@ -435,7 +435,7 @@ export default function ActiveRoutePage() {
                       {deliveryState === "DELIVERED" && <Check className="size-3.5" />}
                     </div>
                     <span className={cn(
-                      "text-xs font-semibold",
+                      "text-base font-semibold font-sans",
                       deliveryState === "DELIVERED" ? "text-green-600 font-bold" : "text-slate-400"
                     )}>
                       Delivered
@@ -454,10 +454,10 @@ export default function ActiveRoutePage() {
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmVqN4y9Xa1NlS4GrU0eq9DvS8i9kWaf2MhbNU0iZvxUwJZoHyHEaX-_0G0HHlZu6oApqdTIszjnaIzdQ-ZASnwU-gSQmeuPcrb8NVce6EYyWf323kle9lM2LA1h1Y2TUoa4EzbfsmXIdtec1fIhQEDVtEbav2j1HZsXxQnZB_7mIA3hdhOHvu9bQ3j2BlBNYi5ShzgbkyTGzCmbwT5XeV13Q-TGpn7th-9EHNjufrBgxa7Bw0E8vM0dXDR8rJ_hB-Pxp5jdzLd8M"
                 />
                 <div>
-                  <h3 className="font-heading text-base font-bold text-foreground">
+                  <h3 className="font-sans text-base font-bold text-foreground">
                     Sarah Jenkins
                   </h3>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-sm text-muted-foreground font-sans">
                     Flat 402, Worli Sky Tower
                   </p>
                 </div>
@@ -502,7 +502,7 @@ export default function ActiveRoutePage() {
               isPodLocked ? "opacity-60 grayscale cursor-not-allowed select-none" : ""
             )}>
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-sm font-heading font-bold text-foreground">
+                <h2 className="text-sm font-sans font-semibold uppercase tracking-wide text-muted-foreground">
                   Proof of Delivery
                 </h2>
                 {isPodLocked && <Lock className="size-4 text-slate-400" />}
@@ -581,7 +581,7 @@ export default function ActiveRoutePage() {
               onClick={handleMarkDelivered}
               disabled={deliveryState === "DELIVERED"}
               className={cn(
-                "w-full py-6 rounded-2xl font-heading text-base font-bold shadow-lg transition-all duration-300",
+                "w-full py-6 rounded-2xl font-sans text-base font-bold shadow-lg transition-all duration-300",
                 isMarkDeliveredActive 
                   ? "bg-gradient-to-r from-primary to-primary-container text-white cursor-pointer hover:shadow-primary/25 hover:-translate-y-0.5" 
                   : "bg-slate-200 text-slate-450 border border-slate-300 cursor-not-allowed hover:scale-100",
@@ -594,51 +594,51 @@ export default function ActiveRoutePage() {
 
             {/* 7. Activity Timeline */}
             <div className="bg-slate-100 p-6 rounded-3xl border border-slate-200">
-              <h2 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-4 font-sans">
+              <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-4 font-sans">
                 Activity Timeline
               </h2>
               
-              <div className="space-y-4 text-xs font-semibold font-sans">
+              <div className="space-y-4 text-sm font-sans">
                 {deliveryState === "DELIVERED" && (
                   <div className="flex justify-between items-start">
                     <div>
-                      <p className="text-slate-800 font-extrabold">Delivery Confirmed</p>
-                      <p className="text-[10px] text-green-700 font-medium">Fulfillment signed and captured</p>
+                      <p className="text-sm font-semibold text-foreground font-sans">Delivery Confirmed</p>
+                      <p className="text-xs font-normal text-green-700 font-sans">Fulfillment signed and captured</p>
                     </div>
-                    <span className="font-mono text-[9px] text-green-700">23:14</span>
+                    <span className="font-sans text-xs font-medium text-green-700 tabular-nums">23:14</span>
                   </div>
                 )}
                 
                 <div className="flex justify-between items-start">
                   <div>
-                    <p className="text-slate-800 font-bold">Transit Started</p>
-                    <p className="text-[10px] text-muted-foreground">Moving towards Worli</p>
+                    <p className="text-sm font-semibold text-foreground font-sans">Transit Started</p>
+                    <p className="text-xs font-normal text-muted-foreground font-sans">Moving towards Worli</p>
                   </div>
-                  <span className="font-mono text-[9px] text-muted-foreground">22:45</span>
+                  <span className="font-sans text-xs font-medium text-muted-foreground tabular-nums">22:45</span>
                 </div>
 
                 <div className="flex justify-between items-start opacity-70">
                   <div>
-                    <p className="text-slate-850">Picked Up</p>
-                    <p className="text-[10px] text-muted-foreground">BKC Logistics Hub</p>
+                    <p className="text-sm font-semibold text-foreground font-sans">Picked Up</p>
+                    <p className="text-xs font-normal text-muted-foreground font-sans">BKC Logistics Hub</p>
                   </div>
-                  <span className="font-mono text-[9px] text-muted-foreground">22:30</span>
+                  <span className="font-sans text-xs font-medium text-muted-foreground tabular-nums">22:30</span>
                 </div>
 
                 <div className="flex justify-between items-start opacity-70">
                   <div>
-                    <p className="text-slate-850">Accepted</p>
-                    <p className="text-[10px] text-muted-foreground">Driver Confirmed</p>
+                    <p className="text-sm font-semibold text-foreground font-sans">Accepted</p>
+                    <p className="text-xs font-normal text-muted-foreground font-sans">Driver Confirmed</p>
                   </div>
-                  <span className="font-mono text-[9px] text-muted-foreground">22:15</span>
+                  <span className="font-sans text-xs font-medium text-muted-foreground tabular-nums">22:15</span>
                 </div>
 
                 <div className="flex justify-between items-start opacity-70">
                   <div>
-                    <p className="text-slate-850">Assigned</p>
-                    <p className="text-[10px] text-muted-foreground">Automated Dispatch</p>
+                    <p className="text-sm font-semibold text-foreground font-sans">Assigned</p>
+                    <p className="text-xs font-normal text-muted-foreground font-sans">Automated Dispatch</p>
                   </div>
-                  <span className="font-mono text-[9px] text-muted-foreground">22:10</span>
+                  <span className="font-sans text-xs font-medium text-muted-foreground tabular-nums">22:10</span>
                 </div>
               </div>
             </div>
@@ -708,7 +708,7 @@ export default function ActiveRoutePage() {
           />
           <div className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl p-6 border border-slate-100 z-10 animate-in fade-in zoom-in-95 duration-200 space-y-5">
             <div className="flex justify-between items-center pb-2 border-b border-slate-100">
-              <h3 className="text-base font-bold font-heading text-slate-800">Customer Signature Pad</h3>
+              <h3 className="text-xl font-bold font-sans text-slate-800">Customer Signature Pad</h3>
               <Button 
                 variant="ghost" 
                 size="icon" 
@@ -720,8 +720,8 @@ export default function ActiveRoutePage() {
               </Button>
             </div>
 
-            <p className="text-xs text-muted-foreground">
-              Please ask client Sarah Jenkins to sign in the canvas below to confirm receipt of shipment DID-2026-10231:
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Please ask client Sarah Jenkins to sign in the canvas below to confirm receipt of shipment <span className="font-semibold text-slate-800 font-mono">DID-2026-10231</span>:
             </p>
 
             {/* Signature Draw Area */}
@@ -731,7 +731,7 @@ export default function ActiveRoutePage() {
                   Sarah Jenkins
                 </span>
               </div>
-              <span className="absolute bottom-2 right-3 text-[8px] font-bold text-slate-450 uppercase tracking-widest select-none">
+              <span className="absolute bottom-2 right-3 text-[10px] font-bold text-slate-455 uppercase tracking-widest select-none">
                 Touchscreen Capture Enabled
               </span>
             </div>
@@ -739,7 +739,7 @@ export default function ActiveRoutePage() {
             <div className="flex gap-2.5 pt-2">
               <Button
                 variant="outline"
-                className="flex-1 font-semibold text-xs h-10"
+                className="flex-1 font-semibold text-sm h-10"
                 onClick={() => {
                   setHasSignature(false);
                   setSignatureModalOpen(false);
@@ -750,7 +750,7 @@ export default function ActiveRoutePage() {
                 Clear
               </Button>
               <Button
-                className="flex-1 font-semibold text-xs text-white h-10"
+                className="flex-1 font-semibold text-sm text-white h-10"
                 onClick={() => {
                   setHasSignature(true);
                   setSignatureModalOpen(false);
@@ -777,7 +777,7 @@ export default function ActiveRoutePage() {
           />
           <div className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl p-6 border border-slate-100 z-10 animate-in fade-in zoom-in-95 duration-200 space-y-5">
             <div className="flex justify-between items-center pb-2 border-b border-slate-100">
-              <h3 className="text-base font-bold font-heading text-slate-800">Fulfillment Photo Proof</h3>
+              <h3 className="text-xl font-bold font-sans text-slate-800">Fulfillment Photo Proof</h3>
               <Button 
                 variant="ghost" 
                 size="icon" 
@@ -789,7 +789,7 @@ export default function ActiveRoutePage() {
               </Button>
             </div>
 
-            <p className="text-xs text-muted-foreground leading-relaxed">
+            <p className="text-sm text-muted-foreground leading-relaxed">
               Capture or upload a clear photo of the delivered parcel at the delivery location (doorstep, receptionist desk, or handoff) for compliance records:
             </p>
 
@@ -800,7 +800,7 @@ export default function ActiveRoutePage() {
                 alt="Doorstep Package Delivery Proof" 
                 className="w-full h-full object-cover"
               />
-              <div className="absolute top-2 left-2 bg-black/60 text-white text-[8px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">
+              <div className="absolute top-2 left-2 bg-black/60 text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">
                 Doorstep Handoff Preview
               </div>
             </div>
@@ -808,7 +808,7 @@ export default function ActiveRoutePage() {
             <div className="flex gap-2.5 pt-2">
               <Button
                 variant="outline"
-                className="flex-1 font-semibold text-xs h-10"
+                className="flex-1 font-semibold text-sm h-10"
                 onClick={() => {
                   setHasPhoto(false);
                   setPhotoModalOpen(false);
@@ -819,7 +819,7 @@ export default function ActiveRoutePage() {
                 Remove
               </Button>
               <Button
-                className="flex-1 font-semibold text-xs text-white h-10"
+                className="flex-1 font-semibold text-sm text-white h-10"
                 onClick={() => {
                   setHasPhoto(true);
                   setPhotoModalOpen(false);
@@ -850,22 +850,22 @@ export default function ActiveRoutePage() {
               </div>
               
               <div>
-                <h3 className="text-xl font-heading font-bold text-slate-800">Delivery Completed</h3>
-                <p className="text-xs text-muted-foreground mt-1">Shipment DID-2026-10231 finalized successfully.</p>
+                <h3 className="text-xl font-bold font-sans text-slate-800">Delivery Completed</h3>
+                <p className="text-sm text-muted-foreground mt-1 font-sans">Shipment <span className="font-semibold text-slate-800 font-mono">DID-2026-10231</span> finalized successfully.</p>
               </div>
 
-              <div className="bg-slate-50 border border-slate-200/50 p-4 rounded-xl space-y-2.5 text-xs text-left font-sans font-medium">
+              <div className="bg-slate-50 border border-slate-200/50 p-4 rounded-xl space-y-2.5 text-sm text-left font-sans font-medium">
                 <div className="flex justify-between items-center">
-                  <span className="text-[9px] font-bold text-muted-foreground uppercase">Manifest ID</span>
-                  <span className="font-mono font-bold text-slate-800">DID-2026-10231</span>
+                  <span className="text-sm font-medium uppercase tracking-wide text-muted-foreground">Manifest ID</span>
+                  <span className="font-mono font-semibold text-base text-slate-800 tabular-nums">DID-2026-10231</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-[9px] font-bold text-muted-foreground uppercase">Earnings Payout</span>
-                  <span className="font-bold text-green-700">+₹570.00 INR</span>
+                  <span className="text-sm font-medium uppercase tracking-wide text-muted-foreground">Earnings Payout</span>
+                  <span className="font-bold text-base text-green-700 tabular-nums">+₹570.00 INR</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-[9px] font-bold text-muted-foreground uppercase">SLA Compliance</span>
-                  <span className="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded font-sans uppercase">On Time</span>
+                  <span className="text-sm font-medium uppercase tracking-wide text-muted-foreground">SLA Compliance</span>
+                  <span className="text-sm font-semibold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded border border-emerald-200/80 uppercase">On Time</span>
                 </div>
               </div>
 
@@ -873,14 +873,14 @@ export default function ActiveRoutePage() {
                 <Button
                   variant="outline"
                   onClick={handleResetRoute}
-                  className="flex-1 font-bold text-[10px] uppercase tracking-wider"
+                  className="flex-1 font-semibold text-sm h-10"
                   id="btn-success-reset"
                 >
                   Restart Tour
                 </Button>
                 <Button
                   onClick={() => setSuccessModalOpen(false)}
-                  className="flex-1 font-bold text-[10px] uppercase tracking-wider text-white"
+                  className="flex-1 font-semibold text-sm text-white h-10"
                   id="btn-success-close"
                 >
                   Close Console
@@ -904,12 +904,12 @@ export default function ActiveRoutePage() {
             </div>
             
             <div>
-              <h3 className="text-lg font-bold font-heading">Outgoing Call</h3>
-              <p className="text-xs text-slate-400 mt-1">Connecting to Sarah Jenkins (Customer)</p>
+              <h3 className="text-xl font-bold font-sans">Outgoing Call</h3>
+              <p className="text-sm text-slate-400 mt-1">Connecting to Sarah Jenkins (Customer)</p>
             </div>
 
             <div className="py-2">
-              <p className="text-xl font-bold font-mono tracking-widest text-slate-200">+91 99887 76655</p>
+              <p className="text-xl font-bold font-sans tracking-widest text-slate-200 tabular-nums">+91 99887 76655</p>
               <p className="text-[10px] text-slate-400 uppercase tracking-widest mt-1">Encrypted Customer Contact Channel</p>
             </div>
 
@@ -920,7 +920,7 @@ export default function ActiveRoutePage() {
                   setCallModalOpen(false);
                   showToast("Call ended.");
                 }}
-                className="w-32 rounded-full font-bold h-10 text-white"
+                className="w-32 rounded-full font-semibold h-10 text-white"
                 id="btn-hang-up-active"
               >
                 End Call
@@ -939,7 +939,7 @@ export default function ActiveRoutePage() {
           />
           <div className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl p-6 border border-slate-100 z-10 animate-in fade-in zoom-in-95 duration-200 space-y-5">
             <div className="flex justify-between items-center pb-2 border-b border-slate-100">
-              <h3 className="text-base font-bold font-heading text-slate-800 flex items-center gap-2">
+              <h3 className="text-xl font-bold font-sans text-slate-800 flex items-center gap-2">
                 <ShieldAlert className="size-5 text-red-600" />
                 <span>Report Route Issue</span>
               </h3>
@@ -954,7 +954,7 @@ export default function ActiveRoutePage() {
               </Button>
             </div>
 
-            <p className="text-xs text-muted-foreground leading-relaxed">
+            <p className="text-sm text-muted-foreground leading-relaxed">
               Encountered a roadblock or delivery problem? Report it directly to the regional dispatch office to recalculate SLAs and update the customer:
             </p>
 
@@ -971,7 +971,7 @@ export default function ActiveRoutePage() {
                     setIssueModalOpen(false);
                     showToast(`Dispatched alert: "${issue}" logged.`);
                   }}
-                  className="w-full text-left px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl hover:bg-red-50 hover:border-red-200/55 text-xs text-slate-700 transition-all flex items-center justify-between group"
+                  className="w-full text-left px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl hover:bg-red-50 hover:border-red-200/55 text-sm text-slate-700 transition-all flex items-center justify-between group"
                 >
                   <span>{issue}</span>
                   <ChevronRight className="size-4 text-slate-400 group-hover:text-red-600 transition-colors" />
@@ -983,6 +983,7 @@ export default function ActiveRoutePage() {
               <Button
                 variant="outline"
                 size="sm"
+                className="h-10 text-sm font-semibold"
                 onClick={() => setIssueModalOpen(false)}
                 id="btn-close-issue-dialog"
               >

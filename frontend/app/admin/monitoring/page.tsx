@@ -161,16 +161,16 @@ export default function SystemMonitoringPage() {
       actions={
         <div className="flex items-center gap-3">
           {/* Status Badge */}
-          <div className="px-4 py-2 bg-emerald-50 text-emerald-700 border border-emerald-100 rounded-full flex items-center gap-2 shadow-sm">
+          <div className="px-4 py-2 bg-emerald-50 text-emerald-800 border border-emerald-200/80 rounded-full flex items-center gap-2 shadow-sm">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span className="font-sans text-xs font-bold uppercase tracking-wider">All Systems Operational</span>
+            <span className="font-sans text-sm font-bold uppercase tracking-wider">All Systems Operational</span>
           </div>
 
           <Button 
             onClick={handleRefresh} 
             disabled={isRefreshing}
             size="sm" 
-            className="gap-2 font-semibold text-xs shadow-md"
+            className="gap-2 font-semibold text-sm shadow-md"
           >
             <RefreshCw className={cn("size-3.5", isRefreshing ? "animate-spin" : "")} />
             <span>Refresh Data</span>
@@ -183,16 +183,16 @@ export default function SystemMonitoringPage() {
         {/* Top Level Gauges (KPI Cards Grid) */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* API Latency */}
-          <div className="bg-card border border-border p-6 rounded-2xl flex flex-col justify-between group transition-all hover:bg-slate-50 duration-200 shadow-sm min-h-[160px]">
+          <div className="bg-card border border-border p-6 rounded-2xl flex flex-col justify-between group transition-all hover:bg-slate-50 duration-200 shadow-sm min-h-[160px] max-w-full">
             <div className="flex justify-between items-start">
-              <span className="text-muted-foreground font-sans text-xs font-bold uppercase tracking-wider">Avg API Latency</span>
+              <span className="text-muted-foreground font-sans text-sm font-medium uppercase tracking-wide">Avg API Latency</span>
               <Gauge className="size-5 text-primary" />
             </div>
             <div className="mt-4">
-              <div className="text-4xl font-heading font-extrabold text-foreground">42ms</div>
-              <div className="flex items-center gap-1 mt-1 text-emerald-600 font-medium">
+              <div className="text-3xl md:text-4xl lg:text-5xl font-bold font-sans tabular-nums text-foreground">42ms</div>
+              <div className="flex items-center gap-1 mt-1 text-emerald-600 font-semibold">
                 <TrendingUp className="size-3.5" />
-                <span className="text-xs font-sans">12% vs last hour</span>
+                <span className="text-sm font-sans tabular-nums">12% vs last hour</span>
               </div>
             </div>
             <div className="mt-5 h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
@@ -201,16 +201,16 @@ export default function SystemMonitoringPage() {
           </div>
 
           {/* Request Throughput */}
-          <div className="bg-card border border-border p-6 rounded-2xl flex flex-col justify-between group transition-all hover:bg-slate-50 duration-200 shadow-sm min-h-[160px]">
+          <div className="bg-card border border-border p-6 rounded-2xl flex flex-col justify-between group transition-all hover:bg-slate-50 duration-200 shadow-sm min-h-[160px] max-w-full">
             <div className="flex justify-between items-start">
-              <span className="text-muted-foreground font-sans text-xs font-bold uppercase tracking-wider">Request Throughput</span>
+              <span className="text-muted-foreground font-sans text-sm font-medium uppercase tracking-wide">Request Throughput</span>
               <ArrowUpDown className="size-5 text-primary/75" />
             </div>
             <div className="mt-4">
-              <div className="text-4xl font-heading font-extrabold text-foreground">
-                8.4k<span className="text-sm font-sans font-normal text-muted-foreground ml-1">/s</span>
+              <div className="text-3xl md:text-4xl lg:text-5xl font-bold font-sans tabular-nums text-foreground">
+                8.4k<span className="text-base font-sans font-normal text-muted-foreground ml-1">/s</span>
               </div>
-              <span className="text-xs text-muted-foreground/70 block mt-1 font-sans">Stable system cluster load</span>
+              <span className="text-sm text-muted-foreground block mt-1 font-sans">Stable system cluster load</span>
             </div>
             
             {/* Sparkline chart with Recharts */}
@@ -228,20 +228,20 @@ export default function SystemMonitoringPage() {
           </div>
 
           {/* Error Rates */}
-          <div className="bg-card border border-border p-6 rounded-2xl flex flex-col justify-between group transition-all hover:bg-slate-50 duration-200 shadow-sm min-h-[160px]">
+          <div className="bg-card border border-border p-6 rounded-2xl flex flex-col justify-between group transition-all hover:bg-slate-50 duration-200 shadow-sm min-h-[160px] max-w-full">
             <div className="flex justify-between items-start">
-              <span className="text-muted-foreground font-sans text-xs font-bold uppercase tracking-wider">Error Rate (5xx)</span>
+              <span className="text-muted-foreground font-sans text-sm font-medium uppercase tracking-wide">Error Rate (5xx)</span>
               <AlertTriangle className="size-5 text-destructive" />
             </div>
             <div className="mt-4">
-              <div className="text-4xl font-heading font-extrabold text-foreground">0.02%</div>
-              <div className="flex items-center gap-1 mt-1 text-emerald-600 font-medium">
+              <div className="text-3xl md:text-4xl lg:text-5xl font-bold font-sans tabular-nums text-foreground">0.02%</div>
+              <div className="flex items-center gap-1 mt-1 text-emerald-600 font-semibold">
                 <CheckCircle2 className="size-3.5" />
-                <span className="text-xs font-sans">Below threshold (0.5%)</span>
+                <span className="text-sm font-sans">Below threshold (0.5%)</span>
               </div>
             </div>
             <div className="mt-5 flex justify-between items-end border-t border-slate-50 pt-2.5">
-              <span className="text-[10px] font-mono text-muted-foreground font-bold">NOMINAL</span>
+              <span className="text-xs font-mono text-muted-foreground font-bold">NOMINAL</span>
               <div className="h-2 w-2 rounded-full bg-emerald-500 shadow-sm shadow-emerald-500/50"></div>
             </div>
           </div>
@@ -261,33 +261,33 @@ export default function SystemMonitoringPage() {
 
             <div className="grid grid-cols-2 gap-4 text-xs font-mono mb-6">
               <div className="space-y-1">
-                <div className="text-[9px] text-slate-500 uppercase font-bold">Events / Sec</div>
-                <div className="text-base font-bold text-slate-200">1.2k/s</div>
+                <div className="text-[10px] text-slate-400 uppercase font-bold">Events / Sec</div>
+                <div className="text-xl font-bold text-slate-200 tabular-nums">1.2k/s</div>
               </div>
               <div className="space-y-1">
-                <div className="text-[9px] text-slate-500 uppercase font-bold">Consumer Lag</div>
-                <div className="text-base font-bold text-slate-200">12 ms</div>
+                <div className="text-[10px] text-slate-400 uppercase font-bold">Consumer Lag</div>
+                <div className="text-xl font-bold text-slate-200 tabular-nums">12 ms</div>
               </div>
               <div className="space-y-1">
-                <div className="text-[9px] text-slate-500 uppercase font-bold">Failed Msg</div>
-                <div className="text-base font-bold text-emerald-400">0</div>
+                <div className="text-[10px] text-slate-400 uppercase font-bold">Failed Msg</div>
+                <div className="text-xl font-bold text-emerald-400 tabular-nums">0</div>
               </div>
               <div className="space-y-1">
-                <div className="text-[9px] text-slate-500 uppercase font-bold">DLQ Retries</div>
-                <div className="text-base font-bold text-emerald-400">0</div>
+                <div className="text-[10px] text-slate-400 uppercase font-bold">DLQ Retries</div>
+                <div className="text-xl font-bold text-emerald-400 tabular-nums">0</div>
               </div>
             </div>
 
             {/* Scrollable ticker terminal */}
             <div 
               ref={kafkaScrollRef}
-              className="flex-1 font-mono text-[10px] leading-relaxed overflow-y-auto max-h-[160px] space-y-1.5 border-t border-slate-800 pt-4 scroll-smooth"
+              className="flex-1 font-mono text-xs leading-relaxed overflow-y-auto max-h-[160px] space-y-1.5 border-t border-slate-800 pt-4 scroll-smooth"
             >
               {kafkaEvents.map((evt, idx) => (
                 <div key={idx} className={cn("truncate flex gap-2.5", evt.colorClass)}>
-                  <span className="text-slate-500 shrink-0">{evt.time}</span>
+                  <span className="text-slate-500 shrink-0 tabular-nums">{evt.time}</span>
                   <span className="font-bold shrink-0">{evt.type}:</span>
-                  <span className="text-slate-300 font-medium">{evt.detail}</span>
+                  <span className="text-slate-300 font-medium tabular-nums">{evt.detail}</span>
                 </div>
               ))}
             </div>
@@ -295,16 +295,16 @@ export default function SystemMonitoringPage() {
 
           {/* Real-time Event Monitoring Log List */}
           <div className="lg:col-span-8 bg-card border border-border rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between">
-            <div className="px-6 py-4 border-b border-border flex justify-between items-center bg-slate-50/50">
-              <h3 className="font-heading font-bold text-base text-foreground">Event Monitoring Log</h3>
+            <div className="px-6 py-5 border-b border-border flex justify-between items-center bg-slate-50/50">
+              <h3 className="font-sans font-bold text-lg text-foreground">Event Monitoring Log</h3>
               <div className="flex gap-2">
                 <button 
                   onClick={() => setLogs([])}
-                  className="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-[11px] font-semibold text-slate-600 rounded-lg transition-colors border border-slate-200"
+                  className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-xs font-semibold text-slate-700 rounded-lg transition-colors border border-slate-200"
                 >
                   Clear
                 </button>
-                <button className="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-[11px] font-semibold text-slate-600 rounded-lg transition-colors border border-slate-200">
+                <button className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-xs font-semibold text-slate-700 rounded-lg transition-colors border border-slate-200">
                   Export .CSV
                 </button>
               </div>
@@ -314,26 +314,26 @@ export default function SystemMonitoringPage() {
             <div className="divide-y divide-slate-100 flex-grow">
               {logs.length === 0 ? (
                 <div className="py-20 text-center">
-                  <span className="text-xs font-bold text-slate-600 block">No system events logged</span>
-                  <span className="text-[11px] text-muted-foreground block mt-0.5">Click Refresh Data to trigger ingestion.</span>
+                  <span className="text-sm font-bold text-slate-700 block">No system events logged</span>
+                  <span className="text-xs text-muted-foreground block mt-0.5">Click Refresh Data to trigger ingestion.</span>
                 </div>
               ) : (
                 logs.map((log) => (
-                  <div key={log.id} className="px-6 py-3.5 flex items-center justify-between group hover:bg-slate-50/30 transition-colors">
+                  <div key={log.id} className="px-6 py-5 flex items-center justify-between group hover:bg-slate-50/30 transition-colors">
                     <div className="flex items-center gap-4">
-                      <div className="w-9 h-9 rounded-xl bg-slate-100 text-slate-600 flex items-center justify-center shrink-0 border border-slate-200/50 shadow-inner">
-                        <log.icon className="size-4.5" />
+                      <div className="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center shrink-0 border border-slate-200/50 shadow-inner">
+                        <log.icon className="size-5" />
                       </div>
                       <div>
-                        <div className="font-heading text-xs font-extrabold text-foreground">{log.event}</div>
-                        <div className="text-[11px] text-muted-foreground font-sans mt-0.5">{log.desc}</div>
+                        <div className="font-sans text-xs font-semibold uppercase tracking-wider text-muted-foreground">{log.event}</div>
+                        <div className="text-sm font-medium text-foreground font-sans mt-0.5">{log.desc}</div>
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-[10px] font-sans text-muted-foreground/60">{log.time}</div>
+                      <div className="text-xs font-sans text-muted-foreground tabular-nums">{log.time}</div>
                       <div className={cn(
-                        "text-[9px] font-mono font-bold mt-1",
-                        log.status === "SUCCESS" ? "text-primary" : log.status === "UPDATED" ? "text-gold-foreground" : "text-slate-600"
+                        "text-xs font-mono font-bold mt-1",
+                        log.status === "SUCCESS" ? "text-primary" : log.status === "UPDATED" ? "text-gold-foreground" : "text-slate-700"
                       )}>
                         {log.status}
                       </div>
@@ -347,8 +347,8 @@ export default function SystemMonitoringPage() {
 
         {/* Architecture Status */}
         <section className="mb-6">
-          <h3 className="font-heading text-base font-bold text-foreground mb-4">Architecture Status</h3>
-          <div className="bg-card border border-border rounded-xl p-4 flex flex-wrap gap-5 items-center justify-between shadow-sm">
+          <h3 className="font-sans text-lg font-bold text-foreground mb-4">Architecture Status</h3>
+          <div className="bg-card border border-border rounded-xl p-5 flex flex-wrap gap-6 items-center justify-between shadow-sm">
             {[
               { name: "Delivery Service", ok: true },
               { name: "Driver Service", ok: true },
@@ -360,7 +360,7 @@ export default function SystemMonitoringPage() {
             ].map((srv) => (
               <div key={srv.name} className="flex items-center gap-2 px-1">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-sm shrink-0"></span>
-                <span className="text-xs font-semibold text-slate-700 font-sans">{srv.name}</span>
+                <span className="text-sm font-semibold text-slate-700 font-sans">{srv.name}</span>
               </div>
             ))}
           </div>
@@ -368,73 +368,73 @@ export default function SystemMonitoringPage() {
 
         {/* Service Intelligence */}
         <section className="space-y-6">
-          <h3 className="font-heading text-lg font-bold text-foreground">Service Intelligence</h3>
+          <h3 className="font-sans text-xl font-bold text-foreground">Service Intelligence</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4.5">
             {/* Service 1 */}
             <div className="bg-card border border-border rounded-xl p-5 shadow-sm space-y-3">
               <div className="flex items-center justify-between border-b border-slate-50 pb-2">
-                <h4 className="font-sans font-bold text-xs text-foreground">Delivery Service</h4>
-                <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <h4 className="font-sans font-bold text-sm text-foreground">Delivery Service</h4>
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
               </div>
-              <div className="space-y-2 text-xs font-sans">
-                <div className="flex justify-between"><span className="text-muted-foreground">Response</span><span className="font-mono font-bold text-slate-800">42ms</span></div>
-                <div className="flex justify-between"><span className="text-muted-foreground">Error Rate</span><span className="font-mono font-bold text-slate-800">0.01%</span></div>
-                <div className="flex justify-between"><span className="text-muted-foreground">Uptime</span><span className="font-mono font-bold text-emerald-600">99.99%</span></div>
+              <div className="space-y-2 text-sm font-sans">
+                <div className="flex justify-between"><span className="text-muted-foreground">Response</span><span className="font-sans font-semibold text-slate-800 tabular-nums">42ms</span></div>
+                <div className="flex justify-between"><span className="text-muted-foreground">Error Rate</span><span className="font-sans font-semibold text-slate-800 tabular-nums">0.01%</span></div>
+                <div className="flex justify-between"><span className="text-muted-foreground">Uptime</span><span className="font-sans font-semibold text-emerald-600 tabular-nums">99.99%</span></div>
               </div>
             </div>
 
             {/* Service 2 */}
             <div className="bg-card border border-border rounded-xl p-5 shadow-sm space-y-3">
               <div className="flex items-center justify-between border-b border-slate-50 pb-2">
-                <h4 className="font-sans font-bold text-xs text-foreground">Driver Service</h4>
-                <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <h4 className="font-sans font-bold text-sm text-foreground">Driver Service</h4>
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
               </div>
-              <div className="space-y-2 text-xs font-sans">
-                <div className="flex justify-between"><span className="text-muted-foreground">Response</span><span className="font-mono font-bold text-slate-800">38ms</span></div>
-                <div className="flex justify-between"><span className="text-muted-foreground">Error Rate</span><span className="font-mono font-bold text-slate-800">0.02%</span></div>
-                <div className="flex justify-between"><span className="text-muted-foreground">Uptime</span><span className="font-mono font-bold text-emerald-600">99.98%</span></div>
+              <div className="space-y-2 text-sm font-sans">
+                <div className="flex justify-between"><span className="text-muted-foreground">Response</span><span className="font-sans font-semibold text-slate-800 tabular-nums">38ms</span></div>
+                <div className="flex justify-between"><span className="text-muted-foreground">Error Rate</span><span className="font-sans font-semibold text-slate-800 tabular-nums">0.02%</span></div>
+                <div className="flex justify-between"><span className="text-muted-foreground">Uptime</span><span className="font-sans font-semibold text-emerald-600 tabular-nums">99.98%</span></div>
               </div>
             </div>
 
             {/* Service 3 */}
             <div className="bg-card border border-border rounded-xl p-5 shadow-sm space-y-3">
               <div className="flex items-center justify-between border-b border-slate-50 pb-2">
-                <h4 className="font-sans font-bold text-xs text-foreground">Tracking Service</h4>
-                <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <h4 className="font-sans font-bold text-sm text-foreground">Tracking Service</h4>
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
               </div>
-              <div className="space-y-2 text-xs font-sans">
-                <div className="flex justify-between"><span className="text-muted-foreground">Response</span><span className="font-mono font-bold text-slate-800">55ms</span></div>
-                <div className="flex justify-between"><span className="text-muted-foreground">Error Rate</span><span className="font-mono font-bold text-slate-800">0.01%</span></div>
-                <div className="flex justify-between"><span className="text-muted-foreground">Uptime</span><span className="font-mono font-bold text-emerald-600">100.0%</span></div>
+              <div className="space-y-2 text-sm font-sans">
+                <div className="flex justify-between"><span className="text-muted-foreground">Response</span><span className="font-sans font-semibold text-slate-800 tabular-nums">55ms</span></div>
+                <div className="flex justify-between"><span className="text-muted-foreground">Error Rate</span><span className="font-sans font-semibold text-slate-800 tabular-nums">0.01%</span></div>
+                <div className="flex justify-between"><span className="text-muted-foreground">Uptime</span><span className="font-sans font-semibold text-emerald-600 tabular-nums">100.0%</span></div>
               </div>
             </div>
 
             {/* Service 4: Highlight / Gold Status Indicator */}
             <div className="bg-card border border-border rounded-xl p-5 shadow-sm space-y-3 relative overflow-hidden">
               <div className="flex items-center justify-between border-b border-slate-50 pb-2">
-                <h4 className="font-sans font-bold text-xs text-foreground">Assignment Service</h4>
+                <h4 className="font-sans font-bold text-sm text-foreground">Assignment Service</h4>
                 {/* Gold Highlight reserved for system intelligence exceptions */}
-                <span className="w-2 h-2 rounded-full bg-gold"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-gold"></span>
               </div>
-              <div className="space-y-2 text-xs font-sans">
-                <div className="flex justify-between"><span className="text-muted-foreground">Response</span><span className="font-mono font-bold text-slate-800">120ms</span></div>
-                <div className="flex justify-between"><span className="text-muted-foreground">Error Rate</span><span className="font-mono font-bold text-slate-800">0.05%</span></div>
+              <div className="space-y-2 text-sm font-sans">
+                <div className="flex justify-between"><span className="text-muted-foreground">Response</span><span className="font-sans font-semibold text-slate-800 tabular-nums">120ms</span></div>
+                <div className="flex justify-between"><span className="text-muted-foreground">Error Rate</span><span className="font-sans font-semibold text-slate-800 tabular-nums">0.05%</span></div>
                 {/* Muted gold indicator */}
-                <div className="flex justify-between"><span className="text-muted-foreground">Uptime</span><span className="font-mono font-bold text-gold-foreground">99.92%</span></div>
+                <div className="flex justify-between"><span className="text-muted-foreground">Uptime</span><span className="font-sans font-semibold text-gold-foreground tabular-nums">99.92%</span></div>
               </div>
             </div>
 
             {/* Service 5 */}
             <div className="bg-card border border-border rounded-xl p-5 shadow-sm space-y-3">
               <div className="flex items-center justify-between border-b border-slate-50 pb-2">
-                <h4 className="font-sans font-bold text-xs text-foreground">Analytics Service</h4>
-                <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <h4 className="font-sans font-bold text-sm text-foreground">Analytics Service</h4>
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
               </div>
-              <div className="space-y-2 text-xs font-sans">
-                <div className="flex justify-between"><span className="text-muted-foreground">Response</span><span className="font-mono font-bold text-slate-800">210ms</span></div>
-                <div className="flex justify-between"><span className="text-muted-foreground">Error Rate</span><span className="font-mono font-bold text-slate-800">0.00%</span></div>
-                <div className="flex justify-between"><span className="text-muted-foreground">Uptime</span><span className="font-mono font-bold text-emerald-600">99.99%</span></div>
+              <div className="space-y-2 text-sm font-sans">
+                <div className="flex justify-between"><span className="text-muted-foreground">Response</span><span className="font-sans font-semibold text-slate-800 tabular-nums">210ms</span></div>
+                <div className="flex justify-between"><span className="text-muted-foreground">Error Rate</span><span className="font-sans font-semibold text-slate-800 tabular-nums">0.00%</span></div>
+                <div className="flex justify-between"><span className="text-muted-foreground">Uptime</span><span className="font-sans font-semibold text-emerald-600 tabular-nums">99.99%</span></div>
               </div>
             </div>
           </div>
@@ -442,7 +442,7 @@ export default function SystemMonitoringPage() {
 
         {/* Infrastructure Status Cards */}
         <section className="space-y-6">
-          <h3 className="font-heading text-lg font-bold text-foreground">Infrastructure Health</h3>
+          <h3 className="font-sans text-xl font-bold text-foreground">Infrastructure Health</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Redis Cluster - Gold Highlight card */}
@@ -450,25 +450,25 @@ export default function SystemMonitoringPage() {
               <div className="flex items-center justify-between mb-6 border-b border-slate-50 pb-3">
                 <div className="flex items-center gap-3">
                   <Cpu className="size-5 text-gold-foreground" />
-                  <h4 className="font-heading font-bold text-sm text-foreground">Redis Cluster</h4>
+                  <h4 className="font-sans font-bold text-base text-foreground">Redis Cluster</h4>
                 </div>
                 {/* Gold indicator */}
-                <span className="text-[10px] font-bold bg-gold/10 text-gold-foreground border border-gold/15 px-2.5 py-0.5 rounded uppercase font-sans">Healthy</span>
+                <span className="text-xs font-bold bg-gold/10 text-gold-foreground border border-gold/15 px-2.5 py-0.5 rounded uppercase font-sans">Healthy</span>
               </div>
 
-              <div className="space-y-4 text-xs font-sans">
+              <div className="space-y-4 text-sm font-sans">
                 <div className="flex items-center justify-between">
-                  <span className="text-muted-foreground">Cache Hit Rate</span>
-                  <span className="font-mono font-bold text-slate-800">98.2%</span>
+                  <span className="text-muted-foreground font-medium">Cache Hit Rate</span>
+                  <span className="font-sans font-bold text-slate-800 tabular-nums text-base">98.2%</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-muted-foreground">Active Connections</span>
-                  <span className="font-mono font-bold text-slate-800">1,402</span>
+                  <span className="text-muted-foreground font-medium">Active Connections</span>
+                  <span className="font-sans font-bold text-slate-800 tabular-nums text-base">1,402</span>
                 </div>
-                <div className="relative h-1.5 w-full bg-slate-100 rounded-full mt-6">
+                <div className="relative h-2 w-full bg-slate-100 rounded-full mt-6">
                   {/* Memory Usage filled in muted gold */}
                   <div className="absolute inset-y-0 left-0 bg-gold rounded-full" style={{ width: "64%" }} />
-                  <div className="absolute -top-5.5 right-0 text-[10px] font-bold text-gold-foreground">Memory Usage: 64%</div>
+                  <div className="absolute -top-6 right-0 text-xs font-bold text-gold-foreground tabular-nums">Memory Usage: 64%</div>
                 </div>
               </div>
             </div>
@@ -478,23 +478,23 @@ export default function SystemMonitoringPage() {
               <div className="flex items-center justify-between mb-6 border-b border-slate-50 pb-3">
                 <div className="flex items-center gap-3">
                   <Database className="size-5 text-slate-600" />
-                  <h4 className="font-heading font-bold text-sm text-foreground">PostgreSQL Master</h4>
+                  <h4 className="font-sans font-bold text-base text-foreground">PostgreSQL Master</h4>
                 </div>
-                <span className="text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200 px-2.5 py-0.5 rounded uppercase font-sans">v15.2</span>
+                <span className="text-xs font-bold bg-slate-100 text-slate-700 border border-slate-200 px-2.5 py-0.5 rounded uppercase font-sans">v15.2</span>
               </div>
 
-              <div className="space-y-4 text-xs font-sans">
+              <div className="space-y-4 text-sm font-sans">
                 <div className="flex items-center justify-between">
-                  <span className="text-muted-foreground">Query Latency</span>
-                  <span className="font-mono font-bold text-slate-800">210ms</span>
+                  <span className="text-muted-foreground font-medium">Query Latency</span>
+                  <span className="font-sans font-bold text-slate-800 tabular-nums text-base">210ms</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-muted-foreground">Active Connections</span>
-                  <span className="font-mono font-bold text-slate-800">82%</span>
+                  <span className="text-muted-foreground font-medium">Active Connections</span>
+                  <span className="font-sans font-bold text-slate-800 tabular-nums text-base">82%</span>
                 </div>
                 <div className="flex items-center justify-between pt-1">
-                  <span className="text-muted-foreground">Database Sync Load</span>
-                  <span className="text-[10px] font-extrabold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">NORMAL</span>
+                  <span className="text-muted-foreground font-medium">Database Sync Load</span>
+                  <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-100">NORMAL</span>
                 </div>
               </div>
             </div>

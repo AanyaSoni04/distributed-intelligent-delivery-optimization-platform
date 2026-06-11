@@ -107,32 +107,32 @@ export function AdminSidebar({ isOpen = true, onClose }: SidebarProps) {
               key={item.name}
               href={item.href}
               className={cn(
-                "group flex items-start gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all",
+                "group flex items-start gap-3 rounded-lg px-3 py-2.5 transition-all text-base",
                 isActive
-                  ? "bg-primary/5 text-primary border-l-2 border-primary pl-[10px]"
-                  : "text-muted-foreground hover:bg-accent hover:text-foreground border-l-2 border-transparent"
+                  ? "bg-primary/5 text-slate-900 font-semibold border-l-2 border-primary pl-[10px]"
+                  : "text-slate-700 hover:bg-accent hover:text-slate-950 border-l-2 border-transparent font-medium"
               )}
             >
               <item.icon
                 className={cn(
                   "size-5 mt-0.5 shrink-0 transition-colors",
-                  isActive ? "text-primary" : "text-muted-foreground group-hover:text-foreground"
+                  isActive ? "text-primary" : "text-slate-600 group-hover:text-slate-900"
                 )}
               />
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between">
                   <span className="truncate">{item.name}</span>
                   {item.badge && (
-                    <span className="inline-flex items-center gap-0.5 rounded-full bg-gold/10 px-1.5 py-0.5 text-[9px] font-semibold text-gold-foreground font-sans">
-                      <Sparkles className="size-2" />
+                    <span className="inline-flex items-center gap-0.5 rounded-full bg-gold/10 px-1.5 py-0.5 text-xs font-semibold text-gold-foreground font-sans">
+                      <Sparkles className="size-2.5" />
                       {item.badge}
                     </span>
                   )}
                 </div>
                 <span
                   className={cn(
-                    "block truncate text-[11px] font-normal mt-0.5",
-                    isActive ? "text-primary/70" : "text-muted-foreground/60"
+                    "block truncate text-sm font-normal mt-0.5",
+                    isActive ? "text-primary/90" : "text-slate-500"
                   )}
                 >
                   {item.description}
@@ -146,14 +146,14 @@ export function AdminSidebar({ isOpen = true, onClose }: SidebarProps) {
       {/* Footer / User Area */}
       <div className="border-t border-border p-4 bg-sidebar-accent/10">
         <div className="flex items-center gap-3">
-          <div className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary font-heading font-bold text-sm">
+          <div className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary/20 text-primary font-semibold text-sm">
             AS
           </div>
           <div className="min-w-0 flex-1">
-            <span className="block truncate text-xs font-bold text-foreground">
+            <span className="block truncate text-base font-semibold text-slate-900">
               Aanya Soni
             </span>
-            <span className="block truncate text-[10px] text-muted-foreground">
+            <span className="block truncate text-sm font-medium text-slate-500">
               Platform Admin
             </span>
           </div>

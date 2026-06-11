@@ -170,16 +170,16 @@ export default function DeliveryIntelligencePage() {
         {/* Key SLA Metrics (Performance Overview KPI Cards) */}
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* SLA Compliance */}
-          <div className="bg-card border border-border p-6 rounded-xl space-y-4 shadow-sm">
+          <div className="bg-card border border-border p-6 rounded-xl space-y-4 shadow-sm flex flex-col justify-between min-h-[160px] max-w-sm">
             <div className="flex justify-between items-start">
               <div className="p-2 bg-primary/10 rounded-lg text-primary">
                 <Clock className="size-5" />
               </div>
-              <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-100">+2.4%</span>
+              <span className="text-base font-semibold text-green-700 bg-green-50 px-2.5 py-1 rounded-full border border-green-200">+2.4%</span>
             </div>
             <div>
-              <h4 className="font-sans text-xs uppercase tracking-wider text-muted-foreground font-semibold">SLA Compliance</h4>
-              <p className="text-3xl font-heading font-extrabold mt-1 text-foreground">98.2%</p>
+              <h4 className="font-sans text-sm font-medium uppercase tracking-wide text-muted-foreground">SLA Compliance</h4>
+              <p className="text-3xl md:text-4xl lg:text-5xl font-bold mt-2 text-foreground font-sans tabular-nums">98.2%</p>
             </div>
             <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
               <div className="bg-primary h-full rounded-full" style={{ width: "98.2%" }}></div>
@@ -187,17 +187,17 @@ export default function DeliveryIntelligencePage() {
           </div>
 
           {/* Average Delivery Duration - Gold Highlight for Analytics Highlight */}
-          <div className="bg-card border border-border p-6 rounded-xl space-y-4 shadow-sm relative overflow-hidden">
+          <div className="bg-card border border-border p-6 rounded-xl space-y-4 shadow-sm relative overflow-hidden flex flex-col justify-between min-h-[160px] max-w-sm">
             <div className="flex justify-between items-start">
               <div className="p-2 bg-gold/10 rounded-lg text-gold-foreground">
                 <Timer className="size-5" />
               </div>
-              <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-100">-1.2m</span>
+              <span className="text-base font-semibold text-green-700 bg-green-50 px-2.5 py-1 rounded-full border border-green-200">-1.2m</span>
             </div>
             <div>
-              <h4 className="font-sans text-xs uppercase tracking-wider text-muted-foreground font-semibold">Avg. Delivery Duration</h4>
-              <p className="text-3xl font-heading font-extrabold mt-1 text-foreground">
-                24.5<span className="text-sm font-sans font-normal text-muted-foreground ml-1">min</span>
+              <h4 className="font-sans text-sm font-medium uppercase tracking-wide text-muted-foreground">Avg. Delivery Duration</h4>
+              <p className="text-3xl md:text-4xl lg:text-5xl font-bold mt-2 text-foreground font-sans tabular-nums">
+                24.5<span className="text-base font-sans font-normal text-muted-foreground ml-1">min</span>
               </p>
             </div>
             <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
@@ -207,16 +207,16 @@ export default function DeliveryIntelligencePage() {
           </div>
 
           {/* ETA Accuracy */}
-          <div className="bg-card border border-border p-6 rounded-xl space-y-4 shadow-sm">
+          <div className="bg-card border border-border p-6 rounded-xl space-y-4 shadow-sm flex flex-col justify-between min-h-[160px] max-w-sm">
             <div className="flex justify-between items-start">
-              <div className="p-2 bg-slate-100 rounded-lg text-slate-600">
+              <div className="p-2 bg-slate-100 rounded-lg text-slate-650">
                 <Target className="size-5" />
               </div>
-              <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-100">+4.1%</span>
+              <span className="text-base font-semibold text-green-700 bg-green-50 px-2.5 py-1 rounded-full border border-green-200">+4.1%</span>
             </div>
             <div>
-              <h4 className="font-sans text-xs uppercase tracking-wider text-muted-foreground font-semibold">ETA Accuracy</h4>
-              <p className="text-3xl font-heading font-extrabold mt-1 text-foreground">94.8%</p>
+              <h4 className="font-sans text-sm font-medium uppercase tracking-wide text-muted-foreground">ETA Accuracy</h4>
+              <p className="text-3xl md:text-4xl lg:text-5xl font-bold mt-2 text-foreground font-sans tabular-nums">94.8%</p>
             </div>
             <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
               <div className="bg-slate-500 h-full rounded-full" style={{ width: "94.8%" }}></div>
@@ -224,16 +224,16 @@ export default function DeliveryIntelligencePage() {
           </div>
 
           {/* Driver Utilization */}
-          <div className="bg-card border border-border p-6 rounded-xl space-y-4 shadow-sm">
+          <div className="bg-card border border-border p-6 rounded-xl space-y-4 shadow-sm flex flex-col justify-between min-h-[160px] max-w-sm">
             <div className="flex justify-between items-start">
               <div className="p-2 bg-primary/10 rounded-lg text-primary">
                 <Users className="size-5" />
               </div>
-              <span className="text-xs font-semibold text-slate-600 bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200">Optimal</span>
+              <span className="text-sm font-semibold text-slate-700 bg-slate-100 px-2.5 py-1 rounded-full border border-slate-200">Optimal</span>
             </div>
             <div>
-              <h4 className="font-sans text-xs uppercase tracking-wider text-muted-foreground font-semibold">Driver Utilization</h4>
-              <p className="text-3xl font-heading font-extrabold mt-1 text-foreground">82.1%</p>
+              <h4 className="font-sans text-sm font-medium uppercase tracking-wide text-muted-foreground">Driver Utilization</h4>
+              <p className="text-3xl md:text-4xl lg:text-5xl font-bold mt-2 text-foreground font-sans tabular-nums">82.1%</p>
             </div>
             <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
               <div className="bg-primary/70 h-full rounded-full" style={{ width: "82.1%" }}></div>
@@ -245,34 +245,34 @@ export default function DeliveryIntelligencePage() {
         <section className="bg-primary/5 border border-primary/10 rounded-2xl p-6 md:p-8 shadow-inner">
           <div className="flex items-center gap-3 mb-6">
             <Sparkles className="size-5 text-primary" />
-            <h3 className="font-heading text-lg md:text-xl font-bold text-foreground">Route Optimization Impact</h3>
+            <h3 className="font-sans text-2xl font-bold text-foreground">Route Optimization Impact</h3>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="flex flex-col gap-1.5">
-              <span className="font-sans text-[10px] uppercase tracking-widest text-muted-foreground font-bold">Distance Saved</span>
+            <div className="flex flex-col gap-2.5">
+              <span className="font-sans text-sm font-medium uppercase tracking-wide text-muted-foreground">Distance Saved</span>
               <div className="flex items-baseline gap-2">
-                <span className="text-2xl md:text-3xl font-heading font-black text-primary">12,840</span>
-                <span className="text-xs font-sans text-muted-foreground">km/month</span>
+                <span className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary font-sans tabular-nums">12,840</span>
+                <span className="text-sm font-sans text-muted-foreground">km/month</span>
               </div>
-              <p className="text-xs text-muted-foreground/75 mt-0.5">~15.2% reduction vs baseline mileage</p>
+              <p className="text-sm text-muted-foreground/75 mt-0.5">~15.2% reduction vs baseline mileage</p>
             </div>
             
-            <div className="flex flex-col gap-1.5">
-              <span className="font-sans text-[10px] uppercase tracking-widest text-muted-foreground font-bold">Fuel Savings</span>
+            <div className="flex flex-col gap-2.5">
+              <span className="font-sans text-sm font-medium uppercase tracking-wide text-muted-foreground">Fuel Savings</span>
               <div className="flex items-baseline gap-2">
                 {/* Gold Highlight for analytics summary */}
-                <span className="text-2xl md:text-3xl font-heading font-black text-gold-foreground">₹ 1.2 Lakhs</span>
+                <span className="text-3xl md:text-4xl lg:text-5xl font-bold text-amber-800 font-sans tabular-nums">₹ 1.2 Lakhs</span>
               </div>
-              <p className="text-xs text-muted-foreground/75 mt-0.5">Consolidated across 12 fleet hubs</p>
+              <p className="text-sm text-muted-foreground/75 mt-0.5">Consolidated across 12 fleet hubs</p>
             </div>
             
-            <div className="flex flex-col gap-1.5">
-              <span className="font-sans text-[10px] uppercase tracking-widest text-muted-foreground font-bold">Avg ETA Improvement</span>
+            <div className="flex flex-col gap-2.5">
+              <span className="font-sans text-sm font-medium uppercase tracking-wide text-muted-foreground">Avg ETA Improvement</span>
               <div className="flex items-baseline gap-2">
-                <span className="text-2xl md:text-3xl font-heading font-black text-primary">18%</span>
+                <span className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary font-sans tabular-nums">18%</span>
               </div>
-              <p className="text-xs text-muted-foreground/75 mt-0.5">Accelerated high-density urban corridors</p>
+              <p className="text-sm text-muted-foreground/75 mt-0.5">Accelerated high-density urban corridors</p>
             </div>
           </div>
         </section>
@@ -280,16 +280,16 @@ export default function DeliveryIntelligencePage() {
         {/* Regional Performance Table */}
         <section className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden">
           <div className="p-6 border-b border-border bg-slate-50/50">
-            <h3 className="font-heading text-lg font-bold text-foreground">Regional Performance Comparison</h3>
+            <h3 className="font-sans text-2xl font-bold text-foreground">Regional Performance Comparison</h3>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead className="bg-slate-50/70 border-b border-slate-100">
                 <tr>
-                  <th className="px-6 py-4.5 font-sans text-[10px] uppercase tracking-[0.15em] text-muted-foreground font-bold">Region</th>
-                  <th className="px-6 py-4.5 font-sans text-[10px] uppercase tracking-[0.15em] text-muted-foreground font-bold">On-Time %</th>
-                  <th className="px-6 py-4.5 font-sans text-[10px] uppercase tracking-[0.15em] text-muted-foreground font-bold">Avg Duration</th>
-                  <th className="px-6 py-4.5 font-sans text-[10px] uppercase tracking-[0.15em] text-muted-foreground font-bold text-right">SLA Compliance</th>
+                  <th className="px-6 py-4.5 font-sans text-sm font-semibold uppercase tracking-wider text-muted-foreground">Region</th>
+                  <th className="px-6 py-4.5 font-sans text-sm font-semibold uppercase tracking-wider text-muted-foreground">On-Time %</th>
+                  <th className="px-6 py-4.5 font-sans text-sm font-semibold uppercase tracking-wider text-muted-foreground">Avg Duration</th>
+                  <th className="px-6 py-4.5 font-sans text-sm font-semibold uppercase tracking-wider text-muted-foreground text-right">SLA Compliance</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 font-sans">
@@ -305,17 +305,17 @@ export default function DeliveryIntelligencePage() {
                     onClick={() => setSelectedRegion(selectedRegion === row.region ? null : row.region)}
                     className={cn(
                       "hover:bg-slate-50/40 cursor-pointer transition-colors",
-                      selectedRegion === row.region ? "bg-primary/5" : ""
+                      selectedRegion === row.region ? "bg-primary/5 animate-pulse" : ""
                     )}
                   >
-                    <td className="px-6 py-4 font-bold text-sm text-foreground">{row.region}</td>
-                    <td className="px-6 py-4 text-sm font-semibold">
-                      <span className={row.warning ? "text-amber-600" : "text-emerald-600"}>
+                    <td className="px-6 py-5 font-semibold text-base text-foreground">{row.region}</td>
+                    <td className="px-6 py-5 text-base font-semibold tabular-nums">
+                      <span className={row.warning ? "text-amber-700 font-bold" : "text-green-700 font-bold"}>
                         {row.onTime}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-sm text-slate-700">{row.duration}</td>
-                    <td className="px-6 py-4 text-right text-sm font-semibold text-slate-800">{row.sla}</td>
+                    <td className="px-6 py-5 text-base text-slate-700 tabular-nums">{row.duration}</td>
+                    <td className="px-6 py-5 text-right text-base font-semibold text-slate-800 tabular-nums">{row.sla}</td>
                   </tr>
                 ))}
               </tbody>
@@ -329,46 +329,46 @@ export default function DeliveryIntelligencePage() {
           <div className="lg:col-span-2 bg-card p-6 md:p-8 rounded-2xl border border-border shadow-sm flex flex-col justify-between">
             <div className="flex justify-between items-center mb-6">
               <div>
-                <h3 className="font-heading text-lg font-bold text-foreground">Delivery Lifecycle Funnel</h3>
-                <p className="text-xs text-muted-foreground">Conversion metrics through the logistics pipeline stages</p>
+                <h3 className="font-sans text-2xl font-bold text-foreground">Delivery Lifecycle Funnel</h3>
+                <p className="text-sm text-muted-foreground">Conversion metrics through the logistics pipeline stages</p>
               </div>
-              <Info className="size-4.5 text-muted-foreground/60" />
+              <Info className="size-5 text-muted-foreground/60" />
             </div>
 
             <div className="flex flex-col gap-3.5">
               {/* Funnel Step 1 */}
               <div className="flex items-center h-14 group cursor-default">
-                <div className="w-28 md:w-32 font-sans text-[10px] font-bold uppercase text-muted-foreground shrink-0">Order Inbound</div>
+                <div className="w-28 md:w-32 font-sans text-sm font-medium uppercase tracking-wide text-muted-foreground shrink-0">Order Inbound</div>
                 <div className="flex-grow bg-primary/10 hover:bg-primary/15 rounded-r-lg h-full flex items-center px-6 md:px-8 relative transition-all duration-200">
-                  <span className="font-heading font-extrabold text-sm md:text-base text-foreground">12,402</span>
-                  <span className="absolute right-6 text-[10px] font-bold text-muted-foreground/60">100% Volume</span>
+                  <span className="font-sans text-base font-semibold tabular-nums text-foreground">12,402</span>
+                  <span className="absolute right-6 text-sm font-medium text-slate-500 tabular-nums">100% Volume</span>
                 </div>
               </div>
 
               {/* Funnel Step 2 */}
               <div className="flex items-center h-14 group cursor-default">
-                <div className="w-28 md:w-32 font-sans text-[10px] font-bold uppercase text-muted-foreground shrink-0">Assigned</div>
+                <div className="w-28 md:w-32 font-sans text-sm font-medium uppercase tracking-wide text-muted-foreground shrink-0">Assigned</div>
                 <div className="w-[85%] bg-primary/25 hover:bg-primary/30 rounded-r-lg h-full flex items-center px-6 md:px-8 relative transition-all duration-200">
-                  <span className="font-heading font-extrabold text-sm md:text-base text-foreground">10,541</span>
-                  <span className="absolute right-6 text-[10px] font-bold text-muted-foreground/60">85% Assigned</span>
+                  <span className="font-sans text-base font-semibold tabular-nums text-foreground">10,541</span>
+                  <span className="absolute right-6 text-sm font-medium text-slate-500 tabular-nums">85% Assigned</span>
                 </div>
               </div>
 
               {/* Funnel Step 3 */}
               <div className="flex items-center h-14 group cursor-default">
-                <div className="w-28 md:w-32 font-sans text-[10px] font-bold uppercase text-muted-foreground shrink-0">In Transit</div>
+                <div className="w-28 md:w-32 font-sans text-sm font-medium uppercase tracking-wide text-muted-foreground shrink-0">In Transit</div>
                 <div className="w-[78%] bg-primary/45 hover:bg-primary/50 rounded-r-lg h-full flex items-center px-6 md:px-8 relative transition-all duration-200">
-                  <span className="font-heading font-extrabold text-sm md:text-base text-foreground">9,673</span>
-                  <span className="absolute right-6 text-[10px] font-bold text-muted-foreground/60">78% Active</span>
+                  <span className="font-sans text-base font-semibold tabular-nums text-foreground">9,673</span>
+                  <span className="absolute right-6 text-sm font-medium text-slate-500 tabular-nums">78% Active</span>
                 </div>
               </div>
 
               {/* Funnel Step 4 */}
               <div className="flex items-center h-14 group cursor-default">
-                <div className="w-28 md:w-32 font-sans text-[10px] font-bold uppercase text-muted-foreground shrink-0">Delivered</div>
+                <div className="w-28 md:w-32 font-sans text-sm font-medium uppercase tracking-wide text-muted-foreground shrink-0">Delivered</div>
                 <div className="w-[72%] bg-primary hover:bg-primary/95 text-primary-foreground rounded-r-lg h-full flex items-center px-6 md:px-8 relative transition-all duration-200 shadow-sm">
-                  <span className="font-heading font-extrabold text-sm md:text-base">8,929</span>
-                  <span className="absolute right-6 text-[10px] font-bold text-primary-foreground/90">92.3% Success Rate</span>
+                  <span className="font-sans text-base font-semibold tabular-nums">8,929</span>
+                  <span className="absolute right-6 text-sm font-medium text-primary-foreground/90 tabular-nums">92.3% Success Rate</span>
                 </div>
               </div>
             </div>
@@ -376,7 +376,7 @@ export default function DeliveryIntelligencePage() {
 
           {/* Delivery Status Distribution */}
           <div className="bg-card p-6 md:p-8 rounded-2xl border border-border shadow-sm flex flex-col justify-between">
-            <h3 className="font-heading text-lg font-bold text-foreground mb-4">Status Distribution</h3>
+            <h3 className="font-sans text-2xl font-bold text-foreground mb-4">Status Distribution</h3>
             
             {/* Recharts Pie Chart Donut */}
             <div className="relative flex-grow flex items-center justify-center min-h-[180px]">
@@ -398,7 +398,7 @@ export default function DeliveryIntelligencePage() {
                     </Pie>
                     <Tooltip 
                       formatter={(value) => [`${value}%`, "Share"]}
-                      contentStyle={{ background: "rgba(255, 255, 255, 0.95)", border: "1px solid #e2e8f0", borderRadius: "8px", fontSize: "11px" }}
+                      contentStyle={{ background: "rgba(255, 255, 255, 0.95)", border: "1px solid #e2e8f0", borderRadius: "8px", fontSize: "12px" }}
                     />
                   </PieChart>
                 </ResponsiveContainer>
@@ -408,20 +408,20 @@ export default function DeliveryIntelligencePage() {
               
               {/* Inner text for donut */}
               <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                <span className="text-2xl font-heading font-black text-foreground">12k+</span>
-                <span className="text-[9px] font-sans font-bold uppercase tracking-widest text-muted-foreground">Total Tasks</span>
+                <span className="text-3xl font-sans font-bold text-foreground">12k+</span>
+                <span className="text-sm font-sans font-semibold uppercase tracking-wide text-muted-foreground">Total Tasks</span>
               </div>
             </div>
 
             {/* Legend */}
             <div className="space-y-2.5 mt-6 border-t border-slate-50 pt-4">
               {statusData.map((item) => (
-                <div key={item.name} className="flex items-center justify-between text-xs font-semibold">
+                <div key={item.name} className="flex items-center justify-between text-base font-semibold">
                   <div className="flex items-center gap-2">
                     <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: item.color }} />
                     <span className="text-slate-700">{item.name}</span>
                   </div>
-                  <span className="text-slate-900">{item.value}%</span>
+                  <span className="text-slate-900 tabular-nums">{item.value}%</span>
                 </div>
               ))}
             </div>
@@ -435,10 +435,10 @@ export default function DeliveryIntelligencePage() {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2.5">
                 <Zap className="size-5 text-primary" />
-                <h3 className="font-heading text-lg font-bold text-foreground">Assignment Engine Insights</h3>
+                <h3 className="font-sans text-2xl font-bold text-foreground">Assignment Engine Insights</h3>
               </div>
-              <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-100 flex items-center gap-1">
-                <CheckCircle className="size-3 text-emerald-600" />
+              <span className="text-sm font-semibold text-green-700 bg-green-50 px-2.5 py-1 rounded-full border border-green-200 flex items-center gap-1">
+                <CheckCircle className="size-3.5 text-green-700" />
                 Active Optimization
               </span>
             </div>
@@ -446,41 +446,41 @@ export default function DeliveryIntelligencePage() {
             {/* Stats block */}
             <div className="grid grid-cols-2 gap-4">
               <div className="p-4 bg-slate-50/60 rounded-xl border border-slate-100">
-                <span className="text-[10px] font-sans font-bold uppercase tracking-wider text-muted-foreground">System Latency</span>
+                <span className="text-sm font-medium uppercase tracking-wide text-muted-foreground">System Latency</span>
                 <div className="flex items-end gap-1.5 mt-1.5">
-                  <span className="text-xl font-heading font-extrabold text-foreground">42ms</span>
-                  <span className="text-[10px] font-bold text-emerald-600 mb-0.5">&darr; 12%</span>
+                  <span className="text-3xl font-bold text-foreground font-sans tabular-nums">42ms</span>
+                  <span className="text-base font-semibold text-green-700 mb-0.5">&darr; 12%</span>
                 </div>
               </div>
 
               <div className="p-4 bg-slate-50/60 rounded-xl border border-slate-100">
-                <span className="text-[10px] font-sans font-bold uppercase tracking-wider text-muted-foreground">Compute Load</span>
+                <span className="text-sm font-medium uppercase tracking-wide text-muted-foreground">Compute Load</span>
                 <div className="flex items-end gap-1.5 mt-1.5">
-                  <span className="text-xl font-heading font-extrabold text-foreground">88.4%</span>
-                  <span className="text-[10px] font-bold text-emerald-600 mb-0.5">&uarr; 4%</span>
+                  <span className="text-3xl font-bold text-foreground font-sans tabular-nums">88.4%</span>
+                  <span className="text-base font-semibold text-green-700 mb-0.5">&uarr; 4%</span>
                 </div>
               </div>
 
               <div className="p-4 bg-slate-50/60 rounded-xl border border-slate-100">
-                <span className="text-[10px] font-sans font-bold uppercase tracking-wider text-muted-foreground">Re-Optimization</span>
+                <span className="text-sm font-medium uppercase tracking-wide text-muted-foreground">Re-Optimization</span>
                 <div className="flex items-end gap-1.5 mt-1.5">
-                  <span className="text-xl font-heading font-extrabold text-foreground">1.2%</span>
-                  <span className="text-[10px] font-bold text-emerald-600 mb-0.5">&darr; 0.8%</span>
+                  <span className="text-3xl font-bold text-foreground font-sans tabular-nums">1.2%</span>
+                  <span className="text-base font-semibold text-green-700 mb-0.5">&darr; 0.8%</span>
                 </div>
               </div>
 
               <div className="p-4 bg-slate-50/60 rounded-xl border border-slate-100">
-                <span className="text-[10px] font-sans font-bold uppercase tracking-wider text-muted-foreground">Load Balance</span>
+                <span className="text-sm font-medium uppercase tracking-wide text-muted-foreground">Load Balance</span>
                 <div className="flex items-end gap-1.5 mt-1.5">
-                  <span className="text-xl font-heading font-extrabold text-foreground">94.8%</span>
-                  <span className="text-[10px] font-bold text-slate-500 mb-0.5">STABLE</span>
+                  <span className="text-3xl font-bold text-foreground font-sans tabular-nums">94.8%</span>
+                  <span className="text-base font-semibold text-slate-500 mb-0.5">STABLE</span>
                 </div>
               </div>
             </div>
 
             {/* Heatmap progress visualization */}
             <div className="space-y-2">
-              <h5 className="text-[10px] font-bold font-sans uppercase tracking-wider text-muted-foreground">System Compute Heatmap</h5>
+              <h5 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">System Compute Heatmap</h5>
               <div className="w-full bg-slate-100 h-8 rounded-lg flex overflow-hidden border border-slate-200/50">
                 <div className="bg-primary/20 h-full w-[40%] border-r border-white/40" title="Node A Load"></div>
                 <div className="bg-primary/45 h-full w-[25%] border-r border-white/40" title="Node B Load"></div>
@@ -489,7 +489,7 @@ export default function DeliveryIntelligencePage() {
                 <div className="bg-gold h-full w-[10%] border-r border-white/40" title="Premium Compute Segment"></div>
                 <div className="bg-primary h-full w-[5%]" title="Node E Load"></div>
               </div>
-              <p className="text-[10px] text-muted-foreground italic font-sans">Real-time CPU/GPU core allocation across optimization clusters.</p>
+              <p className="text-sm text-slate-500 italic font-sans">Real-time CPU/GPU core allocation across optimization clusters.</p>
             </div>
           </div>
 
@@ -497,7 +497,7 @@ export default function DeliveryIntelligencePage() {
           <div className="bg-card p-6 md:p-8 rounded-2xl border border-border shadow-sm flex flex-col space-y-6 justify-between">
             <div className="flex items-center gap-2.5">
               <TrendingUp className="size-5 text-gold-foreground" />
-              <h3 className="font-heading text-lg font-bold text-foreground">Trend Analysis</h3>
+              <h3 className="font-sans text-2xl font-bold text-foreground">Trend Analysis</h3>
             </div>
 
             <div className="space-y-6">
@@ -610,8 +610,8 @@ export default function DeliveryIntelligencePage() {
         {/* Bottom Data Table: Top Performance Drivers */}
         <section className="bg-card rounded-2xl border border-border shadow-sm overflow-hidden">
           <div className="p-6 border-b border-border flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-50/50">
-            <h3 className="font-heading text-lg font-bold text-foreground">Top Performance Drivers</h3>
-            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar font-sans text-xs font-semibold">
+            <h3 className="font-sans text-2xl font-bold text-foreground">Top Performance Drivers</h3>
+            <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar font-sans text-base font-medium">
               {[
                 { label: "Overall", key: "overall" },
                 { label: "Safety Score", key: "safety" },
@@ -622,9 +622,9 @@ export default function DeliveryIntelligencePage() {
                   key={tab.key}
                   onClick={() => setDriverSort(tab.key as any)}
                   className={cn(
-                    "px-3 py-1 rounded-full whitespace-nowrap transition-colors",
+                    "px-3.5 py-1.5 rounded-full whitespace-nowrap transition-colors",
                     driverSort === tab.key 
-                      ? "bg-primary text-primary-foreground" 
+                      ? "bg-primary text-primary-foreground font-semibold" 
                       : "hover:bg-slate-100 text-slate-600 hover:text-slate-800"
                   )}
                 >
@@ -638,17 +638,17 @@ export default function DeliveryIntelligencePage() {
             <table className="w-full text-left border-collapse">
               <thead className="bg-slate-50/70 border-b border-slate-100">
                 <tr>
-                  <th className="px-6 py-4 font-sans text-[10px] uppercase tracking-[0.15em] text-muted-foreground font-bold">Driver Detail</th>
-                  <th className="px-6 py-4 font-sans text-[10px] uppercase tracking-[0.15em] text-muted-foreground font-bold">Zone</th>
-                  <th className="px-6 py-4 font-sans text-[10px] uppercase tracking-[0.15em] text-muted-foreground font-bold">Volume</th>
-                  <th className="px-6 py-4 font-sans text-[10px] uppercase tracking-[0.15em] text-muted-foreground font-bold">Avg Duration</th>
-                  <th className="px-6 py-4 font-sans text-[10px] uppercase tracking-[0.15em] text-muted-foreground font-bold text-right">Success Rate</th>
+                  <th className="px-6 py-4 font-sans text-sm font-semibold uppercase tracking-wider text-muted-foreground">Driver Detail</th>
+                  <th className="px-6 py-4 font-sans text-sm font-semibold uppercase tracking-wider text-muted-foreground">Zone</th>
+                  <th className="px-6 py-4 font-sans text-sm font-semibold uppercase tracking-wider text-muted-foreground">Volume</th>
+                  <th className="px-6 py-4 font-sans text-sm font-semibold uppercase tracking-wider text-muted-foreground">Avg Duration</th>
+                  <th className="px-6 py-4 font-sans text-sm font-semibold uppercase tracking-wider text-muted-foreground text-right">Success Rate</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 font-sans">
                 {getSortedDrivers().map((driver) => (
                   <tr key={driver.id} className="hover:bg-slate-50/40 transition-colors">
-                    <td className="px-6 py-4">
+                    <td className="px-6 py-5">
                       <div className="flex items-center gap-3">
                         {driver.avatar ? (
                           <img 
@@ -658,7 +658,7 @@ export default function DeliveryIntelligencePage() {
                           />
                         ) : (
                           <div className={cn(
-                            "w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shadow-inner",
+                            "w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shadow-inner",
                             driver.initials === "AJ" 
                               ? "bg-gold/10 text-gold-foreground" 
                               : "bg-slate-100 text-slate-700"
@@ -667,16 +667,16 @@ export default function DeliveryIntelligencePage() {
                           </div>
                         )}
                         <div>
-                          <p className="font-bold text-sm text-foreground">{driver.name}</p>
-                          <p className="text-[10px] text-muted-foreground">ID: {driver.id}</p>
+                          <p className="font-semibold text-base text-foreground">{driver.name}</p>
+                          <p className="text-sm text-slate-500 tabular-nums">ID: {driver.id}</p>
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-sm font-medium text-slate-700">{driver.zone}</td>
-                    <td className="px-6 py-4 text-sm text-slate-700">{driver.volume} Tasks</td>
-                    <td className="px-6 py-4 text-sm text-slate-700">{driver.avgDuration} min</td>
-                    <td className="px-6 py-4 text-right">
-                      <span className="font-bold text-primary text-sm">{driver.successRate}%</span>
+                    <td className="px-6 py-5 text-base font-semibold text-slate-700">{driver.zone}</td>
+                    <td className="px-6 py-5 text-base text-slate-600 tabular-nums">{driver.volume} Tasks</td>
+                    <td className="px-6 py-5 text-base text-slate-600 tabular-nums">{driver.avgDuration} min</td>
+                    <td className="px-6 py-5 text-right">
+                      <span className="font-bold text-primary text-base tabular-nums">{driver.successRate}%</span>
                     </td>
                   </tr>
                 ))}
@@ -685,7 +685,7 @@ export default function DeliveryIntelligencePage() {
           </div>
 
           <div className="p-4 bg-slate-50/30 border-t border-slate-100 text-center">
-            <button className="text-xs font-bold font-sans uppercase tracking-widest text-primary hover:underline transition-all">
+            <button className="text-base font-semibold font-sans uppercase tracking-widest text-primary hover:underline transition-all">
               View Detailed Fleet Performance
             </button>
           </div>

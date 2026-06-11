@@ -26,19 +26,19 @@ export function PageContainer({
     <div className="flex-1 flex flex-col p-4 md:p-8 max-w-7xl w-full mx-auto animate-fade-in">
       {/* Breadcrumbs */}
       {breadcrumbs && breadcrumbs.length > 0 && (
-        <nav className="flex items-center space-x-1.5 text-xs text-muted-foreground mb-4">
+        <nav className="flex items-center space-x-2 text-sm font-medium text-muted-foreground mb-4">
           <Link href="/" className="hover:text-primary transition-colors">
             Home
           </Link>
           {breadcrumbs.map((item, idx) => (
             <React.Fragment key={idx}>
-              <ChevronRight className="size-3.5" />
+              <ChevronRight className="size-3.5 text-muted-foreground" />
               {item.href ? (
                 <Link href={item.href} className="hover:text-primary transition-colors">
                   {item.label}
                 </Link>
               ) : (
-                <span className="text-foreground/80 font-medium">{item.label}</span>
+                <span className="text-foreground font-semibold">{item.label}</span>
               )}
             </React.Fragment>
           ))}
@@ -48,11 +48,11 @@ export function PageContainer({
       {/* Header section */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
         <div>
-          <h1 className="text-2xl md:text-3xl font-heading font-bold tracking-tight text-foreground">
+          <h1 className="text-[40px] font-heading font-bold tracking-tight text-foreground leading-tight">
             {title}
           </h1>
           {subtitle && (
-            <p className="text-sm text-muted-foreground mt-1 font-sans">
+            <p className="text-sm text-muted-foreground/90 mt-2 font-sans">
               {subtitle}
             </p>
           )}

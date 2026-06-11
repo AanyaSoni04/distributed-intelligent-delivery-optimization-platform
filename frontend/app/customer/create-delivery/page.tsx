@@ -98,39 +98,39 @@ export default function CreateDeliveryPage() {
           <section className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="h-7 w-1 bg-primary rounded-full"></div>
-              <h2 className="text-lg font-heading font-extrabold text-foreground">1. Delivery Information</h2>
+              <h2 className="text-xl font-bold font-sans text-foreground">1. Delivery Information</h2>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-card border border-border p-6 rounded-xl shadow-sm">
               <div className="space-y-1.5">
-                <label className="font-sans text-[10px] uppercase font-bold text-muted-foreground tracking-wider block">Delivery Name</label>
+                <label className="text-sm font-medium uppercase tracking-wide text-muted-foreground font-sans block">Delivery Name</label>
                 <input 
                   type="text"
                   required
                   value={deliveryName}
                   onChange={(e) => setDeliveryName(e.target.value)}
                   placeholder="e.g., Q3 Electronics Batch A"
-                  className="w-full bg-slate-50 border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary rounded-lg p-3 font-sans text-xs text-foreground placeholder:text-slate-400"
+                  className="w-full bg-slate-50 border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary rounded-lg p-3 font-sans text-base text-foreground placeholder:text-slate-400"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="font-sans text-[10px] uppercase font-bold text-muted-foreground tracking-wider block">Reference Number (Optional)</label>
+                <label className="text-sm font-medium uppercase tracking-wide text-muted-foreground font-sans block">Reference Number (Optional)</label>
                 <input 
                   type="text"
                   value={refNumber}
                   onChange={(e) => setRefNumber(e.target.value)}
                   placeholder="e.g., REF-2026-001"
-                  className="w-full bg-slate-50 border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary rounded-lg p-3 font-sans text-xs text-foreground placeholder:text-slate-400"
+                  className="w-full bg-slate-50 border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary rounded-lg p-3 font-sans text-base text-foreground placeholder:text-slate-400"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="font-sans text-[10px] uppercase font-bold text-muted-foreground tracking-wider block">Package Type</label>
+                <label className="text-sm font-medium uppercase tracking-wide text-muted-foreground font-sans block">Package Type</label>
                 <select 
                   value={packageType}
                   onChange={(e) => setPackageType(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary rounded-lg p-3 font-sans text-xs text-foreground"
+                  className="w-full bg-slate-50 border border-slate-200 focus:border-primary focus:ring-1 focus:ring-primary rounded-lg p-3 font-sans text-base text-foreground"
                 >
                   <option value="Electronics">Electronics</option>
                   <option value="Documents">Documents</option>
@@ -142,7 +142,7 @@ export default function CreateDeliveryPage() {
               </div>
 
               <div className="space-y-1.5">
-                <label className="font-sans text-[10px] uppercase font-bold text-muted-foreground tracking-wider block">Priority</label>
+                <label className="text-sm font-medium uppercase tracking-wide text-muted-foreground font-sans block">Priority</label>
                 <div className="flex gap-2">
                   {(["STANDARD", "EXPRESS", "CRITICAL"] as const).map((level) => (
                     <button
@@ -150,7 +150,7 @@ export default function CreateDeliveryPage() {
                       type="button"
                       onClick={() => setPriority(level)}
                       className={cn(
-                        "flex-1 py-2.5 px-2 rounded-lg text-[10px] font-bold tracking-wider transition-all border",
+                        "flex-1 py-3 px-4 rounded-lg text-base font-semibold tracking-wide transition-all border",
                         priority === level
                           ? "bg-primary/10 text-primary border-primary ring-1 ring-primary"
                           : "bg-slate-50 text-slate-500 border-slate-200 hover:bg-slate-100"
@@ -170,7 +170,7 @@ export default function CreateDeliveryPage() {
             <section className="space-y-4">
               <div className="flex items-center gap-3">
                 <div className="h-7 w-1 bg-gold rounded-full"></div>
-                <h2 className="text-lg font-heading font-extrabold text-foreground">2. Pickup Location</h2>
+                <h2 className="text-xl font-bold font-sans text-foreground">2. Pickup Location</h2>
               </div>
               
               <div className="bg-card border border-border p-5 rounded-xl shadow-sm space-y-4">
@@ -184,58 +184,58 @@ export default function CreateDeliveryPage() {
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <MapPin className="size-6 text-primary animate-pulse" />
                   </div>
-                  <div className="absolute bottom-2 left-2 px-2 py-0.5 bg-white/95 rounded text-[9px] font-bold text-slate-800 shadow-sm border border-slate-100 uppercase tracking-widest font-sans">PICKUP ZONE A</div>
+                  <div className="absolute bottom-2 left-2 px-2.5 py-1 bg-white/95 rounded text-[10px] font-bold text-slate-800 shadow-sm border border-slate-150 uppercase tracking-widest font-sans">PICKUP ZONE A</div>
                 </div>
 
-                <div className="space-y-3 font-sans text-xs">
-                  <div className="space-y-1">
-                    <label className="text-[9px] font-bold uppercase text-muted-foreground">Contact Name</label>
+                <div className="space-y-4 font-sans text-base">
+                  <div className="space-y-1.5">
+                    <label className="text-sm font-medium uppercase tracking-wide text-muted-foreground">Contact Name</label>
                     <input 
                       type="text" 
                       required
                       value={pickupContact}
                       onChange={(e) => setPickupContact(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-xs" 
+                      className="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-base" 
                     />
                   </div>
-                  <div className="space-y-1">
-                    <label className="text-[9px] font-bold uppercase text-muted-foreground">Phone Number</label>
+                  <div className="space-y-1.5">
+                    <label className="text-sm font-medium uppercase tracking-wide text-muted-foreground">Phone Number</label>
                     <input 
                       type="tel" 
                       required
                       placeholder="+91 XXXXX XXXXX"
                       value={pickupPhone}
                       onChange={(e) => setPickupPhone(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-xs" 
+                      className="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-base" 
                     />
                   </div>
-                  <div className="space-y-1">
-                    <label className="text-[9px] font-bold uppercase text-muted-foreground">Street Address</label>
+                  <div className="space-y-1.5">
+                    <label className="text-sm font-medium uppercase tracking-wide text-muted-foreground">Street Address</label>
                     <input 
                       type="text" 
                       required
                       value={pickupAddress}
                       onChange={(e) => setPickupAddress(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-xs" 
+                      className="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-base" 
                     />
                   </div>
-                  <div className="grid grid-cols-3 gap-2.5">
-                    <div className="space-y-1">
-                      <label className="text-[9px] font-bold uppercase text-muted-foreground">City</label>
+                  <div className="grid grid-cols-3 gap-3">
+                    <div className="space-y-1.5">
+                      <label className="text-sm font-medium uppercase tracking-wide text-muted-foreground">City</label>
                       <input 
                         type="text" 
                         required
                         value={pickupCity}
                         onChange={(e) => setPickupCity(e.target.value)}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-xs" 
+                        className="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-base" 
                       />
                     </div>
-                    <div className="space-y-1">
-                      <label className="text-[9px] font-bold uppercase text-muted-foreground">State</label>
+                    <div className="space-y-1.5">
+                      <label className="text-sm font-medium uppercase tracking-wide text-muted-foreground">State</label>
                       <select 
                         value={pickupState}
                         onChange={(e) => setPickupState(e.target.value)}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-lg p-1.5 text-xs"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-base"
                       >
                         <option value="Maharashtra">Maharashtra</option>
                         <option value="Karnataka">Karnataka</option>
@@ -244,15 +244,15 @@ export default function CreateDeliveryPage() {
                         <option value="Telangana">Telangana</option>
                       </select>
                     </div>
-                    <div className="space-y-1">
-                      <label className="text-[9px] font-bold uppercase text-muted-foreground">Pincode</label>
+                    <div className="space-y-1.5">
+                      <label className="text-sm font-medium uppercase tracking-wide text-muted-foreground">Pincode</label>
                       <input 
                         type="text" 
                         required
                         placeholder="400001"
                         value={pickupPincode}
                         onChange={(e) => setPickupPincode(e.target.value)}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-xs" 
+                        className="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-base tabular-nums" 
                       />
                     </div>
                   </div>
@@ -264,7 +264,7 @@ export default function CreateDeliveryPage() {
             <section className="space-y-4">
               <div className="flex items-center gap-3">
                 <div className="h-7 w-1 bg-primary rounded-full"></div>
-                <h2 className="text-lg font-heading font-extrabold text-foreground">3. Delivery Location</h2>
+                <h2 className="text-xl font-bold font-sans text-foreground">3. Delivery Location</h2>
               </div>
               
               <div className="bg-card border border-border p-5 rounded-xl shadow-sm space-y-4">
@@ -279,58 +279,58 @@ export default function CreateDeliveryPage() {
                     {/* Gold indicator matching destinationVote */}
                     <Navigation className="size-6 text-gold rotate-45" />
                   </div>
-                  <div className="absolute bottom-2 left-2 px-2 py-0.5 bg-white/95 rounded text-[9px] font-bold text-slate-800 shadow-sm border border-slate-100 uppercase tracking-widest font-sans">DESTINATION B</div>
+                  <div className="absolute bottom-2 left-2 px-2.5 py-1 bg-white/95 rounded text-[10px] font-bold text-slate-800 shadow-sm border border-slate-150 uppercase tracking-widest font-sans">DESTINATION B</div>
                 </div>
 
-                <div className="space-y-3 font-sans text-xs">
-                  <div className="space-y-1">
-                    <label className="text-[9px] font-bold uppercase text-muted-foreground">Contact Name</label>
+                <div className="space-y-4 font-sans text-base">
+                  <div className="space-y-1.5">
+                    <label className="text-sm font-medium uppercase tracking-wide text-muted-foreground">Contact Name</label>
                     <input 
                       type="text" 
                       required
                       value={dropContact}
                       onChange={(e) => setDropContact(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-xs" 
+                      className="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-base" 
                     />
                   </div>
-                  <div className="space-y-1">
-                    <label className="text-[9px] font-bold uppercase text-muted-foreground">Phone Number</label>
+                  <div className="space-y-1.5">
+                    <label className="text-sm font-medium uppercase tracking-wide text-muted-foreground">Phone Number</label>
                     <input 
                       type="tel" 
                       required
                       placeholder="+91 XXXXX XXXXX"
                       value={dropPhone}
                       onChange={(e) => setDropPhone(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-xs" 
+                      className="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-base" 
                     />
                   </div>
-                  <div className="space-y-1">
-                    <label className="text-[9px] font-bold uppercase text-muted-foreground">Street Address</label>
+                  <div className="space-y-1.5">
+                    <label className="text-sm font-medium uppercase tracking-wide text-muted-foreground">Street Address</label>
                     <input 
                       type="text" 
                       required
                       value={dropAddress}
                       onChange={(e) => setDropAddress(e.target.value)}
-                      className="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-xs" 
+                      className="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-base" 
                     />
                   </div>
-                  <div className="grid grid-cols-3 gap-2.5">
-                    <div className="space-y-1">
-                      <label className="text-[9px] font-bold uppercase text-muted-foreground">City</label>
+                  <div className="grid grid-cols-3 gap-3">
+                    <div className="space-y-1.5">
+                      <label className="text-sm font-medium uppercase tracking-wide text-muted-foreground">City</label>
                       <input 
                         type="text" 
                         required
                         value={dropCity}
                         onChange={(e) => setDropCity(e.target.value)}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-xs" 
+                        className="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-base" 
                       />
                     </div>
-                    <div className="space-y-1">
-                      <label className="text-[9px] font-bold uppercase text-muted-foreground">State</label>
+                    <div className="space-y-1.5">
+                      <label className="text-sm font-medium uppercase tracking-wide text-muted-foreground">State</label>
                       <select 
                         value={dropState}
                         onChange={(e) => setDropState(e.target.value)}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-lg p-1.5 text-xs"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-base"
                       >
                         <option value="Karnataka">Karnataka</option>
                         <option value="Maharashtra">Maharashtra</option>
@@ -339,15 +339,15 @@ export default function CreateDeliveryPage() {
                         <option value="Telangana">Telangana</option>
                       </select>
                     </div>
-                    <div className="space-y-1">
-                      <label className="text-[9px] font-bold uppercase text-muted-foreground">Pincode</label>
+                    <div className="space-y-1.5">
+                      <label className="text-sm font-medium uppercase tracking-wide text-muted-foreground">Pincode</label>
                       <input 
                         type="text" 
                         required
                         placeholder="560001"
                         value={dropPincode}
                         onChange={(e) => setDropPincode(e.target.value)}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-lg p-2 text-xs" 
+                        className="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-base tabular-nums" 
                       />
                     </div>
                   </div>
@@ -360,12 +360,12 @@ export default function CreateDeliveryPage() {
           <section className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="h-7 w-1 bg-slate-400 rounded-full"></div>
-              <h2 className="text-lg font-heading font-extrabold text-foreground">4. Package Information</h2>
+              <h2 className="text-xl font-bold font-sans text-foreground">4. Package Information</h2>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 bg-card border border-border p-6 rounded-xl shadow-sm">
               <div className="space-y-1.5">
-                <label className="font-sans text-[10px] uppercase font-bold text-muted-foreground block">Weight (kg)</label>
+                <label className="text-sm font-medium uppercase tracking-wide text-muted-foreground block">Weight (kg)</label>
                 <div className="relative">
                   <input 
                     type="number" 
@@ -373,45 +373,45 @@ export default function CreateDeliveryPage() {
                     min="0.1"
                     value={weight}
                     onChange={(e) => setWeight(parseFloat(e.target.value) || 0.1)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-xs pr-10 font-bold" 
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-base font-semibold tabular-nums pr-12" 
                   />
-                  <span className="absolute right-3.5 top-3.5 text-[10px] font-bold text-slate-400 uppercase">KG</span>
+                  <span className="absolute right-3.5 top-3.5 text-xs font-bold text-slate-400 uppercase">KG</span>
                 </div>
               </div>
 
               <div className="space-y-1.5">
-                <label className="font-sans text-[10px] uppercase font-bold text-muted-foreground block">Dimensions (L x W x H cm)</label>
+                <label className="text-sm font-medium uppercase tracking-wide text-muted-foreground block">Dimensions (L x W x H cm)</label>
                 <input 
                   type="text" 
                   value={dimensions}
                   onChange={(e) => setDimensions(e.target.value)}
                   placeholder="e.g. 10 x 10 x 10"
-                  className="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-xs font-bold" 
+                  className="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-base font-semibold tabular-nums" 
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="font-sans text-[10px] uppercase font-bold text-muted-foreground block">Packages Count</label>
+                <label className="text-sm font-medium uppercase tracking-wide text-muted-foreground block">Packages Count</label>
                 <input 
                   type="number" 
                   min="1"
                   value={numPackages}
                   onChange={(e) => setNumPackages(parseInt(e.target.value) || 1)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-xs font-bold" 
+                  className="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-base font-semibold tabular-nums" 
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="font-sans text-[10px] uppercase font-bold text-muted-foreground block">Package Value (₹)</label>
+                <label className="text-sm font-medium uppercase tracking-wide text-muted-foreground block">Package Value (₹)</label>
                 <div className="relative">
                   <input 
                     type="number"
                     min="0" 
                     value={packageValue}
                     onChange={(e) => setPackageValue(parseInt(e.target.value) || 0)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-xs pl-8 font-bold" 
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 text-base font-semibold tabular-nums pl-8" 
                   />
-                  <span className="absolute left-3.5 top-3.5 text-xs font-bold text-slate-400">₹</span>
+                  <span className="absolute left-3.5 top-3.5 text-sm font-bold text-slate-400">₹</span>
                 </div>
               </div>
             </div>
@@ -424,32 +424,32 @@ export default function CreateDeliveryPage() {
           {/* Section 5: Delivery Estimate Card */}
           <div className="bg-primary text-primary-foreground overflow-hidden rounded-xl shadow-lg transition-transform duration-300 hover:scale-[1.02] border border-primary/20">
             <div className="bg-gradient-to-br from-primary to-primary/80 p-6 md:p-8">
-              <span className="font-sans text-[10px] uppercase font-bold tracking-widest text-primary-foreground/75 block">Estimated Fulfillment Cost</span>
+              <span className="font-sans text-sm font-medium uppercase tracking-wide text-primary-foreground/90 block">Estimated Fulfillment Cost</span>
               <div className="flex items-baseline gap-2 mt-2 mb-4">
-                <span className="text-3xl font-heading font-black">₹ {getFulfillmentCost()}</span>
-                <span className="text-[10px] font-sans font-bold uppercase tracking-widest text-primary-foreground/80">INR</span>
+                <span className="text-3xl md:text-4xl lg:text-5xl font-bold font-sans tabular-nums">₹ {getFulfillmentCost()}</span>
+                <span className="text-sm font-sans font-semibold uppercase tracking-wider text-primary-foreground/85">INR</span>
               </div>
               
               <div className="mb-6 border-b border-primary-foreground/15 pb-4">
-                <span className="text-[9px] font-sans font-bold uppercase tracking-widest text-primary-foreground/60">Delivery ID Code: </span>
-                <span className="text-[11px] font-mono font-bold">DID-2026-10231</span>
+                <span className="text-xs font-sans font-medium uppercase tracking-wide text-primary-foreground/75">Delivery ID Preview: </span>
+                <span className="text-sm font-mono font-semibold tabular-nums">DID-2026-10231</span>
               </div>
 
               <div className="space-y-3 pt-2">
-                <div className="flex justify-between items-center text-xs">
+                <div className="flex justify-between items-center text-sm">
                   <div className="flex items-center gap-2.5 text-primary-foreground/85">
                     <Navigation className="size-4 rotate-45" />
-                    <span>Distance Estimate</span>
+                    <span className="font-medium">Distance</span>
                   </div>
-                  <span className="font-bold text-sm">{distance} km</span>
+                  <span className="font-semibold tabular-nums">{distance} km</span>
                 </div>
                 
-                <div className="flex justify-between items-center text-xs">
+                <div className="flex justify-between items-center text-sm">
                   <div className="flex items-center gap-2.5 text-primary-foreground/85">
                     <Clock className="size-4" />
-                    <span>ETA Commitment</span>
+                    <span className="font-medium">ETA</span>
                   </div>
-                  <span className="font-bold text-sm">{priority === "CRITICAL" ? "45 mins" : priority === "EXPRESS" ? "12 hours" : "36 hours"}</span>
+                  <span className="font-semibold tabular-nums">{priority === "CRITICAL" ? "45m" : priority === "EXPRESS" ? "12h" : "36h"}</span>
                 </div>
               </div>
             </div>
@@ -457,40 +457,40 @@ export default function CreateDeliveryPage() {
 
           {/* Section 6: Optimization Summary Card */}
           <div className="bg-card border border-border p-6 rounded-xl shadow-sm space-y-5">
-            <h3 className="font-sans text-[10px] uppercase tracking-widest text-foreground font-bold border-b border-slate-50 pb-2.5">Route Optimization Summary</h3>
+            <h3 className="font-sans text-sm font-semibold uppercase tracking-wide text-foreground border-b border-slate-50 pb-2.5">Route Optimization Summary</h3>
             
             <div className="space-y-4">
               {/* Driver allocation status */}
-              <div className="flex items-start gap-3 text-xs">
+              <div className="flex items-start gap-3 text-sm">
                 {/* Gold indicator */}
                 <div className="mt-0.5 size-7 rounded-full bg-gold/15 flex items-center justify-center text-gold-foreground shrink-0 border border-gold/10">
-                  <CheckCircle2 className="size-4" />
+                  <CheckCircle2 className="size-4.5" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-slate-800 font-sans">Active Driver Matching</h4>
-                  <p className="text-[11px] text-muted-foreground mt-0.5 leading-relaxed">Found 12 optimal matches in Bengaluru West Zone fleet clusters.</p>
+                  <h4 className="font-semibold text-slate-800 font-sans">Active Driver Matching</h4>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">Found 12 optimal matches in Bengaluru West Zone fleet clusters.</p>
                 </div>
               </div>
 
               {/* Assignment Time */}
-              <div className="flex items-start gap-3 text-xs">
+              <div className="flex items-start gap-3 text-sm">
                 <div className="mt-0.5 size-7 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0 border border-primary/10">
-                  <Timer className="size-4" />
+                  <Timer className="size-4.5" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-slate-800 font-sans">Expected Assign Window</h4>
-                  <p className="text-[11px] text-muted-foreground mt-0.5 leading-relaxed">&lt; 3 minutes commitment from manifest Ingestion.</p>
+                  <h4 className="font-semibold text-slate-800 font-sans">Expected Assign Window</h4>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">&lt; 3 minutes commitment from manifest Ingestion.</p>
                 </div>
               </div>
 
               {/* Traffic details */}
-              <div className="flex items-start gap-3 text-xs">
+              <div className="flex items-start gap-3 text-sm">
                 <div className="mt-0.5 size-7 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 shrink-0 border border-slate-200/50">
-                  <Info className="size-4" />
+                  <Info className="size-4.5" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-slate-800 font-sans">Traffic Factor: Moderate</h4>
-                  <p className="text-[11px] text-muted-foreground mt-0.5 leading-relaxed">Calculations include current delay logs on NH44 Mumbai-Bengaluru.</p>
+                  <h4 className="font-semibold text-slate-800 font-sans">Traffic Factor: Moderate</h4>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">Calculations include current delay logs on NH44 Mumbai-Bengaluru.</p>
                 </div>
               </div>
             </div>
@@ -498,7 +498,7 @@ export default function CreateDeliveryPage() {
             {/* Bottom Tag */}
             <div className="pt-3.5 border-t border-slate-100 flex items-center gap-2.5 text-gold-foreground">
               <Sparkles className="size-3.5" />
-              <span className="text-[9px] font-sans font-bold uppercase tracking-wider">ROUTE OPTIMIZATION ENABLED</span>
+              <span className="text-[10px] font-sans font-bold uppercase tracking-wider">ROUTE OPTIMIZATION ENABLED</span>
             </div>
           </div>
 
@@ -506,13 +506,13 @@ export default function CreateDeliveryPage() {
           <div className="flex flex-col gap-3">
             <button 
               type="submit"
-              className="w-full bg-primary text-primary-foreground py-3.5 px-8 rounded-xl font-sans text-xs font-bold uppercase tracking-widest shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 transition-all duration-200 active:scale-98"
+              className="w-full bg-primary text-primary-foreground py-4 px-8 rounded-xl font-sans text-base font-semibold uppercase tracking-wider shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 transition-all duration-200 active:scale-98"
             >
               CREATE DELIVERY
             </button>
             <button 
               type="button"
-              className="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 py-3.5 px-8 rounded-xl font-sans text-xs font-bold uppercase tracking-widest transition-all duration-200 active:scale-98 border border-slate-200"
+              className="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 py-4 px-8 rounded-xl font-sans text-base font-semibold uppercase tracking-wider transition-all duration-200 active:scale-98 border border-slate-200"
             >
               SAVE AS DRAFT
             </button>
@@ -540,28 +540,28 @@ export default function CreateDeliveryPage() {
               </div>
               
               <div>
-                <h3 className="text-xl font-heading font-bold text-slate-800">Delivery Created Successfully</h3>
-                <p className="text-xs text-muted-foreground mt-1">Your manifest has been recorded and broadcasted to our logistics network.</p>
+                <h3 className="text-2xl font-bold text-slate-800 font-sans">Delivery Created Successfully</h3>
+                <p className="text-sm text-muted-foreground mt-1">Your manifest has been recorded and broadcasted to our logistics network.</p>
               </div>
 
               {/* Manifest summary */}
-              <div className="bg-slate-50 border border-slate-200/50 p-4 rounded-xl space-y-2.5 text-xs text-left font-sans">
+              <div className="bg-slate-50 border border-slate-200/50 p-4 rounded-xl space-y-2.5 text-sm text-left font-sans">
                 <div className="flex justify-between items-center">
-                  <span className="text-[9px] font-bold text-muted-foreground uppercase">Delivery ID</span>
-                  <span className="font-mono font-bold text-primary">#DDP-294-8832</span>
+                  <span className="text-xs font-semibold text-muted-foreground uppercase">Delivery ID</span>
+                  <span className="font-mono font-semibold text-sm text-primary tabular-nums">#DDP-294-8832</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-[9px] font-bold text-muted-foreground uppercase">Estimated ETA</span>
-                  <span className="font-bold text-slate-800">{getFulfillmentETA().split(" - ")[0]}</span>
+                  <span className="text-xs font-semibold text-muted-foreground uppercase">Estimated ETA</span>
+                  <span className="font-semibold text-sm text-slate-800 tabular-nums">{getFulfillmentETA().split(" - ")[0]}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-[9px] font-bold text-muted-foreground uppercase">Status</span>
+                  <span className="text-xs font-semibold text-muted-foreground uppercase">Status</span>
                   <div className="flex items-center gap-1.5">
                     <span className="relative flex h-2 w-2">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-2 w-2 bg-gold"></span>
                     </span>
-                    <span className="text-[10px] font-bold text-gold-foreground font-sans">ASSIGNMENT PENDING</span>
+                    <span className="text-xs font-semibold text-gold-foreground font-sans">ASSIGNMENT PENDING</span>
                   </div>
                 </div>
               </div>
@@ -571,14 +571,14 @@ export default function CreateDeliveryPage() {
                 <button 
                   type="button"
                   onClick={() => setShowSuccess(false)}
-                  className="flex-1 py-2.5 bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 rounded-lg text-[10px] font-bold tracking-wider uppercase font-sans transition-colors"
+                  className="flex-1 py-3 bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 rounded-lg text-sm font-semibold uppercase tracking-wider font-sans transition-colors"
                 >
                   Close Window
                 </button>
                 <button 
                   type="button"
                   onClick={() => setShowSuccess(false)}
-                  className="flex-1 py-2.5 bg-primary text-primary-foreground rounded-lg text-[10px] font-bold tracking-wider uppercase font-sans hover:shadow-md transition-shadow"
+                  className="flex-1 py-3 bg-primary text-primary-foreground rounded-lg text-sm font-semibold uppercase tracking-wider font-sans hover:shadow-md transition-shadow"
                 >
                   Track Package
                 </button>
