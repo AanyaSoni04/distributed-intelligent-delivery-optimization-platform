@@ -33,6 +33,8 @@ model User {
   rejectedByAssignments Assignment[] @relation("AssignmentRejectedBy")
   assignmentEvents AssignmentEvent[]
 
+  driverProfile    DriverProfile?
+
   createdAt        DateTime          @default(now())
   updatedAt        DateTime          @updatedAt
 }
@@ -185,6 +187,42 @@ enum AssignmentEventType {
   REASSIGNED
 }
 
+// ─── Driver Domain ───────────────────────────────────────────────────
+
+enum DriverAvailability {
+  AVAILABLE
+  BUSY
+  OFFLINE
+  BREAK
+}
+
+enum DriverVerificationStatus {
+  PENDING
+  VERIFIED
+  SUSPENDED
+  REJECTED
+}
+
+enum DriverWorkingStatus {
+  OFF_DUTY
+  ON_DUTY
+  ON_DELIVERY
+  RETURNING
+}
+
+enum DriverEventType {
+  REGISTERED
+  ONLINE
+  OFFLINE
+  LOCATION_UPDATED
+  ASSIGNMENT_ACCEPTED
+  ASSIGNMENT_REJECTED
+  DELIVERY_COMPLETED
+  SHIFT_STARTED
+  SHIFT_ENDED
+  AVAILABILITY_CHANGED
+}
+
 model TrackingCounter {
   id          Int      @id @default(1)
   year        Int
@@ -288,7 +326,8 @@ model Assignment {
   id               String            @id @default(uuid())
   deliveryId       String
   delivery         Delivery          @relation(fields: [deliveryId], references: [id])
-  driverId         String?           // No FK yet, Driver module will link later
+  driverId         String?           
+  driver           DriverProfile?    @relation(fields: [driverId], references: [id])
   warehouseId      String?           // Future FK -> Warehouse
 
   status           AssignmentStatus  @default(ASSIGNMENT_PENDING)
@@ -347,4 +386,114 @@ model AssignmentEvent {
   @@index([createdAt])
   @@index([eventType])
   @@unique([assignmentId, sequenceNumber])
+}
+
+model DriverProfile {
+  // Identity & Auth
+  id                        String                   @id @default(uuid())
+  userId                    String                   @unique
+  user                      User                     @relation(fields: [userId], references: [id])
+  employeeCode              String?                  @unique
+  phoneNumber               String
+  emergencyContact          String?
+
+  // Verification & Compliance
+  verificationStatus        DriverVerificationStatus @default(PENDING)
+  licenseNumber             String?
+  licenseExpiry             DateTime?
+  insuranceExpiry           DateTime?
+  vehicleRegistrationExpiry DateTime?
+  vehicleVerifiedAt         DateTime?
+
+  // Vehicle Info
+  vehicleType               String?
+  vehicleNumber             String?
+  vehicleCapacity           Float?
+  vehicleModel              String?
+  vehicleColor              String?
+  vehicleFuelType           String?
+
+  // Location & Session
+  currentLatitude           Float?
+  currentLongitude          Float?
+  lastLocationUpdate        DateTime?
+  locationSharingEnabled    Boolean                  @default(true)
+  locationSharingUpdatedAt  DateTime?
+
+  // Status & Shift Management
+  availabilityStatus        DriverAvailability       @default(OFFLINE)
+  availabilityReason        String?
+  workingStatus             DriverWorkingStatus      @default(OFF_DUTY)
+  isOnline                  Boolean                  @default(false)
+  shiftStartTime            DateTime?
+  shiftEndTime              DateTime?
+  lastShiftStartedAt        DateTime?
+  lastShiftEndedAt          DateTime?
+  currentWarehouseId        String?
+
+  // Device Info
+  deviceId                  String?
+  devicePlatform            String?
+  appVersion                String?
+  lastHeartbeatAt           DateTime?
+
+  // Metrics & Analytics
+  rating                    Float                    @default(5.0)
+  completedDeliveries       Int                      @default(0)
+  cancelledDeliveries       Int                      @default(0)
+  rejectedAssignments       Int                      @default(0)
+  activeAssignments         Int                      @default(0)
+  maxCapacity               Int                      @default(5)
+  totalDistanceTravelled    Float                    @default(0)
+  totalWorkingMinutes       Int                      @default(0)
+  totalIdleMinutes          Int                      @default(0)
+  averageDeliveryTime       Float                    @default(0)
+
+  // Lifecycle
+  isDeleted                 Boolean                  @default(false)
+  deletedAt                 DateTime?
+  createdAt                 DateTime                 @default(now())
+  updatedAt                 DateTime                 @updatedAt
+
+  // Relations
+  assignments               Assignment[]
+  locationHistory           DriverLocationHistory[]
+  events                    DriverEvent[]
+
+  @@index([userId])
+  @@index([availabilityStatus])
+  @@index([workingStatus])
+  @@index([isOnline])
+  @@index([currentWarehouseId])
+  @@index([rating])
+}
+
+model DriverLocationHistory {
+  id           String        @id @default(uuid())
+  driverId     String
+  driver       DriverProfile @relation(fields: [driverId], references: [id])
+  latitude     Float
+  longitude    Float
+  speed        Float?
+  heading      Float?
+  accuracy     Float?
+  batteryLevel Float?
+  capturedAt   DateTime
+
+  @@index([driverId])
+  @@index([capturedAt])
+}
+
+model DriverEvent {
+  id        String          @id @default(uuid())
+  driverId  String
+  driver    DriverProfile   @relation(fields: [driverId], references: [id])
+  eventType DriverEventType
+  message   String
+  metadata  Json?
+  createdAt DateTime        @default(now())
+
+  @@index([driverId])
+  @@index([createdAt])
+  @@index([eventType])
 }

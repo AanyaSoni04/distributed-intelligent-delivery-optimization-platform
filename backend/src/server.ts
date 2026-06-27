@@ -42,6 +42,7 @@ server.register(fastifyJwt, {
 import { customerRoutes } from './modules/customer/customer.routes';
 import { deliveryRoutes, trackingRoutes } from './modules/delivery/delivery.routes';
 import { assignmentRoutes } from './modules/assignment/assignment.routes';
+import { driverRoutes } from './modules/driver/driver.routes';
 
 server.register(healthRoutes, { prefix: '/api' });
 server.register(authRoutes, { prefix: '/api/auth' });
@@ -49,6 +50,7 @@ server.register(customerRoutes, { prefix: '/api/customer' });
 server.register(deliveryRoutes, { prefix: '/api/deliveries' });
 server.register(trackingRoutes, { prefix: '/api/tracking' });
 server.register(assignmentRoutes, { prefix: '/api/assignments' });
+server.register(driverRoutes, { prefix: '/api/drivers' });
 
 const start = async () => {
   try {

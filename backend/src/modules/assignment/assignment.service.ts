@@ -1,11 +1,12 @@
 import { prisma } from '../../plugins/prisma';
 import { AssignmentStatus, AssignmentReason, EventSource, AssignmentEventType } from '@prisma/client';
 import { deliveryLifecycleService } from '../../shared/services/delivery-lifecycle.service';
-import { DefaultDriverProvider, FirstEligibleStrategy } from './assignment.strategy';
+import { FirstEligibleStrategy } from './assignment.strategy';
 import { assignmentCache } from './assignment.cache';
+import { DriverModuleProvider } from '../driver/driver-provider';
 
 // Phase 1 providers/strategies
-const driverProvider = new DefaultDriverProvider();
+const driverProvider = new DriverModuleProvider();
 const assignmentStrategy = new FirstEligibleStrategy();
 
 export class AssignmentService {
