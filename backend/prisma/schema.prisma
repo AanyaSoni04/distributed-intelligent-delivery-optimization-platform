@@ -7,11 +7,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Example User model for DIDOP
+enum Role {
+  ADMIN
+  CUSTOMER
+  DRIVER
+  WAREHOUSE_OPERATOR
+}
+
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  role      String   // admin, driver, warehouse, customer
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           String    @id @default(uuid())
+  email        String    @unique
+  passwordHash String
+  role         Role
+  isActive     Boolean   @default(true)
+  lastLoginAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
 }

@@ -1,5 +1,6 @@
 import Fastify from 'fastify';
 import { env } from './config/env';
+import fastifyJwt from '@fastify/jwt';
 
 // Plugins
 import errorHandlerPlugin from './plugins/errorHandler';
@@ -9,6 +10,7 @@ import websocketPlugin from './plugins/websocket';
 
 // Routes
 import { healthRoutes } from './modules/health/health.routes';
+import { authRoutes } from './modules/auth/auth.routes';
 
 const server = Fastify({
   logger: {
@@ -31,8 +33,14 @@ server.register(prismaPlugin);
 server.register(redisPlugin);
 server.register(websocketPlugin);
 
+// Register Auth Plugin
+server.register(fastifyJwt, {
+  secret: env.JWT_SECRET,
+});
+
 // Register Routes
 server.register(healthRoutes, { prefix: '/api' });
+server.register(authRoutes, { prefix: '/api/auth' });
 
 const start = async () => {
   try {
