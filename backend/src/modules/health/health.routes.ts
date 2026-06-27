@@ -16,7 +16,7 @@ export const healthRoutes: FastifyPluginAsync = async (fastify) => {
         timestamp: new Date().toISOString(),
       });
     } catch (error) {
-      fastify.log.error('Health check failed', error);
+      fastify.log.error(error, 'Health check failed');
       return reply.status(503).send({
         status: 'error',
         message: 'Service Unavailable',
