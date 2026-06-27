@@ -15,12 +15,83 @@ enum Role {
 }
 
 model User {
-  id           String    @id @default(uuid())
-  email        String    @unique
-  passwordHash String
-  role         Role
-  isActive     Boolean   @default(true)
-  lastLoginAt  DateTime?
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
+  id               String            @id @default(uuid())
+  email            String            @unique
+  passwordHash     String
+  role             Role
+  isActive         Boolean           @default(true)
+  lastLoginAt      DateTime?
+  
+  customerProfile  CustomerProfile?
+  createdAddresses Address[]         @relation("AddressCreatedBy")
+  updatedAddresses Address[]         @relation("AddressUpdatedBy")
+
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+}
+
+enum AddressType {
+  HOME
+  OFFICE
+  WAREHOUSE
+  HUB
+  OTHER
+}
+
+enum AddressStatus {
+  ACTIVE
+  INACTIVE
+  ARCHIVED
+}
+
+model CustomerProfile {
+  id               String    @id @default(uuid())
+  userId           String    @unique
+  user             User      @relation(fields: [userId], references: [id])
+  firstName        String
+  lastName         String
+  phoneNumber      String
+  companyName      String?
+  totalDeliveries  Int       @default(0)
+  activeDeliveries Int       @default(0)
+  lastDeliveryAt   DateTime?
+  addresses        Address[]
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+}
+
+model Address {
+  id                   String        @id @default(uuid())
+  customerId           String
+  customer             CustomerProfile @relation(fields: [customerId], references: [id])
+  addressType          AddressType
+  status               AddressStatus @default(ACTIVE)
+  
+  // TODO: Address entity is intentionally reusable and should later support Warehouse, Hub, and other logistics modules instead of creating duplicate address tables.
+  customLabel          String?
+  contactName          String
+  contactPhone         String
+  addressLine1         String
+  addressLine2         String?
+  landmark             String?
+  city                 String
+  state                String
+  postalCode           String
+  country              String
+  latitude             Float?
+  longitude            Float?
+  isDefault            Boolean       @default(false)
+  isVerified           Boolean       @default(false)
+  verifiedAt           DateTime?
+  deliveryInstructions String?
+  isDeleted            Boolean       @default(false)
+  deletedAt            DateTime?
+
+  createdByUserId      String
+  createdByUser        User          @relation("AddressCreatedBy", fields: [createdByUserId], references: [id])
+  updatedByUserId      String?
+  updatedByUser        User?         @relation("AddressUpdatedBy", fields: [updatedByUserId], references: [id])
+
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
 }
