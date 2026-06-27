@@ -40,10 +40,13 @@ server.register(fastifyJwt, {
 
 // Register Routes
 import { customerRoutes } from './modules/customer/customer.routes';
+import { deliveryRoutes, trackingRoutes } from './modules/delivery/delivery.routes';
 
 server.register(healthRoutes, { prefix: '/api' });
 server.register(authRoutes, { prefix: '/api/auth' });
 server.register(customerRoutes, { prefix: '/api/customer' });
+server.register(deliveryRoutes, { prefix: '/api/deliveries' });
+server.register(trackingRoutes, { prefix: '/api/tracking' });
 
 const start = async () => {
   try {

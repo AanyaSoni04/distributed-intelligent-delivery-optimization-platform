@@ -21,10 +21,12 @@ model User {
   role             Role
   isActive         Boolean           @default(true)
   lastLoginAt      DateTime?
-  
+
   customerProfile  CustomerProfile?
   createdAddresses Address[]         @relation("AddressCreatedBy")
   updatedAddresses Address[]         @relation("AddressUpdatedBy")
+  createdDeliveries Delivery[]       @relation("DeliveryCreatedBy")
+  deliveryEvents   DeliveryEvent[]
 
   createdAt        DateTime          @default(now())
   updatedAt        DateTime          @updatedAt
@@ -45,19 +47,20 @@ enum AddressStatus {
 }
 
 model CustomerProfile {
-  id               String    @id @default(uuid())
-  userId           String    @unique
-  user             User      @relation(fields: [userId], references: [id])
+  id               String     @id @default(uuid())
+  userId           String     @unique
+  user             User       @relation(fields: [userId], references: [id])
   firstName        String
   lastName         String
   phoneNumber      String
   companyName      String?
-  totalDeliveries  Int       @default(0)
-  activeDeliveries Int       @default(0)
+  totalDeliveries  Int        @default(0)
+  activeDeliveries Int        @default(0)
   lastDeliveryAt   DateTime?
   addresses        Address[]
-  createdAt        DateTime  @default(now())
-  updatedAt        DateTime  @updatedAt
+  deliveries       Delivery[]
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
 }
 
 model Address {
@@ -92,6 +95,168 @@ model Address {
   updatedByUserId      String?
   updatedByUser        User?         @relation("AddressUpdatedBy", fields: [updatedByUserId], references: [id])
 
+  pickupDeliveries     Delivery[]    @relation("PickupAddress")
+  deliveryDeliveries   Delivery[]    @relation("DeliveryAddress")
+
   createdAt            DateTime      @default(now())
   updatedAt            DateTime      @updatedAt
+}
+
+// ─── Delivery Domain ─────────────────────────────────────────────────
+
+enum DeliveryStatus {
+  CREATED
+  PICKUP_PENDING
+  PICKED_UP
+  IN_TRANSIT
+  OUT_FOR_DELIVERY
+  DELIVERED
+  FAILED
+  CANCELLED
+  RETURNED
+}
+
+enum AssignmentStatus {
+  UNASSIGNED
+  ASSIGNMENT_PENDING
+  ASSIGNED
+  DRIVER_ACCEPTED
+  DRIVER_REJECTED
+  REASSIGNMENT_REQUIRED
+}
+
+enum PriorityLevel {
+  LOW
+  NORMAL
+  HIGH
+  CRITICAL
+}
+
+enum ServiceLevel {
+  STANDARD
+  SAME_DAY
+  EXPRESS
+}
+
+enum PackageType {
+  DOCUMENT
+  BOX
+  ELECTRONICS
+  MEDICINE
+  FOOD
+  OTHER
+}
+
+enum EventSource {
+  CUSTOMER
+  SYSTEM
+  DRIVER
+  WAREHOUSE
+  ADMIN
+}
+
+enum DeliverySource {
+  CUSTOMER
+  ADMIN
+  WAREHOUSE
+  API
+  MARKETPLACE
+}
+
+model TrackingCounter {
+  id          Int      @id @default(1)
+  year        Int
+  lastCounter Int      @default(0)
+  updatedAt   DateTime @updatedAt
+}
+
+model Delivery {
+  id                       String           @id @default(uuid())
+  trackingNumber           String           @unique
+  clientRequestId          String?          @unique
+
+  // Customer & Addresses
+  customerId               String
+  customer                 CustomerProfile  @relation(fields: [customerId], references: [id])
+  pickupAddressId          String
+  pickupAddress            Address          @relation("PickupAddress", fields: [pickupAddressId], references: [id])
+  deliveryAddressId        String
+  deliveryAddress          Address          @relation("DeliveryAddress", fields: [deliveryAddressId], references: [id])
+
+  // Warehouse Routing (future)
+  originWarehouseId        String?
+  destinationWarehouseId   String?
+
+  // Driver (future Assignment Engine)
+  driverId                 String?
+
+  // Package
+  packageWeight            Float
+  packageLength            Float?
+  packageWidth             Float?
+  packageHeight            Float?
+  packageType              PackageType
+  packageValue             Float
+  packageDescription       String
+
+  // Status
+  status                   DeliveryStatus   @default(CREATED)
+  assignmentStatus         AssignmentStatus @default(UNASSIGNED)
+  priorityLevel            PriorityLevel
+  serviceLevel             ServiceLevel
+  source                   DeliverySource
+
+  // Scheduling & ETA
+  scheduledPickupTime      DateTime?
+  estimatedPickupTime      DateTime?
+  estimatedDeliveryTime    DateTime?
+  estimatedArrivalTime     DateTime?
+  lastEtaCalculationAt     DateTime?
+  actualDeliveryTime       DateTime?
+
+  // Current Location Snapshot
+  currentLatitude          Float?
+  currentLongitude         Float?
+  currentLocationUpdatedAt DateTime?
+
+  // Miscellaneous
+  specialInstructions      String?
+
+  // Audit
+  createdByUserId          String
+  createdByUser            User             @relation("DeliveryCreatedBy", fields: [createdByUserId], references: [id])
+
+  // Relations
+  events                   DeliveryEvent[]
+
+  // Timestamps
+  createdAt                DateTime         @default(now())
+  updatedAt                DateTime         @updatedAt
+
+  @@index([trackingNumber])
+  @@index([customerId])
+  @@index([status])
+  @@index([assignmentStatus])
+  @@index([createdAt])
+  @@index([estimatedDeliveryTime])
+  @@index([driverId])
+}
+
+model DeliveryEvent {
+  id              String          @id @default(uuid())
+  deliveryId      String
+  delivery        Delivery        @relation(fields: [deliveryId], references: [id])
+  eventType       String
+  previousStatus  DeliveryStatus?
+  currentStatus   DeliveryStatus
+  source          EventSource
+  message         String
+  metadata        Json?
+  createdByUserId String
+  createdByUser   User            @relation(fields: [createdByUserId], references: [id])
+  createdAt       DateTime        @default(now())
+
+  @@index([deliveryId])
+  @@index([createdAt])
+  @@index([eventType])
 }
