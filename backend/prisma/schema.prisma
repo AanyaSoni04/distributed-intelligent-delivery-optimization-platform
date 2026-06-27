@@ -28,6 +28,11 @@ model User {
   createdDeliveries Delivery[]       @relation("DeliveryCreatedBy")
   deliveryEvents   DeliveryEvent[]
 
+  assignedByAssignments Assignment[] @relation("AssignmentCreatedBy")
+  acceptedByAssignments Assignment[] @relation("AssignmentAcceptedBy")
+  rejectedByAssignments Assignment[] @relation("AssignmentRejectedBy")
+  assignmentEvents AssignmentEvent[]
+
   createdAt        DateTime          @default(now())
   updatedAt        DateTime          @updatedAt
 }
@@ -163,6 +168,23 @@ enum DeliverySource {
   MARKETPLACE
 }
 
+enum AssignmentReason {
+  AUTO
+  MANUAL
+  REASSIGNMENT
+  SYSTEM
+  HIGH_PRIORITY
+}
+
+enum AssignmentEventType {
+  CREATED
+  ACCEPTED
+  REJECTED
+  EXPIRED
+  CANCELLED
+  REASSIGNED
+}
+
 model TrackingCounter {
   id          Int      @id @default(1)
   year        Int
@@ -228,6 +250,7 @@ model Delivery {
 
   // Relations
   events                   DeliveryEvent[]
+  assignments              Assignment[]
 
   // Timestamps
   createdAt                DateTime         @default(now())
@@ -259,4 +282,69 @@ model DeliveryEvent {
   @@index([deliveryId])
   @@index([createdAt])
   @@index([eventType])
+}
+
+model Assignment {
+  id               String            @id @default(uuid())
+  deliveryId       String
+  delivery         Delivery          @relation(fields: [deliveryId], references: [id])
+  driverId         String?           // No FK yet, Driver module will link later
+  warehouseId      String?           // Future FK -> Warehouse
+
+  status           AssignmentStatus  @default(ASSIGNMENT_PENDING)
+  reason           AssignmentReason
+  strategyUsed     String
+  assignmentScore  Float?
+  attemptNumber    Int
+
+  expiresAt        DateTime?
+  expiredAt        DateTime?
+  isExpired        Boolean           @default(false)
+
+  assignedAt       DateTime
+  acceptedAt       DateTime?
+  rejectedAt       DateTime?
+  completedAt      DateTime?
+
+  assignedByUserId String
+  assignedByUser   User              @relation("AssignmentCreatedBy", fields: [assignedByUserId], references: [id])
+  acceptedByUserId String?
+  acceptedByUser   User?             @relation("AssignmentAcceptedBy", fields: [acceptedByUserId], references: [id])
+  rejectedByUserId String?
+  rejectedByUser   User?             @relation("AssignmentRejectedBy", fields: [rejectedByUserId], references: [id])
+
+  events           AssignmentEvent[]
+
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+
+  @@index([deliveryId])
+  @@index([driverId])
+  @@index([status])
+  @@index([assignedAt])
+  @@index([expiresAt])
+  @@index([isExpired])
+}
+
+model AssignmentEvent {
+  id               String              @id @default(uuid())
+  assignmentId     String
+  assignment       Assignment          @relation(fields: [assignmentId], references: [id])
+  sequenceNumber   Int
+  eventType        AssignmentEventType
+  previousStatus   AssignmentStatus?
+  currentStatus    AssignmentStatus
+  source           EventSource
+  message          String
+  metadata         Json?
+  
+  createdByUserId  String
+  createdByUser    User                @relation(fields: [createdByUserId], references: [id])
+  
+  createdAt        DateTime            @default(now())
+
+  @@index([assignmentId])
+  @@index([createdAt])
+  @@index([eventType])
+  @@unique([assignmentId, sequenceNumber])
 }
