@@ -189,8 +189,8 @@ export default function DriverDashboardPage() {
           {/* Left Columns (Map & Queue) */}
           <div className="lg:col-span-8 space-y-6">
             
-            {/* 2. GPS Tracking Map */}
-            <section className="bg-card border border-border rounded-2xl overflow-hidden relative h-[400px] shadow-sm">
+            {/* 2. Live Route Preview */}
+            <section className="bg-card border border-border rounded-2xl overflow-hidden relative h-[180px] shadow-sm">
               <div className="w-full h-full overflow-hidden relative">
                 <img
                   alt="GPS tracking map grid of Mumbai"

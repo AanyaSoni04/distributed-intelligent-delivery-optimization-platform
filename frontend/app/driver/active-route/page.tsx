@@ -162,18 +162,7 @@ export default function ActiveRoutePage() {
       breadcrumbs={breadcrumbs}
       actions={
         <div className="flex items-center gap-2">
-          {deliveryState === "IN_TRANSIT" && (
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setIsSimulating(!isSimulating)}
-              className="gap-1.5 h-9 text-xs font-semibold"
-              id="btn-simulate-transit"
-            >
-              <Play className="size-3.5 fill-current" />
-              <span>{isSimulating ? "Pause Navigation" : "Auto Drive"}</span>
-            </Button>
-          )}
+          {/* Auto Drive removed as per product constraints */}
           {deliveryState === "IN_TRANSIT" && (
             <Button
               size="sm"

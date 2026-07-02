@@ -157,7 +157,7 @@ export default function SystemMonitoringPage() {
     <PageContainer
       title="System Health & Latency"
       subtitle="Infrastructure health, system logs, API limits, and services state"
-      breadcrumbs={[{ label: "Admin", href: "/admin/command-center" }, { label: "System Monitoring" }]}
+      breadcrumbs={[{ label: "Developer", href: "/developer/monitoring" }, { label: "System Monitoring" }]}
       actions={
         <div className="flex items-center gap-3">
           {/* Status Badge */}

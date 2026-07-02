@@ -48,7 +48,7 @@ interface DriverPerformance {
   customerRating: number;
 }
 
-export default function DeliveryIntelligencePage() {
+export default function OptimizationAnalyticsPage() {
   // Hydration state check to prevent mismatch with Recharts
   const [mounted, setMounted] = useState(false);
   
@@ -133,9 +133,9 @@ export default function DeliveryIntelligencePage() {
 
   return (
     <PageContainer
-      title="Delivery Intelligence"
+      title="Optimization & Analytics"
       subtitle="Comprehensive real-time analysis of logistics throughput, driver efficiency, and regional fulfillment metrics for the DIDOP network."
-      breadcrumbs={[{ label: "Admin", href: "/admin/command-center" }, { label: "Delivery Intelligence" }]}
+      breadcrumbs={[{ label: "Admin", href: "/admin/command-center" }, { label: "Optimization & Analytics" }]}
       actions={
         <div className="flex items-center gap-3">
           {/* Timeframe selector */}

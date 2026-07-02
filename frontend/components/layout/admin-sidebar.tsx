@@ -3,9 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { 
-  Activity, 
   Brain, 
-  Boxes, 
   LayoutDashboard, 
   Truck, 
   Settings,
@@ -40,23 +38,11 @@ export function AdminSidebar({ isOpen = true, onClose }: SidebarProps) {
       description: "Active fleet and routes"
     },
     {
-      name: "Delivery Intelligence",
+      name: "Optimization & Analytics",
       href: "/admin/intelligence",
       icon: Brain,
       description: "AI optimization & metrics",
       badge: "Premium" // Reserving muted gold for premium status indicators!
-    },
-    {
-      name: "System Monitoring",
-      href: "/admin/monitoring",
-      icon: Activity,
-      description: "System health and logs"
-    },
-    {
-      name: "Warehouse Management",
-      href: "/admin/warehouse",
-      icon: Boxes,
-      description: "Inventory and sorting hubs"
     }
   ];
 
